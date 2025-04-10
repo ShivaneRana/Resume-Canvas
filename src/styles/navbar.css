@@ -1,0 +1,13 @@
+.navbar{
+    min-height: 5vh;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar > img{
+    max-height: 32px;
+    max-width: 32px;
+}
