@@ -1,5 +1,5 @@
 .app{
   background-color: rebeccapurple;
-  width: 100vw;
-  height: 1000vh;
+  min-width: 100vw;
+  min-height: 100vh;
 }
