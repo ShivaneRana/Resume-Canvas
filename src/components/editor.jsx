@@ -15,12 +15,12 @@ function Editor(){
                 <div className="resumeSlots">
                 </div>
                 <div className="resumeButtons">
-                    <img className="defaultButton" src = {addIcon}></img>
-                    <img className="defaultButton" src = {copyIcon}></img>
-                    <img className="defaultButton" src = {exampleIcon}></img>
-                    <img className="defaultButton" src = {clearIcon}></img>
-                    <img className="defaultButton" src = {deleteIcon}></img>
-                    <img className="defaultButton" src = {printIcon}></img>
+                    <img title = "Create a new resume" className="defaultButton" src = {addIcon}></img>
+                    <img title = "Copy existing resume" className="defaultButton" src = {copyIcon}></img>
+                    <img title = "Create an example resume" className="defaultButton" src = {exampleIcon}></img>
+                    <img title = "Clear all fields"  className="defaultButton" src = {clearIcon}></img>
+                    <img title = "Delete resume" className="defaultButton" src = {deleteIcon}></img>
+                    <img title = "Print resume" className="defaultButton" src = {printIcon}></img>
                 </div>
             </div>
        </div>
