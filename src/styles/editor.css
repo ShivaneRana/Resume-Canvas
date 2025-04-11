@@ -1,4 +1,6 @@
 .editor{
-    width: 50%;
+    min-width: 600px;
+    width: 900px;
+    min-height: 1200px;
     background-color: red;
 }
