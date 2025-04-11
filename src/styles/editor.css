@@ -2,10 +2,10 @@
     min-width: 600px;
     width: 900px;
     min-height: 1200px;
-    background-color: darkcyan;
     margin-bottom: 5vh;
     display: flex;
     flex-direction: column;
+    outline: 2px solid black;
 }
 
 .buttonHolder{
@@ -13,20 +13,27 @@
     display: flex;
 }
 
-.buttonHolder .resumeSlots{
+.resumeSlots{
     height: 100%;
     width: 50%;
-    background-color: rebeccapurple;
     flex-wrap: wrap;
 }
 
-.buttonHolder .resumeButtons{
+.resumeButtons{
     height: 100%;
     width: 50%;
-    background-color: red;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 20px;
+    padding-right: 20px;
 }
+
+.resumeButtons button{
+    border: none;
+    background-color: transparent;
+}
+
+
+
