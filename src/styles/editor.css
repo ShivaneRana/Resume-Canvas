@@ -4,4 +4,29 @@
     min-height: 1200px;
     background-color: darkcyan;
     margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonHolder{
+    height: 50px;
+    display: flex;
+}
+
+.buttonHolder .resumeSlots{
+    height: 100%;
+    width: 50%;
+    background-color: rebeccapurple;
+    flex-wrap: wrap;
+}
+
+.buttonHolder .resumeButtons{
+    height: 100%;
+    width: 50%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 5px;
 }
