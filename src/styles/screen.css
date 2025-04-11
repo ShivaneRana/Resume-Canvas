@@ -1,5 +1,8 @@
 .screen{
     min-width: 900px;
     min-height: 1200px;
-    background-color: gold;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 5vh;
 }
