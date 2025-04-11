@@ -1,5 +1,5 @@
 import "../styles/navbar.css"
-import webpageIcon from "../assets/images/cv.svg";
+import webpageIcon from "../assets/images/logo.svg";
 
 function Navbar(){
     return(
