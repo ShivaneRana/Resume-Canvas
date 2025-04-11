@@ -1,3 +1,5 @@
+@import url("../styles/utility.css");
+
 .navbar{
     min-height: 9vh;
     min-width: 100%;
@@ -10,4 +12,8 @@
 .navbar > img{
     max-height: 32px;
     max-width: 32px;
+}
+
+.navbar>img:hover{
+    animation: 2s rotate infinite alternate;
 }
