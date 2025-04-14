@@ -1,3 +1,5 @@
+@import url("../styles/utility.css");
+
 .mainContainer{
     height: 5vh;
     display: flex; 
@@ -10,6 +12,10 @@
 .logoIcon{
     height: var(--logoSize);
     width: var(--logoSize);
+}
+
+.logoIcon:hover{
+    animation: 3s rot infinite alternate;
 }
 
 .heading{
