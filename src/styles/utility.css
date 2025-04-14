@@ -2,6 +2,8 @@
     --logoSize: 25px;
     --buttonGap:12px;
    --scaleValue:scale(1.5);
+   --inputGap:10px;
+   
 }
 
 @keyframes rot{
