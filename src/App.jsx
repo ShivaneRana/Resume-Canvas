@@ -1,4 +1,7 @@
+//styles
 import style from './App.module.css';
+
+//components
 import Navbar from './components/navbar.jsx';
 
 function App() {
@@ -13,8 +16,7 @@ function App() {
 function Content(){
   return(
     <div className={style.content}>
-
-
+     
     </div>
   )
 }
