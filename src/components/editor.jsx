@@ -2,8 +2,7 @@ import style from "../styles/editor.module.css";
 
 function Editor(){
     return(
-        <div>
-
+        <div className={style.mainContainer}>
         </div>
     )
 }

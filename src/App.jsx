@@ -3,6 +3,8 @@ import style from './App.module.css';
 
 //components
 import Navbar from './components/navbar.jsx';
+import Resume from './components/resume.jsx';
+import Editor from './components/editor.jsx';
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
 function Content(){
   return(
     <div className={style.content}>
-     
+      <Editor></Editor>
+      <Resume></Resume>
     </div>
   )
 }
