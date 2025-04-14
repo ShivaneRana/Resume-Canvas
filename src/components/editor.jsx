@@ -9,12 +9,15 @@ import clearIcon from "../assets/images/clear.svg"
 import deleteIcon from "../assets/images/delete.svg"
 import printIcon from "../assets/images/print.svg"
 
+//components
+import PersonalDetail from "./personalDetail.jsx";
 
 // represents the entire editor side
 function Editor(){
     return(
         <div className={style.mainContainer}>
             <TopLayer></TopLayer>
+            <PersonalDetail></PersonalDetail>
         </div>
     )
 }
