@@ -5,5 +5,15 @@
 }
 
 .content{
-    background-color: red;
+    min-width: 100%;
+    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: row;
+}
+
+
+@media only screen and (max-width:1600px){
+    .content{
+        flex-direction: column;
+    }
 }
