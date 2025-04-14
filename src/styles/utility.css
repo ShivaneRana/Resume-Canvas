@@ -1,3 +1,15 @@
 :root{
     --logoSize: 25px;
+    --buttonGap:12px;
+   --scaleValue:scale(1.5);
+}
+
+@keyframes rot{
+   0%{
+      transform: rotateY(0deg);
+   } 
+
+   100%{
+      transform: rotateY(360deg);
+   }
 }
