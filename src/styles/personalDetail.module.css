@@ -1,0 +1,40 @@
+.mainContainer{
+    min-width: 100%;
+    min-height: 300px;
+    outline: 2px solid black;
+}
+
+/* each header has two div */
+ /* each div containe heading and button */
+.header{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header > div > button{
+    border: none;
+    background-color: transparent;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* all img icon inside header */
+.header > div > button > img{
+    width: 30px;
+    height: 30px;
+}
+
+.header > div:nth-child(1){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header > div:nth-child(2){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
