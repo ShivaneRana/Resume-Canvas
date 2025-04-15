@@ -1,6 +1,6 @@
 .mainContainer {
-  height: 1122px;
-  width: 793px;
+  min-height: 1122px;
+  min-width: 793px;
   margin-bottom: 5vh;
 }
 
