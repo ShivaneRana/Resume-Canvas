@@ -11,6 +11,7 @@ import printIcon from "../assets/images/print.svg";
 
 //components
 import PersonalDetail from "./personalDetail.jsx";
+import AboutMe from "./aboutMe.jsx";
 
 // represents the entire editor side
 function Editor() {
@@ -18,6 +19,7 @@ function Editor() {
     <div className={style.mainContainer}>
       <TopLayer></TopLayer>
       <PersonalDetail></PersonalDetail>
+      <AboutMe></AboutMe>
     </div>
   );
 }
