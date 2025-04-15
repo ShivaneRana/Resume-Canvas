@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-top: 20px;
 }
 
 /* each header has two div */
@@ -13,6 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .header > div > button {
@@ -49,7 +51,7 @@
 }
 
 .content{
-    min-width: 95%;
+    min-width: 90%;
     height: 100%;
 }
 
