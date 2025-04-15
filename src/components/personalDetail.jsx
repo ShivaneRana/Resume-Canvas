@@ -6,6 +6,8 @@ import expandIcon from "../assets/images/expand.svg";
 import shrinkICon from "../assets/images/shrink.svg";
 import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
+
+//components
 import { useState } from "react";
 
 function PersonalDetail() {
@@ -31,7 +33,7 @@ function Header({ func,isExpanded}) {
     <div className={style.header}>
       <div>
         <button onClick={func}>
-          <img onClick = {(e) => e.target.classList.toggle} alt="expand/collapse icon" src={icon}></img>
+          <img alt="expand/collapse icon" src={icon}></img>
         </button>
         <h2 onClick={func}>Personal Details: </h2>
       </div>
