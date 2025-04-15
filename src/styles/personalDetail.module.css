@@ -1,3 +1,5 @@
+@import url("../assets/fonts/cutive_mono/stylesheet.css");
+
 .mainContainer {
   min-width: 100%;
   display: flex;
@@ -66,6 +68,7 @@
 }
 
 .defaultDiv > input {
+  font-family: "cutive_monoregular",Verdana, Geneva, Tahoma, sans-serif;
   width: 60%;
   padding: 5px;
 }

@@ -1,3 +1,5 @@
+@import url("../assets/fonts/cutive_mono/stylesheet.css");
+
 .mainContainer {
   min-width: 100%;
   display: flex;
@@ -56,7 +58,9 @@
 }
 
 .content > textarea {
+  font-family: "cutive_monoregular",Verdana, Geneva, Tahoma, sans-serif;
   height: 150px;
   min-width: 100%;
   resize: vertical;
+  padding: 5px;
 }
