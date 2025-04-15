@@ -28,12 +28,12 @@ function TopLayer(){
         <div className={style.topLayer}>
             <div className={style.resumeSlot}></div>
             <div className={style.buttonSlot}>
-                <button><img src={addIcon}></img></button>
-                <button><img src={copyIcon}></img></button>
-                <button><img src={exampleIcon}></img></button>
-                <button><img src={clearIcon}></img></button>
-                <button><img src={deleteIcon}></img></button>
-                <button><img src={printIcon}></img></button>
+                <button><img alt ="add icon" src={addIcon}></img></button>
+                <button><img alt = "copy icon" src={copyIcon}></img></button>
+                <button><img alt="example icon" src={exampleIcon}></img></button>
+                <button><img alt="clear icon" src={clearIcon}></img></button>
+                <button><img alt="delete icon" src={deleteIcon}></img></button>
+                <button><img alt="print icon" src={printIcon}></img></button>
             </div>
         </div>
     )

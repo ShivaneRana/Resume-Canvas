@@ -21,15 +21,14 @@ function Header(){
     return(
         <div className={style.header}>
             <div>
-                <button><img src={arrow}></img></button>
+                <button><img alt ="expand/collapse icon" src={arrow}></img></button>
                 <h2>Personal Details: </h2>
             </div>
             <div>
-                <button><img src={showIcon}></img></button> 
+                <button><img alt="show/hide icon" src={showIcon}></img></button> 
             </div>
         </div>
     )
 }
-
 
 export default PersonalDetail;
