@@ -8,7 +8,7 @@
   height: 30px;
   width: 100%;
   display: flex;
-  margin-bottom: var(--inputGap);
+  margin-bottom: 20px;
 }
 
 .resumeSlot {
