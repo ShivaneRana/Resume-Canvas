@@ -25,8 +25,7 @@ function PersonalDetail() {
   );
 }
 
-function Header({ func,isExpanded}) {
- 
+function Header({ func, isExpanded }) {
   let icon = isExpanded ? shrinkICon : expandIcon;
 
   return (
@@ -38,7 +37,7 @@ function Header({ func,isExpanded}) {
         <h2 onClick={func}>Personal Details: </h2>
       </div>
       <div>
-          <DisplayButton></DisplayButton>
+        <DisplayButton></DisplayButton>
       </div>
     </div>
   );
@@ -58,12 +57,12 @@ function Content() {
   );
 }
 
-function DisplayButton(){
-    return(
-        <button>
-          <img alt="show/hide icon" src={showIcon}></img>
-        </button>
-    )
+function DisplayButton() {
+  return (
+    <button>
+      <img alt="show/hide icon" src={showIcon}></img>
+    </button>
+  );
 }
 
 function FullName() {
@@ -71,31 +70,23 @@ function FullName() {
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>
-      <input
-        name="fullname"
-        type="text"
-        placeholder="Enter fullname"
-      ></input>
+      <input name="fullname" type="text" placeholder="Enter fullname"></input>
     </div>
   );
 }
 
-function Address(){
-return (
+function Address() {
+  return (
     <div className={style.defaultDiv}>
       <h3>Address : </h3>
       <label htmlFor="address"></label>
-      <input
-        name="address"
-        type="text"
-        placeholder="Enter address"
-      ></input>
+      <input name="address" type="text" placeholder="Enter address"></input>
     </div>
   );
 }
 
-function PhoneNumber(){
-return (
+function PhoneNumber() {
+  return (
     <div className={style.defaultDiv}>
       <h3>Phone Number : </h3>
       <label htmlFor="phonenumber"></label>
@@ -108,22 +99,18 @@ return (
   );
 }
 
-function Email(){
-return (
+function Email() {
+  return (
     <div className={style.defaultDiv}>
       <h3>Email: </h3>
       <label htmlFor="email"></label>
-      <input
-        name="email"
-        type="email"
-        placeholder="Enter your email"
-      ></input>
+      <input name="email" type="email" placeholder="Enter your email"></input>
     </div>
   );
 }
 
-function Github(){
-return (
+function Github() {
+  return (
     <div className={style.defaultDiv}>
       <h3>Github: </h3>
       <label htmlFor="github"></label>
@@ -136,8 +123,8 @@ return (
   );
 }
 
-function Linkedin(){
-return (
+function Linkedin() {
+  return (
     <div className={style.defaultDiv}>
       <h3>Linkedin: </h3>
       <label htmlFor="linkedin"></label>
@@ -150,8 +137,8 @@ return (
   );
 }
 
-function PersonalWebsite(){
-return (
+function PersonalWebsite() {
+  return (
     <div className={style.defaultDiv}>
       <h3>Personal website: </h3>
       <label htmlFor="personalwebsite"></label>

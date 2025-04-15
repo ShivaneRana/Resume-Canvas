@@ -31,9 +31,9 @@
   height: 30px;
 }
 
-.header > div > h2{
-    user-select: none;
-    cursor: pointer;
+.header > div > h2 {
+  user-select: none;
+  cursor: pointer;
 }
 
 /* expand icon and header */
@@ -50,13 +50,13 @@
   align-items: center;
 }
 
-.content{
-    min-width: 90%;
-    height: 100%;
+.content {
+  min-width: 90%;
+  height: 100%;
 }
 
-.content > textarea{
-    height: 150px;
-    min-width: 100%;
-    resize: vertical;
+.content > textarea {
+  height: 150px;
+  min-width: 100%;
+  resize: vertical;
 }

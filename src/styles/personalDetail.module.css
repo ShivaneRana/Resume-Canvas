@@ -31,9 +31,9 @@
   height: 30px;
 }
 
-.header > div > h2{
-    user-select: none;
-    cursor: pointer;
+.header > div > h2 {
+  user-select: none;
+  cursor: pointer;
 }
 
 /* expand icon and header */
@@ -50,22 +50,22 @@
   align-items: center;
 }
 
-.content{
-    min-width: 90%;
-    height: 100%;
+.content {
+  min-width: 90%;
+  height: 100%;
 }
 
 /* contains input field and header  */
-.defaultDiv{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.defaultDiv {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.defaultDiv > input{
-    width: 60%;
-    padding: 5px;
+.defaultDiv > input {
+  width: 60%;
+  padding: 5px;
 }
