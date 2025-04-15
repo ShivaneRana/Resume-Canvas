@@ -1,42 +1,42 @@
-.mainContainer{
-    height: 1122px;
-    width: 793px; 
-    margin-bottom: 5vh;
- }
-
- .topLayer{
-    height: 30px;
-    width: 100%;
-    display: flex;
-    margin-bottom: var(--inputGap);
+.mainContainer {
+  height: 1122px;
+  width: 793px;
+  margin-bottom: 5vh;
 }
 
- .resumeSlot{
-    height: 100%;
-    width: 100%;
- }
+.topLayer {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  margin-bottom: var(--inputGap);
+}
 
- .buttonSlot{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: var(--buttonGap);
- }
+.resumeSlot {
+  height: 100%;
+  width: 100%;
+}
 
- .buttonSlot > button{
-   height: 100%;
-   min-width: 30px;
-   border: none;
-   background-color: transparent;
- }
+.buttonSlot {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--buttonGap);
+}
 
- .buttonSlot > button:hover{
-   transform: var(--scaleValue);
- }
+.buttonSlot > button {
+  height: 100%;
+  min-width: 30px;
+  border: none;
+  background-color: transparent;
+}
 
- .buttonSlot > button > img{
-   height: 100%;
-   width: 100%;
- }
+.buttonSlot > button:hover {
+  transform: var(--scaleValue);
+}
+
+.buttonSlot > button > img {
+  height: 100%;
+  width: 100%;
+}

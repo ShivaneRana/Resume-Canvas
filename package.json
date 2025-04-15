@@ -9,11 +9,10 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "pwrite" : "prettier . --write",
-    "pcheck" : "prettier . --check",
+    "pwrite": "prettier . --write",
+    "pcheck": "prettier . --check",
     "predeploy": "npm run build",
-    "deploy" : "gh-pages -d dist"
-
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.0.0",
