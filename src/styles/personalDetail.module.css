@@ -1,7 +1,8 @@
 .mainContainer {
   min-width: 100%;
-  min-height: 300px;
-  outline: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 /* each header has two div */
@@ -19,6 +20,7 @@
   background-color: transparent;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
 }
 
 /* all img icon inside header */
@@ -27,14 +29,41 @@
   height: 30px;
 }
 
+.header > div > h2{
+    user-select: none;
+    cursor: pointer;
+}
+
+/* expand icon and header */
 .header > div:nth-child(1) {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* display icon */
 .header > div:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content{
+    min-width: 95%;
+    height: 100%;
+}
+
+/* contains input field and header  */
+.defaultDiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.defaultDiv > input{
+    width: 60%;
+    padding: 5px;
 }
