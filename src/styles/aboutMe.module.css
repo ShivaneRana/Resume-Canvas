@@ -58,7 +58,7 @@
 }
 
 .content > textarea {
-  font-family: "cutive_monoregular",Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
   height: 150px;
   min-width: 100%;
   resize: vertical;

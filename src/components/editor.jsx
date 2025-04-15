@@ -16,7 +16,6 @@ import { useState } from "react";
 
 // represents the entire editor side
 function Editor() {
-  
   return (
     <div className={style.mainContainer}>
       <TopLayer></TopLayer>
