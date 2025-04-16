@@ -17,7 +17,10 @@ import { useState } from "react";
 
 // represents the entire editor side
 function Editor() {
-
+  // represent the current selected resume
+  const [currentResume,setCurrentResume] = useState({}); 
+  //contains all the resume that will be created
+  let resumeList = []; 
   
   
   return (
@@ -49,9 +52,9 @@ function TopLayer() {
 function ResumeSlot(){
   return(
     <div className={style.resumeSlot}>
-        <button>
-          <img src={resumeIcon}></img>
-        </button>
+      <button>
+        <img src={resumeIcon}></img>
+      </button>
     </div>
   )
 }
