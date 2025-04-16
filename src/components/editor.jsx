@@ -18,11 +18,10 @@ import { useState } from "react";
 // represents the entire editor side
 function Editor() {
   // represent the current selected resume
-  const [currentResume,setCurrentResume] = useState({}); 
+  const [currentResume, setCurrentResume] = useState({});
   //contains all the resume that will be created
-  let resumeList = []; 
-  
-  
+  let resumeList = [];
+
   return (
     <div className={style.mainContainer}>
       <TopLayer></TopLayer>
@@ -37,51 +36,46 @@ function TopLayer() {
   return (
     <div className={style.topLayer}>
       {/* This div contains all the resumes  */}
-      <ResumeSlot>
-
-      </ResumeSlot>
+      <ResumeSlot></ResumeSlot>
       {/* This resume contains all the buttons */}
-      <ButtonSlot>
-
-      </ButtonSlot>
+      <ButtonSlot></ButtonSlot>
     </div>
   );
 }
 
-
-function ResumeSlot(){
-  return(
+function ResumeSlot() {
+  return (
     <div className={style.resumeSlot}>
       <button>
         <img src={resumeIcon}></img>
       </button>
     </div>
-  )
+  );
 }
 
-function ButtonSlot(){
-    return(
-      <div className={style.buttonSlot}>
-        <button>
-          <img alt="add icon" src={addIcon}></img>
-        </button>
-        <button>
-          <img alt="copy icon" src={copyIcon}></img>
-        </button>
-        <button>
-          <img alt="example icon" src={exampleIcon}></img>
-        </button>
-        <button>
-          <img alt="clear icon" src={clearIcon}></img>
-        </button>
-        <button>
-          <img alt="delete icon" src={deleteIcon}></img>
-        </button>
-        <button>
-          <img alt="print icon" src={printIcon}></img>
-        </button>
-      </div>
-    )
+function ButtonSlot() {
+  return (
+    <div className={style.buttonSlot}>
+      <button>
+        <img alt="add icon" src={addIcon}></img>
+      </button>
+      <button>
+        <img alt="copy icon" src={copyIcon}></img>
+      </button>
+      <button>
+        <img alt="example icon" src={exampleIcon}></img>
+      </button>
+      <button>
+        <img alt="clear icon" src={clearIcon}></img>
+      </button>
+      <button>
+        <img alt="delete icon" src={deleteIcon}></img>
+      </button>
+      <button>
+        <img alt="print icon" src={printIcon}></img>
+      </button>
+    </div>
+  );
 }
 
 export default Editor;

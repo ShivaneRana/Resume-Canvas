@@ -18,10 +18,9 @@
   align-items: center;
   gap: var(--buttonGap);
   padding-left: 10px;
-  
 }
 
-.resumeSlot > button{
+.resumeSlot > button {
   height: 30px;
   width: 30px;
   border: none;
@@ -36,7 +35,6 @@
   height: 100%;
   width: 100%;
 }
-
 
 .buttonSlot {
   height: 100%;
