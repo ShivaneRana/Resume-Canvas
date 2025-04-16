@@ -15,6 +15,23 @@
   width: 100%;
 }
 
+.resumeSlot > button{
+  height: 30px;
+  width: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+.resumeSlot > button:hover {
+  transform: var(--scaleValue);
+}
+
+.resumeSlot > button > img {
+  height: 100%;
+  width: 100%;
+}
+
+
 .buttonSlot {
   height: 100%;
   width: 100%;
