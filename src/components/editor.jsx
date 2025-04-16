@@ -8,6 +8,7 @@ import exampleIcon from "../assets/images/example.svg";
 import clearIcon from "../assets/images/clear.svg";
 import deleteIcon from "../assets/images/delete.svg";
 import printIcon from "../assets/images/print.svg";
+import resumeIcon from "../assets/images/resume.svg";
 
 //components
 import PersonalDetail from "./personalDetail.jsx";
@@ -16,6 +17,9 @@ import { useState } from "react";
 
 // represents the entire editor side
 function Editor() {
+
+  
+  
   return (
     <div className={style.mainContainer}>
       <TopLayer></TopLayer>
@@ -29,7 +33,31 @@ function Editor() {
 function TopLayer() {
   return (
     <div className={style.topLayer}>
-      <div className={style.resumeSlot}></div>
+      {/* This div contains all the resumes  */}
+      <ResumeSlot>
+
+      </ResumeSlot>
+      {/* This resume contains all the buttons */}
+      <ButtonSlot>
+
+      </ButtonSlot>
+    </div>
+  );
+}
+
+
+function ResumeSlot(){
+  return(
+    <div className={style.resumeSlot}>
+        <button>
+          <img src={resumeIcon}></img>
+        </button>
+    </div>
+  )
+}
+
+function ButtonSlot(){
+    return(
       <div className={style.buttonSlot}>
         <button>
           <img alt="add icon" src={addIcon}></img>
@@ -50,8 +78,7 @@ function TopLayer() {
           <img alt="print icon" src={printIcon}></img>
         </button>
       </div>
-    </div>
-  );
+    )
 }
 
 export default Editor;
