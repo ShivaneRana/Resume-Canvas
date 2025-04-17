@@ -13,6 +13,7 @@ import resumeIcon from "../assets/images/resume.svg";
 //components
 import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
+import SkillDetails from "./skillDetails.jsx";
 import { useState } from "react";
 
 // represents the entire editor side
@@ -27,6 +28,7 @@ function Editor() {
       <TopLayer></TopLayer>
       <PersonalDetail></PersonalDetail>
       <AboutMe></AboutMe>
+      <SkillDetails></SkillDetails>
     </div>
   );
 }
