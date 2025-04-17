@@ -1,0 +1,9 @@
+@import url("../assets/fonts/cutive_mono/stylesheet.css");
+
+.mainContainer{
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px;
+}
