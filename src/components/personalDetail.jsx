@@ -26,7 +26,8 @@ function PersonalDetail() {
 }
 
 function Header({ func, isExpanded }) {
-  let icon = isExpanded ? shrinkICon : expandIcon;
+  //this section is expanded by default
+  let icon = isExpanded ? expandIcon : shrinkICon;
 
   return (
     <div className={style.header}>
