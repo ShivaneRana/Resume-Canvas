@@ -11,6 +11,7 @@ import hideIcon from "../assets/images/hide.svg";
 import { useState } from "react";
 
 function AboutMe() {
+  // this section is expanded by default 
   const [expanded, setExpanded] = useState(true);
 
   function toggleExpanded() {
