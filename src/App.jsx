@@ -33,8 +33,14 @@ const exampleTemplate = {
   aboutMe: "Passionate full-stack developer with 5+ years of experience building responsive web applications and scalable backend systems. Skilled in JavaScript, React, Node.js, and cloud services. Committed to writing clean, efficient code and continuously learning new technologies."
 };
 
-
 function App() {
+  const [currentResume,setCurrentResume] = useState();
+
+  function changeCurrentResume(newResume){
+    const tempResume = newResume;
+    setCurrentResume(tempResume);
+  }
+
   return (
     <div className={style.mainContainer}>
       <Navbar></Navbar>
