@@ -14,15 +14,9 @@ import resumeIcon from "../assets/images/resume.svg";
 import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
 import SkillDetails from "./skillDetails.jsx";
-import { useState } from "react";
 
 // represents the entire editor side
 function Editor() {
-  // represent the current selected resume
-  const [currentResume, setCurrentResume] = useState({});
-  //contains all the resume that will be created
-  let resumeList = [];
-
   return (
     <div className={style.mainContainer}>
       <TopLayer></TopLayer>
