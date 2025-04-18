@@ -1,23 +1,25 @@
 .mainContainer {
   min-height: 1122px;
   min-width: 793px;
+  max-width: 793px;
   margin-bottom: 5vh;
 }
 
 .topLayer {
-  height: 30px;
-  width: 100%;
+  min-height: 30px;
+  max-width: 100%;
   display: flex;
 }
 
 .resumeSlot {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 50%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: var(--buttonGap);
   padding-left: 10px;
+  flex-wrap: wrap;
 }
 
 .resumeSlot > button {
@@ -37,8 +39,8 @@
 }
 
 .buttonSlot {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 50%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
