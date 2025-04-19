@@ -42,11 +42,16 @@ function TopLayer() {
 }
 
 function ResumeSlot() {
+  let context = useContext(resumeContext);
   return (
     <div className={style.resumeSlot}>
-      <button>
-        <img src={resumeIcon}></img>
-      </button>
+      {context.resumeList.map(resume => {
+        return(
+          <button key={resume.id}>
+            <img src={resumeIcon}></img>
+          </button>
+        )
+      })}
     </div>
   );
 }
