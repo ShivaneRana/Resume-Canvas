@@ -18,12 +18,34 @@ function App() {
 }
 
 
+
+export let resumeContext = createContext();
+
 function Content() {
+  let [resumeList,setResumeList] = useState([]);
+  let [activeResume,setActiveResume] = useState([]);
+
+  //add new resume to the resume list
+  function addNewResume(newResume){
+    const newId = uuidv4();
+    const tempList = [{id:newId,...resumeList}];
+    tempList.push(newResume);
+    setResumeList(tempList);
+  }
+
+  //responsible for changing current resume
+  function changeActiveResume(newResume){
+    const tempResume = newResume;
+    setActiveResume(tempResume);
+  }
+
   return (
+    <resumeContext.Provider value={{addNewResume,changeActiveResume,activeResume,resumeList}}>
     <div className={style.content}>
       <Editor></Editor>
       <Resume></Resume>
     </div>
+    </resumeContext.Provider>
   );
 }
 
