@@ -48,7 +48,7 @@ function ResumeSlot() {
       {context.resumeList.map(resume => {
         return(
           <button key={resume.id}>
-            <img src={resumeIcon}></img>
+            <img title="Resume slot" alt="resume icon" src={resumeIcon}></img>
           </button>
         )
       })}
