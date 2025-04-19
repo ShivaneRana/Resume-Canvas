@@ -47,7 +47,12 @@ function ResumeSlot() {
     <div className={style.resumeSlot}>
       {context.resumeList.map(resume => {
         return(
-          <button key={resume.id}>
+          <button
+          onClick={(e) => {
+            context.changeActiveResume(resume);
+            console.log(context.activeResume);
+          }}
+          key={resume.id}>
             <img title="Resume slot" alt="resume icon" src={resumeIcon}></img>
           </button>
         )
