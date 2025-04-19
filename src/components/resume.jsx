@@ -22,7 +22,6 @@ function Resume() {
 function Name(){
   return(
     <div className={style.nameDiv}>
-      <h1>Shivane Rana</h1>
     </div>
   )
 }
@@ -30,12 +29,7 @@ function Name(){
 function SocialLinks(){
   return(
     <div className={style.socialLinksDiv}>
-      <a href="www.google.com" target="blank">Google</a>
-      <a href="www.google.com" target="blank">Google</a>
-      <a href="www.google.com" target="blank">Google</a>
-      <a href="www.google.com" target="blank">Google</a>
-      <a href="www.google.com" target="blank">Google</a>
-      <a href="www.google.com" target="blank">Google</a>
+      
     </div>
   )
 }
@@ -45,12 +39,6 @@ function AboutMe(){
     <div className={style.aboutMeDiv}>
       <h2>About me</h2>
       <hr className={style.line}></hr>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.
-        Sed cursus, sem in tincidunt lacinia, lectus nisi pulvinar erat, ut dictum
-        sapien nisi nec est. Pellentesque habitant morbi tristique senectus et netus
-        et malesuada fames ac turpiitor.   
-      </p>
     </div>
   )
 }
