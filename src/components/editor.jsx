@@ -53,22 +53,22 @@ function ButtonSlot() {
   return (
     <div className={style.buttonSlot}>
       <button>
-        <img alt="add icon" src={addIcon}></img>
+        <img alt="add icon" src={addIcon} title="Add new resume"></img>
       </button>
       <button>
-        <img alt="copy icon" src={copyIcon}></img>
+        <img alt="copy icon" src={copyIcon} title="copy existing resume"></img>
       </button>
       <button>
-        <img alt="example icon" src={exampleIcon}></img>
+        <img alt="example icon" src={exampleIcon} title="generate an example resume"></img>
       </button>
       <button>
-        <img alt="clear icon" src={clearIcon}></img>
+        <img alt="clear icon" src={clearIcon} title="clear existing resume"></img>
       </button>
       <button>
-        <img alt="delete icon" src={deleteIcon}></img>
+        <img alt="delete icon" src={deleteIcon} title="delete current resume"></img>
       </button>
       <button>
-        <img alt="print icon" src={printIcon}></img>
+        <img alt="print icon" src={printIcon} title="print existing resume"></img>
       </button>
     </div>
   );
