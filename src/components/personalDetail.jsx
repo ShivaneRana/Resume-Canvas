@@ -8,7 +8,8 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 
 //components
-import { useState } from "react";
+import { useState,useContext} from "react";
+import { resumeContext } from "../App";
 
 function PersonalDetail() {
   const [expanded, setExpanded] = useState(true);
