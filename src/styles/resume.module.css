@@ -9,7 +9,7 @@
 }
 
 .mainContainer > div{
-  min-width: 90%;
+  max-width: 90%;
   min-height: 90%;
 }
 
@@ -21,7 +21,6 @@
 
 .mainContainer > div > div:nth-child(1){
   display: flex;
-
 }
 
 .nameDiv{
@@ -42,4 +41,28 @@
 
 .socialLinksDiv > a{
   display: block;
+}
+
+.aboutMeDiv{
+  margin-top: 5px;
+}
+
+.skillDiv{
+  margin-top: 5px;
+}
+
+.educationDiv{
+  margin-top: 5px;
+}
+
+.projectDiv{
+  margin-top: 5px;
+}
+
+.additionalDiv{
+  margin-top: 5px;
+}
+
+.workExperienceDiv{
+  margin-top: 5px;
 }
