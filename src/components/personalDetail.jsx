@@ -69,6 +69,7 @@ function DisplayButton() {
 }
 
 function FullName() {
+  const context = useContext(resumeContext);
   return (
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
