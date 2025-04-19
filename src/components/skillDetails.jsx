@@ -10,19 +10,19 @@ import hideIcon from "../assets/images/hide.svg";
 //components
 import { useState } from "react";
 
-function SkillDetails(){
+function SkillDetails() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(false);
 
   function toggleExpanded() {
     setExpanded(!expanded);
   }
-    return(
-        <div className={style.mainContainer}>
-           <Header func={toggleExpanded} isExpanded={expanded}></Header> 
-           {expanded && <Content></Content>}
-        </div>
-    )
+  return (
+    <div className={style.mainContainer}>
+      <Header func={toggleExpanded} isExpanded={expanded}></Header>
+      {expanded && <Content></Content>}
+    </div>
+  );
 }
 
 function Header({ func, isExpanded }) {
@@ -44,12 +44,7 @@ function Header({ func, isExpanded }) {
 }
 
 function Content() {
-  return (
-    <div className={style.content}>
-
-        shivane
-    </div>
-  );
+  return <div className={style.content}>shivane</div>;
 }
 
 function DisplayButton() {

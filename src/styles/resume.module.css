@@ -8,26 +8,25 @@
   align-items: center;
 }
 
-.mainContainer > div{
+.mainContainer > div {
   max-width: 90%;
   min-width: 90%;
   min-height: 90%;
   max-width: 90%;
 }
 
-.line{
+.line {
   border: none;
   height: 1px;
   background-color: black;
 }
 
 /* contains social link and name */
-.mainContainer > div > div:nth-child(1){
+.mainContainer > div > div:nth-child(1) {
   display: flex;
-  
 }
 
-.nameDiv{
+.nameDiv {
   width: 50%;
   min-height: 100%;
   display: flex;
@@ -35,7 +34,7 @@
   align-items: center;
 }
 
-.socialLinksDiv{
+.socialLinksDiv {
   width: 50%;
   min-height: 100%;
   display: flex;
@@ -43,30 +42,30 @@
   align-items: flex-end;
 }
 
-.socialLinksDiv > a{
+.socialLinksDiv > a {
   display: block;
 }
 
-.aboutMeDiv{
+.aboutMeDiv {
   margin-top: 5px;
 }
 
-.skillDiv{
+.skillDiv {
   margin-top: 5px;
 }
 
-.educationDiv{
+.educationDiv {
   margin-top: 5px;
 }
 
-.projectDiv{
+.projectDiv {
   margin-top: 5px;
 }
 
-.additionalDiv{
+.additionalDiv {
   margin-top: 5px;
 }
 
-.workExperienceDiv{
+.workExperienceDiv {
   margin-top: 5px;
 }

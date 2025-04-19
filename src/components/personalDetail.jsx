@@ -8,7 +8,7 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 
 //components
-import { useState} from "react";
+import { useState } from "react";
 
 function PersonalDetail() {
   const [expanded, setExpanded] = useState(true);
@@ -71,10 +71,7 @@ function FullName() {
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>
-      <input
-       name="fullname"
-       type="text"
-       placeholder="Enter fullname"></input>
+      <input name="fullname" type="text" placeholder="Enter fullname"></input>
     </div>
   );
 }
