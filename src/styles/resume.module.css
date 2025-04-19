@@ -10,7 +10,9 @@
 
 .mainContainer > div{
   max-width: 90%;
+  min-width: 90%;
   min-height: 90%;
+  max-width: 90%;
 }
 
 .line{
@@ -19,8 +21,10 @@
   background-color: black;
 }
 
+/* contains social link and name */
 .mainContainer > div > div:nth-child(1){
   display: flex;
+  
 }
 
 .nameDiv{
