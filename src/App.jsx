@@ -23,12 +23,20 @@ function Content() {
   let [resumeList, setResumeList] = useState([]);
   let [activeResume, setActiveResume] = useState([]);
 
-  //add new resume to the resume list
-  function addNewResume(newResume) {
+  console.log("App.jsx context re rendered");
+
+  //add new resume to the resume list ( example )
+  function addExampleResume() {
     const newId = uuidv4();
-    const tempList = [{ id: newId, ...resumeList }];
-    tempList.push(newResume);
+    const tempList = [...resumeList,{ id: newId, ...exampleTemplate}];
     setResumeList(tempList);
+  }
+
+  // add new resume to resume list ( base )
+  function addNewResume(){
+    const newId = uuidv4();
+    const tempList = [...resumeList,{id : newId , ...baseTemplate}];
+    setResumeList(tempList)
   }
 
   //responsible for changing current resume
@@ -39,7 +47,7 @@ function Content() {
 
   return (
     <resumeContext.Provider
-      value={{ addNewResume, changeActiveResume, activeResume, resumeList }}
+      value={{ addNewResume, changeActiveResume, addExampleResume, activeResume, resumeList }}
     >
       <div className={style.content}>
         <Editor></Editor>
