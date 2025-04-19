@@ -70,11 +70,14 @@ function DisplayButton() {
 
 function FullName() {
   const context = useContext(resumeContext);
+
   return (
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>
-      <input name="fullname" type="text" placeholder="Enter fullname"></input>
+      <input
+      onClick = {() => console.log("uwuwu")}
+      name="fullname" type="text" placeholder="Enter fullname"></input>
     </div>
   );
 }

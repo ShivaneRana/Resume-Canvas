@@ -6,7 +6,7 @@ import Navbar from "./components/navbar.jsx";
 import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
 import { v4 as uuidv4 } from "uuid";
-import { useState, useContext, createContext } from "react";
+import { useState,createContext} from "react";
 
 function App() {
   return (
@@ -25,11 +25,19 @@ function Content() {
 
   console.log("App.jsx context re rendered");
 
+  function checkIfResumeListIsEmpty(){
+    if(resumeList.length === 0){
+      addExampleResume();
+    }
+    console.log("checkResumeListIsEmpty function called");
+  }
+
   //add new resume to the resume list ( example )
   function addExampleResume() {
     const newId = uuidv4();
     const tempList = [...resumeList,{ id: newId, ...exampleTemplate}];
     setResumeList(tempList);
+    console.log("New example resume to resumeList")
   }
 
   // add new resume to resume list ( base )
@@ -37,17 +45,19 @@ function Content() {
     const newId = uuidv4();
     const tempList = [...resumeList,{id : newId , ...baseTemplate}];
     setResumeList(tempList)
+    console.log("New base resume added to resumeList")
   }
 
   //responsible for changing current resume
   function changeActiveResume(newResume) {
     const tempResume = newResume;
     setActiveResume(tempResume);
+    console.log("Active Resume changed");
   }
 
   return (
     <resumeContext.Provider
-      value={{ addNewResume, changeActiveResume, addExampleResume, activeResume, resumeList }}
+      value={{ addNewResume, checkIfResumeListIsEmpty ,changeActiveResume, addExampleResume, activeResume, resumeList }}
     >
       <div className={style.content}>
         <Editor></Editor>
