@@ -27,13 +27,14 @@ function AboutMe() {
 }
 
 function Header({ func, isExpanded }) {
-  let icon = isExpanded ? expandIcon : shrinkICon;
+  let icon = isExpanded ? shrinkICon : expandIcon;
+  let title = isExpanded ? "Show less" : "Show more";
 
   return (
     <div className={style.header}>
       <div>
         <button onClick={func}>
-          <img alt="expand/collapse icon" src={icon}></img>
+          <img alt="expand/collapse icon" src={icon} title={title}></img>
         </button>
         <h2 onClick={func}>About me: </h2>
       </div>

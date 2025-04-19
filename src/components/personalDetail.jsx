@@ -27,13 +27,14 @@ function PersonalDetail() {
 
 function Header({ func, isExpanded }) {
   //this section is expanded by default
-  let icon = isExpanded ? expandIcon : shrinkICon;
+  let icon = isExpanded ? shrinkICon : expandIcon;
+  let title = isExpanded ? "Show less" : "Show more";
 
   return (
     <div className={style.header}>
       <div>
         <button onClick={func}>
-          <img alt="expand/collapse icon" src={icon}></img>
+          <img alt="expand/collapse icon" src={icon} title={title}></img>
         </button>
         <h2 onClick={func}>Personal Details: </h2>
       </div>
