@@ -25,13 +25,6 @@ function Content() {
 
   console.log("App.jsx context re rendered");
 
-  function checkIfResumeListIsEmpty(){
-    if(resumeList.length === 0){
-      addExampleResume();
-    }
-    console.log("checkResumeListIsEmpty function called");
-  }
-
   //add new resume to the resume list ( example )
   function addExampleResume() {
     const newId = uuidv4();
@@ -57,7 +50,7 @@ function Content() {
 
   return (
     <resumeContext.Provider
-      value={{ addNewResume, checkIfResumeListIsEmpty ,changeActiveResume, addExampleResume, activeResume, resumeList }}
+      value={{ addNewResume,changeActiveResume, addExampleResume, activeResume, resumeList }}
     >
       <div className={style.content}>
         <Editor></Editor>
