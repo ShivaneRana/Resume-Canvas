@@ -20,8 +20,8 @@ function App() {
 export let resumeContext = createContext();
 
 function Content() {
-  let [resumeList, setResumeList] = useState([]);
-  let [activeResume, setActiveResume] = useState([]);
+  let [resumeList, setResumeList] = useState([])
+  let [activeResume, setActiveResume] = useState(null);
 
   console.log("App.jsx context re rendered");
 
@@ -70,6 +70,7 @@ const exampleTemplate = {
   aboutMe:
     "Passionate full-stack developer with 5+ years of experience building responsive web applications and scalable backend systems. Skilled in JavaScript, React, Node.js, and cloud services. Committed to writing clean, efficient code and continuously learning new technologies.",
 };
+
 
 const baseTemplate = {
   personalDetail: {
