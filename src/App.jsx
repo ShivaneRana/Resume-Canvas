@@ -5,7 +5,7 @@ import style from "./App.module.css";
 import Navbar from "./components/navbar.jsx";
 import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
-import { useState,useContext,createContext} from "react";
+import {v4 as uuidv4} from 'uuid';
 
 const baseTemplate = {
     personalDetail:{
@@ -34,13 +34,6 @@ const exampleTemplate = {
 };
 
 function App() {
-  const [currentResume,setCurrentResume] = useState();
-
-  function changeCurrentResume(newResume){
-    const tempResume = newResume;
-    setCurrentResume(tempResume);
-  }
-
   return (
     <div className={style.mainContainer}>
       <Navbar></Navbar>
