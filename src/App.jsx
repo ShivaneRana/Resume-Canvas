@@ -6,18 +6,25 @@ import Navbar from "./components/navbar.jsx";
 import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
 import {v4 as uuidv4} from 'uuid';
+import { useState,useContext,createContext } from "react";
 
-const baseTemplate = {
-    personalDetail:{
-     fullName:"",
-     email:"",
-     phoneNumber:"",
-     github:"",
-     linkedIn:"",
-     address:"",
-     personalWebsite:"",
-  },
-    aboutMe:"",
+function App() {
+  return (
+    <div className={style.mainContainer}>
+      <Navbar></Navbar>
+      <Content></Content>
+    </div>
+  );
+}
+
+
+function Content() {
+  return (
+    <div className={style.content}>
+      <Editor></Editor>
+      <Resume></Resume>
+    </div>
+  );
 }
 
 const exampleTemplate = {
@@ -33,22 +40,17 @@ const exampleTemplate = {
   aboutMe: "Passionate full-stack developer with 5+ years of experience building responsive web applications and scalable backend systems. Skilled in JavaScript, React, Node.js, and cloud services. Committed to writing clean, efficient code and continuously learning new technologies."
 };
 
-function App() {
-  return (
-    <div className={style.mainContainer}>
-      <Navbar></Navbar>
-      <Content></Content>
-    </div>
-  );
-}
-
-function Content() {
-  return (
-    <div className={style.content}>
-      <Editor></Editor>
-      <Resume></Resume>
-    </div>
-  );
+const baseTemplate = {
+    personalDetail:{
+     fullName:"",
+     email:"",
+     phoneNumber:"",
+     github:"",
+     linkedIn:"",
+     address:"",
+     personalWebsite:"",
+  },
+    aboutMe:"",
 }
 
 export default App;
