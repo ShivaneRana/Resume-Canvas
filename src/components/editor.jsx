@@ -14,6 +14,8 @@ import resumeIcon from "../assets/images/resume.svg";
 import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
 import SkillDetails from "./skillDetails.jsx";
+import { useState,useContext} from "react";
+import { resumeContext } from "../App.jsx";
 
 // represents the entire editor side
 function Editor() {
@@ -50,25 +52,63 @@ function ResumeSlot() {
 }
 
 function ButtonSlot() {
+  let context = useContext(resumeContext);
+
   return (
     <div className={style.buttonSlot}>
+      {/* add button */}
       <button>
-        <img alt="add icon" src={addIcon} title="Add new resume"></img>
+        <img
+        alt="add icon"
+        src={addIcon}
+        title="Add new resume"
+        onClick={() => {
+          context.addNewResume();
+        }}
+        ></img>
       </button>
+      {/* copy button */}
       <button>
-        <img alt="copy icon" src={copyIcon} title="copy existing resume"></img>
+        <img
+        alt="copy icon"
+        src={copyIcon}
+        title="copy existing resume"></img>
       </button>
+      {/* example button */}
       <button>
-        <img alt="example icon" src={exampleIcon} title="generate an example resume"></img>
+        <img
+        alt="example icon"
+        src={exampleIcon}
+        title="generate an example resume"
+        onClick={() => {
+          context.addExampleResume()
+        }}
+        ></img>
       </button>
+      {/* clear button */}
       <button>
-        <img alt="clear icon" src={clearIcon} title="clear existing resume"></img>
+        <img
+        alt="clear icon"
+        src={clearIcon}
+        title="clear existing resume"></img>
       </button>
+      {/* delete button*/}
       <button>
-        <img alt="delete icon" src={deleteIcon} title="delete current resume"></img>
+        <img
+        alt="delete icon"
+        src={deleteIcon}
+        title="delete current resume"></img>
       </button>
+      {/* print button */}
       <button>
-        <img alt="print icon" src={printIcon} title="print existing resume"></img>
+        <img
+        alt="print icon"
+        src={printIcon}
+        title="print existing resume"
+        onClick={() => {
+          console.log(context.resumeList);
+        }}
+        ></img>
       </button>
     </div>
   );
