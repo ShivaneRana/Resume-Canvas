@@ -56,10 +56,16 @@ function Content() {
     setActiveResume(tempResume);
   }
 
+  function copyActiveResume(){
+    const tempResume = {...activeResume,id:uuidv4()};
+    const tempList = [...resumeList,{...tempResume}];
+    setResumeList(tempList)
+  }
+
   console.log("Content component rendered")
   return (
     <resumeContext.Provider
-      value={{ addNewResume,changeActiveResume, addExampleResume, activeResume, resumeList }}
+      value={{ addNewResume,changeActiveResume, copyActiveResume ,addExampleResume, activeResume, resumeList }}
     >
       <div className={style.content}>
         <Editor></Editor>
