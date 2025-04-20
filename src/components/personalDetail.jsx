@@ -10,6 +10,7 @@ import hideIcon from "../assets/images/hide.svg";
 //components
 import { useState,useContext} from "react";
 import { resumeContext } from "../App";
+import { useEffect } from "react";
 
 function PersonalDetail() {
   const [expanded, setExpanded] = useState(true);
@@ -69,8 +70,6 @@ function DisplayButton() {
 }
 
 function FullName() {
-  const context = useContext(resumeContext);
-  
   return (
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
