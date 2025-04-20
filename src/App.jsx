@@ -59,7 +59,8 @@ function Content() {
   function copyActiveResume(){
     const tempResume = {...activeResume,id:uuidv4()};
     const tempList = [...resumeList,{...tempResume}];
-    setResumeList(tempList)
+    setResumeList(tempList);
+    changeActiveResume(tempResume);
   }
 
   console.log("Content component rendered")
