@@ -23,12 +23,15 @@ function Content() {
   let [resumeList, setResumeList] = useState([]);
   let [activeResume, setActiveResume] = useState(null);
 
-  console.log("App.jsx context re rendered");
+  console.log("Active resume~");
+  console.log(activeResume);
 
   useEffect(() => {
     if(resumeList.length ===  0){
       addExampleResume();
       console.log("list was empty and was filled with example resume");
+    } else if(!activeResume){
+      changeActiveResume(resumeList[0]);
     }
   },[resumeList])
 
@@ -38,7 +41,6 @@ function Content() {
     const newId = uuidv4();
     const tempList = [...resumeList,{ id: newId, ...exampleTemplate}];
     setResumeList(tempList);
-    console.log("addExampleResume function called")
   }
 
   // add new resume to resume list ( base )
@@ -46,16 +48,15 @@ function Content() {
     const newId = uuidv4();
     const tempList = [...resumeList,{id : newId , ...baseTemplate}];
     setResumeList(tempList)
-    console.log("addNewResume function called")
   }
 
   //responsible for changing current resume
   function changeActiveResume(newResume) {
     const tempResume = newResume;
     setActiveResume(tempResume);
-    console.log("Active Resume changed");
   }
 
+  console.log("Content component rendered")
   return (
     <resumeContext.Provider
       value={{ addNewResume,changeActiveResume, addExampleResume, activeResume, resumeList }}
