@@ -16,6 +16,7 @@ import AboutMe from "./aboutMe.jsx";
 import SkillDetails from "./skillDetails.jsx";
 import { useState,useContext} from "react";
 import { resumeContext } from "../App.jsx";
+import { useEffect } from "react";
 
 // represents the entire editor side
 function Editor() {
@@ -43,6 +44,7 @@ function TopLayer() {
 
 function ResumeSlot() {
   let context = useContext(resumeContext);
+
   return (
     <div className={style.resumeSlot}>
       {context.resumeList.map(resume => {
@@ -50,7 +52,6 @@ function ResumeSlot() {
           <button
           onClick={() => {
             context.changeActiveResume(resume); 
-            console.log(resume)
           }}
           key={resume.id}>
             <img title="Resume slot" alt="resume icon" src={resumeIcon}></img>
