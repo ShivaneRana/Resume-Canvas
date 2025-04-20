@@ -25,12 +25,20 @@ function Content() {
 
   console.log("App.jsx context re rendered");
 
+  useEffect(() => {
+    if(resumeList.length ===  0){
+      addExampleResume();
+      console.log("list was empty and was filled with example resume");
+    }
+  },[resumeList])
+
+
   //add new resume to the resume list ( example )
   function addExampleResume() {
     const newId = uuidv4();
     const tempList = [...resumeList,{ id: newId, ...exampleTemplate}];
     setResumeList(tempList);
-    console.log("New example resume to resumeList")
+    console.log("New example resume added to resumeList")
   }
 
   // add new resume to resume list ( base )
