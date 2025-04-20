@@ -80,7 +80,11 @@ function ButtonSlot() {
         ></img>
       </button>
       {/* copy button */}
-      <button>
+      <button 
+        onClick={() => {
+          context.copyActiveResume();
+        }}
+      >
         <img
         alt="copy icon"
         src={copyIcon}
