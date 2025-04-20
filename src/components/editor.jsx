@@ -68,14 +68,15 @@ function ButtonSlot() {
   return (
     <div className={style.buttonSlot}>
       {/* add button */}
-      <button>
+      <button
+        onClick={() => {
+          context.addNewResume();
+        }}
+      >
         <img
         alt="add icon"
         src={addIcon}
         title="Add new resume"
-        onClick={() => {
-          context.addNewResume();
-        }}
         ></img>
       </button>
       {/* copy button */}
@@ -86,14 +87,15 @@ function ButtonSlot() {
         title="Copy existing resume"></img>
       </button>
       {/* example button */}
-      <button>
+      <button
+        onClick={() => {
+          context.addExampleResume()
+        }}
+      >
         <img
         alt="example icon"
         src={exampleIcon}
         title="Generate an example resume"
-        onClick={() => {
-          context.addExampleResume()
-        }}
         ></img>
       </button>
       {/* clear button */}
@@ -111,14 +113,15 @@ function ButtonSlot() {
         title="Delete current resume"></img>
       </button>
       {/* print button */}
-      <button>
+      <button
+        onClick={() => {
+          console.log(context.resumeList);
+        }}
+      >
         <img
         alt="print icon"
         src={printIcon}
         title="Print existing resume"
-        onClick={() => {
-          console.log(context.resumeList);
-        }}
         ></img>
       </button>
     </div>
