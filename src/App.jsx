@@ -6,7 +6,7 @@ import Navbar from "./components/navbar.jsx";
 import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
 import { v4 as uuidv4 } from "uuid";
-import { useState,createContext} from "react";
+import { useState,createContext , useEffect} from "react";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
 export let resumeContext = createContext();
 
 function Content() {
-  let [resumeList, setResumeList] = useState([])
+  let [resumeList, setResumeList] = useState([]);
   let [activeResume, setActiveResume] = useState(null);
 
   console.log("App.jsx context re rendered");
