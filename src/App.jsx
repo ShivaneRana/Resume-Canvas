@@ -38,7 +38,7 @@ function Content() {
     const newId = uuidv4();
     const tempList = [...resumeList,{ id: newId, ...exampleTemplate}];
     setResumeList(tempList);
-    console.log("New example resume added to resumeList")
+    console.log("addExampleResume function called")
   }
 
   // add new resume to resume list ( base )
@@ -46,7 +46,7 @@ function Content() {
     const newId = uuidv4();
     const tempList = [...resumeList,{id : newId , ...baseTemplate}];
     setResumeList(tempList)
-    console.log("New base resume added to resumeList")
+    console.log("addNewResume function called")
   }
 
   //responsible for changing current resume
