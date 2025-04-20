@@ -23,8 +23,10 @@ function Content() {
   let [resumeList, setResumeList] = useState([]);
   let [activeResume, setActiveResume] = useState(null);
 
-  console.log("Active resume~");
-  console.log(activeResume);
+  useEffect(() => {
+    console.log("Active resume~");
+    console.log(activeResume)
+  },[activeResume])
 
   useEffect(() => {
     if(resumeList.length ===  0){
@@ -38,21 +40,19 @@ function Content() {
 
   //add new resume to the resume list ( example )
   function addExampleResume() {
-    const newId = uuidv4();
-    const tempList = [...resumeList,{ id: newId, ...exampleTemplate}];
+    const tempList = [...resumeList,{ id: uuidv4(), ...exampleTemplate}];
     setResumeList(tempList);
   }
 
   // add new resume to resume list ( base )
   function addNewResume(){
-    const newId = uuidv4();
-    const tempList = [...resumeList,{id : newId , ...baseTemplate}];
-    setResumeList(tempList)
+    const tempList = [...resumeList,{id : uuidv4() , ...baseTemplate}];
+    setResumeList(tempList);
   }
 
   //responsible for changing current resume
   function changeActiveResume(newResume) {
-    const tempResume = newResume;
+    const tempResume = {...newResume};
     setActiveResume(tempResume);
   }
 
