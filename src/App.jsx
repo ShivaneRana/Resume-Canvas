@@ -40,14 +40,20 @@ function Content() {
 
   //add new resume to the resume list ( example )
   function addExampleResume() {
-    const tempList = [...resumeList,{ id: uuidv4(), ...exampleTemplate}];
+    const newId = uuidv4();
+    const tempResume = {id: newId,...exampleTemplate};
+    const tempList = [...resumeList,{...tempResume}];
     setResumeList(tempList);
+    changeActiveResume(tempResume);
   }
 
   // add new resume to resume list ( base )
   function addNewResume(){
-    const tempList = [...resumeList,{id : uuidv4() , ...baseTemplate}];
+    const newId = uuidv4();
+    const tempResume = {id: newId,...baseTemplate}
+    const tempList = [...resumeList,{...tempResume}];
     setResumeList(tempList);
+    changeActiveResume(tempResume);
   }
 
   //responsible for changing current resume
@@ -57,7 +63,8 @@ function Content() {
   }
 
   function copyActiveResume(){
-    const tempResume = {...activeResume,id:uuidv4()};
+    const newId = uuidv4();
+    const tempResume = {...activeResume,id: newId};
     const tempList = [...resumeList,{...tempResume}];
     setResumeList(tempList);
     changeActiveResume(tempResume);
