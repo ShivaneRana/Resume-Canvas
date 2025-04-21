@@ -20,13 +20,14 @@ function App() {
 export let resumeContext = createContext();
 
 function Content() {
-  let [resumeList, setResumeList] = useState([]);
-  let [activeResume, setActiveResume] = useState(null);
+  const k = uuidv4();
+  const temp = {id:k,...exampleTemplate};
+  
+  // populate the resumeList by default.
+  let [resumeList, setResumeList] = useState([{...temp}]);
 
-  useEffect(() => {
-    console.log("Active resume~");
-    console.log(activeResume)
-  },[activeResume])
+  
+  let [activeResume, setActiveResume] = useState(resumeList[0]);
 
   useEffect(() => {
     if(resumeList.length ===  0){
@@ -35,7 +36,7 @@ function Content() {
     } else if(!activeResume){
       changeActiveResume(resumeList[0]);
     }
-  },[resumeList])
+  },[resumeList,activeResume])
 
 
   //add new resume to the resume list ( example )
@@ -60,6 +61,8 @@ function Content() {
   function changeActiveResume(newResume) {
     const tempResume = {...newResume};
     setActiveResume(tempResume);
+    console.log("Active resume changed");
+    console.log(tempResume);
   }
 
   function copyActiveResume(){
@@ -73,7 +76,7 @@ function Content() {
   console.log("Content component rendered")
   return (
     <resumeContext.Provider
-      value={{ addNewResume,changeActiveResume, copyActiveResume ,addExampleResume, activeResume, resumeList }}
+      value={{ addNewResume,changeActiveResume, copyActiveResume, setActiveResume, setResumeList ,addExampleResume, activeResume, resumeList }}
     >
       <div className={style.content}>
         <Editor></Editor>
