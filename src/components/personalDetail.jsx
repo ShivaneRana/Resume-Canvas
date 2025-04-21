@@ -70,11 +70,22 @@ function DisplayButton() {
 }
 
 function FullName() {
+  const context = useContext(resumeContext);
+  const [value,setValue] = useState("");
+
+  useEffect(() => {
+    setValue(context.activeResume.personalDetail.fullName)
+  },[context.activeResume])
+
   return (
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>
       <input
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+      }}
       name="fullname" type="text" placeholder="Enter fullname"></input>
     </div>
   );
