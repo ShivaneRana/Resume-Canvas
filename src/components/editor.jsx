@@ -9,6 +9,7 @@ import clearIcon from "../assets/images/clear.svg";
 import deleteIcon from "../assets/images/delete.svg";
 import printIcon from "../assets/images/print.svg";
 import resumeIcon from "../assets/images/resume.svg";
+import resumeActiveIcon from "../assets/images/resume_active.svg";
 
 //components
 import PersonalDetail from "./personalDetail.jsx";
@@ -44,17 +45,17 @@ function TopLayer() {
 
 function ResumeSlot() {
   let context = useContext(resumeContext);
-
   return (
     <div className={style.resumeSlot}>
       {context.resumeList.map(resume => {
+        
         return(
           <button
           onClick={() => {
             context.changeActiveResume(resume); 
           }}
           key={resume.id}>
-            <img title="Resume slot" alt="resume icon" src={resumeIcon}></img>
+            <img title="Resume slot" alt="resume icon" src={ resume.id === context.activeResume.id ? resumeActiveIcon : resumeIcon}></img>
           </button>
         )
       })}
