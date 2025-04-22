@@ -62,3 +62,12 @@
   height: 100%;
   width: 100%;
 }
+
+/* apply to the current active resume*/
+.activeRes{
+  transform: scale(1.5);
+}
+
+.activeRes:hover{
+  transform: scale(1.2);
+}
