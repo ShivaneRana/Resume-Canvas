@@ -55,7 +55,12 @@ function ResumeSlot() {
             context.changeActiveResume(resume); 
           }}
           key={resume.id}>
-            <img title="Resume slot" alt="resume icon" src={ resume.id === context.activeResume.id ? resumeActiveIcon : resumeIcon}></img>
+            <img
+            title="Resume slot"
+            alt="resume icon"
+            src={ resume.id === context.activeResume.id ? resumeActiveIcon : resumeIcon}
+            className={resume.id === context.activeResume.id ? style.activeRes : ""}
+            ></img>
           </button>
         )
       })}
