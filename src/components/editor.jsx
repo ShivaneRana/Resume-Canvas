@@ -51,8 +51,6 @@ function ResumeSlot() {
         return(
           <button
           onClick={() => {
-            console.log("Clicked resume~");
-            console.log(resume);
             context.changeActiveResume(resume); 
           }}
           key={resume.id}>

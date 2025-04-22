@@ -74,10 +74,10 @@ function FullName() {
   const [value,setValue] = useState("");
 
   useEffect(() => {
-    setValue(context.activeResume.personalDetail.fullName)
+    setValue(context.activeResume.personalDetail.fullName);
   },[context.activeResume])
 
-  return (
+    return( 
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>

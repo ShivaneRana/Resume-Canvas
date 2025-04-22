@@ -25,8 +25,6 @@ function Content() {
   
   // populate the resumeList by default.
   let [resumeList, setResumeList] = useState([{...temp}]);
-
-  
   let [activeResume, setActiveResume] = useState(resumeList[0]);
 
   useEffect(() => {
