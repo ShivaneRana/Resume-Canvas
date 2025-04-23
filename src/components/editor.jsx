@@ -99,7 +99,7 @@ function ButtonSlot() {
       {/* example button */}
       <button
         onClick={() => {
-          context.addExampleResume()
+          context.addExampleResume();
         }}
       >
         <img
