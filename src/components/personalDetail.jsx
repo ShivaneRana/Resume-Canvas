@@ -71,13 +71,15 @@ function DisplayButton() {
 
 function FullName() {
   const context = useContext(resumeContext);
-  const [value,setValue] = useState("");
+  const [value,setValue] = useState(context.activeResume.personalDetail.fullName);
 
+  // ensures that everytime you change resume, the input value reflect the change.
   useEffect(() => {
     setValue(context.activeResume.personalDetail.fullName);
   },[context.activeResume])
 
-    return( 
+
+  return( 
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>

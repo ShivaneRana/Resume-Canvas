@@ -27,6 +27,7 @@ function Content() {
   let [resumeList, setResumeList] = useState([{...temp}]);
   let [activeResume, setActiveResume] = useState(resumeList[0]);
 
+  //ensure there is always one resume in the list
   useEffect(() => {
     if(resumeList.length ===  0){
       addExampleResume();
@@ -59,7 +60,7 @@ function Content() {
   function changeActiveResume(newResume) {
     const tempResume = {...newResume};
     setActiveResume(tempResume);
-    console.log("Active resume changed");
+    console.log("active resume changed");
     console.log(tempResume);
   }
 
@@ -74,7 +75,7 @@ function Content() {
   console.log("Content component rendered")
   return (
     <resumeContext.Provider
-      value={{ addNewResume,changeActiveResume, copyActiveResume, setActiveResume, setResumeList ,addExampleResume, activeResume, resumeList }}
+      value={{ addNewResume,changeActiveResume,copyActiveResume, setActiveResume, setResumeList ,addExampleResume, activeResume, resumeList }}
     >
       <div className={style.content}>
         <Editor></Editor>
