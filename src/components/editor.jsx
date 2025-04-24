@@ -16,8 +16,6 @@ import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
 import SkillDetails from "./skillDetails.jsx";
 import { useState, useContext } from "react";
-import { resumeContext } from "../App.jsx";
-import { useEffect } from "react";
 
 // represents the entire editor side
 function Editor() {
@@ -44,64 +42,57 @@ function TopLayer() {
 }
 
 function ResumeSlot() {
-  let context = useContext(resumeContext);
   return (
-    <div className={style.resumeSlot}>
-      {context.resumeList.map((resume) => {
-        return (
-          <button
-            onClick={() => {
-              context.changeActiveResume(resume);
-            }}
-            key={resume.id}
-          >
-            <img
-              title="Resume slot"
-              alt="resume icon"
-              src={
-                resume.id === context.activeResume.id
-                  ? resumeActiveIcon
-                  : resumeIcon
-              }
-              className={
-                resume.id === context.activeResume.id ? style.activeRes : ""
-              }
-            ></img>
-          </button>
-        );
-      })}
-    </div>
+    <div className={style.resumeSlot}></div>
+    // <div className={style.resumeSlot}>
+    //   {context.resumeList.map((resume) => {
+    //     return (
+    //       <button
+    //         onClick={() => {
+    //           context.changeActiveResume(resume);
+    //         }}
+    //         key={resume.id}
+    //       >
+    //         <img
+    //           title="Resume slot"
+    //           alt="resume icon"
+    //           src={
+    //             resume.id === context.activeResume.id
+    //               ? resumeActiveIcon
+    //               : resumeIcon
+    //           }
+    //           className={
+    //             resume.id === context.activeResume.id ? style.activeRes : ""
+    //           }
+    //         ></img>
+    //       </button>
+    //     );
+    //   })}
+    // </div>
   );
 }
 
 function ButtonSlot() {
-  let context = useContext(resumeContext);
 
   return (
     <div className={style.buttonSlot}>
       {/* add button */}
       <button
-        onClick={() => {
-          context.addNewResume();
-        }}
+        
       >
         <img alt="add icon" src={addIcon} title="Add new resume"></img>
       </button>
 
       {/* copy button */}
       <button
-        onClick={() => {
-          context.copyActiveResume();
-        }}
+        
       >
         <img alt="copy icon" src={copyIcon} title="Copy existing resume"></img>
       </button>
 
       {/* example button */}
       <button
-        onClick={() => {
-          context.addExampleResume();
-        }}
+        
       >
         <img
           alt="example icon"
@@ -130,9 +121,7 @@ function ButtonSlot() {
 
       {/* print button */}
       <button
-        onClick={() => {
-          console.log(context.resumeList);
-        }}
+        
       >
         <img
           alt="print icon"

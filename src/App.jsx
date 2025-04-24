@@ -7,6 +7,7 @@ import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { useState, createContext, useEffect } from "react";
+import { useImmer } from "use-immer";
 
 function App() {
   return (
@@ -20,69 +21,11 @@ function App() {
 export let resumeContext = createContext();
 
 function Content() {
-  const k = uuidv4();
-  const temp = { id: k, ...exampleTemplate };
-
-  // populate the resumeList by default.
-  let [resumeList, setResumeList] = useState([{ ...temp }]);
-  let [activeResume, setActiveResume] = useState(resumeList[0]);
-
-  //ensure there is always one resume in the list
-  useEffect(() => {
-    if (resumeList.length === 0) {
-      addExampleResume();
-      console.log("list was empty and was filled with example resume");
-    } else if (!activeResume) {
-      changeActiveResume(resumeList[0]);
-    }
-  }, [resumeList, activeResume]);
-
-  //add new resume to the resume list ( example )
-  function addExampleResume() {
-    const newId = uuidv4();
-    const tempResume = { id: newId, ...exampleTemplate };
-    const tempList = [...resumeList, { ...tempResume }];
-    setResumeList(tempList);
-    changeActiveResume(tempResume);
-  }
-
-  // add new resume to resume list ( base )
-  function addNewResume() {
-    const newId = uuidv4();
-    const tempResume = { id: newId, ...baseTemplate };
-    const tempList = [...resumeList, { ...tempResume }];
-    setResumeList(tempList);
-    changeActiveResume(tempResume);
-  }
-
-  //responsible for changing current resume
-  function changeActiveResume(newResume) {
-    const tempResume = { ...newResume };
-    setActiveResume(tempResume);
-    console.log("active resume changed");
-    console.log(tempResume);
-  }
-
-  function copyActiveResume() {
-    const newId = uuidv4();
-    const tempResume = { ...activeResume, id: newId };
-    const tempList = [...resumeList, { ...tempResume }];
-    setResumeList(tempList);
-    changeActiveResume(tempResume);
-  }
-
   console.log("Content component rendered");
   return (
     <resumeContext.Provider
       value={{
-        addNewResume,
-        changeActiveResume,
-        copyActiveResume,
-        setActiveResume,
-        setResumeList,
-        addExampleResume,
-        activeResume,
-        resumeList,
+        
       }}
     >
       <div className={style.content}>
