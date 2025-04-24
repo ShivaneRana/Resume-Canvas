@@ -96,6 +96,15 @@ function Content() {
     })
   }
 
+  function changeAddress(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find(item => item.id === id);
+      if(resume){
+        resume.personalDetail.address = value;
+      }
+    })
+  }
+
   console.log("Content component rendered");
   return (
     <resumeContext.Provider
@@ -107,6 +116,7 @@ function Content() {
       print,
       changeActiveResumeId,
       changeName,
+      changeAddress,
       resumeList,
       activeResumeId
       }}
@@ -121,16 +131,16 @@ function Content() {
 
 const exampleTemplate = {
   personalDetail: {
-    fullName: "John Doe",
-    email: "john.doe@example.com",
-    phoneNumber: "+1 (123) 456-7890",
-    github: "https://github.com/johndoe",
-    linkedIn: "https://www.linkedin.com/in/johndoe",
-    address: "123 Main Street, San Francisco, CA 94101, USA",
-    personalWebsite: "https://johndoe.dev",
+    fullName: "Elena Martinez",
+    email: "elena.martinez.dev@gmail.com",
+    phoneNumber: "+1 (415) 987-2345",
+    github: "https://github.com/elenamartinez",
+    linkedIn: "https://www.linkedin.com/in/elenamartinez-dev",
+    address: "2457 Oakridge Avenue, Oakland, CA 94601, USA",
+    personalWebsite: "https://elenam.dev",
   },
   aboutMe:
-    "Passionate full-stack developer with 5+ years of experience building responsive web applications and scalable backend systems. Skilled in JavaScript, React, Node.js, and cloud services. Committed to writing clean, efficient code and continuously learning new technologies.",
+    "Detail-oriented full-stack developer with over 6 years of experience designing and implementing modern web applications. Adept at building responsive front-ends using React and managing scalable APIs with Node.js and Express. Strong advocate for accessible design and test-driven development. Experienced in Agile workflows and collaborating with cross-functional teams to deliver user-focused solutions.",
 };
 
 const baseTemplate = {
