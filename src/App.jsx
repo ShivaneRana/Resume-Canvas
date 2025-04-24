@@ -28,9 +28,16 @@ function Content() {
   const [length,setLength] = useState(resumeList.length);
 
   useEffect(() => {
+    if(length !== 0){
     const length = resumeList.length;
     const newId = resumeList[length - 1].id;
     changeActiveResumeId(newId);
+    }else{
+      addExampleResume();
+    const newId = resumeList[length - 1].id;
+    changeActiveResumeId(newId);
+
+    }
   },[length])
 
   useEffect(() => {
