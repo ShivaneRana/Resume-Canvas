@@ -73,27 +73,20 @@ function ResumeSlot() {
 }
 
 function ButtonSlot() {
-
   return (
     <div className={style.buttonSlot}>
       {/* add button */}
-      <button
-        
-      >
+      <button>
         <img alt="add icon" src={addIcon} title="Add new resume"></img>
       </button>
 
       {/* copy button */}
-      <button
-        
-      >
+      <button>
         <img alt="copy icon" src={copyIcon} title="Copy existing resume"></img>
       </button>
 
       {/* example button */}
-      <button
-        
-      >
+      <button>
         <img
           alt="example icon"
           src={exampleIcon}
@@ -120,9 +113,7 @@ function ButtonSlot() {
       </button>
 
       {/* print button */}
-      <button
-        
-      >
+      <button>
         <img
           alt="print icon"
           src={printIcon}

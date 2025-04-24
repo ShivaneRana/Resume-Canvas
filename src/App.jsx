@@ -23,11 +23,7 @@ export let resumeContext = createContext();
 function Content() {
   console.log("Content component rendered");
   return (
-    <resumeContext.Provider
-      value={{
-        
-      }}
-    >
+    <resumeContext.Provider value={{}}>
       <div className={style.content}>
         <Editor></Editor>
         <Resume></Resume>
