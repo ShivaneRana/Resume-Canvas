@@ -5,11 +5,11 @@ import "./index.css";
 import App from "./App.jsx";
 
 const lenis = new Lenis({
-    autoRaf: true,
+  autoRaf: true,
 });
 
 createRoot(document.getElementById("root")).render(
-    // <StrictMode>
-    <App />,
-    // </StrictMode>,
+  // <StrictMode>
+  <App />,
+  // </StrictMode>,
 );

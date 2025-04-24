@@ -1,75 +1,75 @@
 @import url("../assets/fonts/cutive_mono/stylesheet.css");
 
 .mainContainer {
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 20px;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px;
 }
 
 /* each header has two div */
 /* each div containe heading and button */
 .header {
-    width: 100%;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .header > div > button {
-    border: none;
-    background-color: transparent;
-    margin-left: 5px;
-    margin-right: 5px;
-    cursor: pointer;
+  border: none;
+  background-color: transparent;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 /* all img icon inside header */
 .header > div > button > img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .header > div > h2 {
-    user-select: none;
-    cursor: pointer;
+  user-select: none;
+  cursor: pointer;
 }
 
 /* expand icon and header */
 .header > div:nth-child(1) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* display icon */
 .header > div:nth-child(2) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
-    min-width: 90%;
-    height: 100%;
+  min-width: 90%;
+  height: 100%;
 }
 
 /* contains input field and header  */
 .defaultDiv {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .defaultDiv > input {
-    font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
-    width: 60%;
-    padding: 5px;
-    font-size: 1rem;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  width: 60%;
+  padding: 5px;
+  font-size: 1rem;
 }

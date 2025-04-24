@@ -1,23 +1,23 @@
 @import url("../styles/utility.css");
 
 .mainContainer {
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
 }
 
 .logoIcon {
-    height: var(--logoSize);
-    width: var(--logoSize);
+  height: var(--logoSize);
+  width: var(--logoSize);
 }
 
 .logoIcon:hover {
-    animation: 3s rot infinite alternate;
+  animation: 3s rot infinite alternate;
 }
 
 .heading {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
