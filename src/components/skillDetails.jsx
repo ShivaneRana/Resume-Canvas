@@ -11,49 +11,53 @@ import hideIcon from "../assets/images/hide.svg";
 import { useState } from "react";
 
 function SkillDetails() {
-  //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false);
+    //this section is not expanded by default
+    const [expanded, setExpanded] = useState(false);
 
-  function toggleExpanded() {
-    setExpanded(!expanded);
-  }
-  return (
-    <div className={style.mainContainer}>
-      <Header func={toggleExpanded} isExpanded={expanded}></Header>
-      {expanded && <Content></Content>}
-    </div>
-  );
+    function toggleExpanded() {
+        setExpanded(!expanded);
+    }
+    return (
+        <div className={style.mainContainer}>
+            <Header func={toggleExpanded} isExpanded={expanded}></Header>
+            {expanded && <Content></Content>}
+        </div>
+    );
 }
 
 function Header({ func, isExpanded }) {
-  let icon = isExpanded ? shrinkICon : expandIcon;
-  let title = isExpanded ? "Show less" : "Show more";
+    let icon = isExpanded ? shrinkICon : expandIcon;
+    let title = isExpanded ? "Show less" : "Show more";
 
-  return (
-    <div className={style.header}>
-      <div>
-        <button onClick={func}>
-          <img alt="expand/collapse icon" src={icon} title={title}></img>
-        </button>
-        <h2 onClick={func}>Skills: </h2>
-      </div>
-      <div>
-        <DisplayButton></DisplayButton>
-      </div>
-    </div>
-  );
+    return (
+        <div className={style.header}>
+            <div>
+                <button onClick={func}>
+                    <img
+                        alt="expand/collapse icon"
+                        src={icon}
+                        title={title}
+                    ></img>
+                </button>
+                <h2 onClick={func}>Skills: </h2>
+            </div>
+            <div>
+                <DisplayButton></DisplayButton>
+            </div>
+        </div>
+    );
 }
 
 function Content() {
-  return <div className={style.content}>shivane</div>;
+    return <div className={style.content}>shivane</div>;
 }
 
 function DisplayButton() {
-  return (
-    <button>
-      <img alt="show/hide icon" src={showIcon}></img>
-    </button>
-  );
+    return (
+        <button>
+            <img alt="show/hide icon" src={showIcon}></img>
+        </button>
+    );
 }
 
 export default SkillDetails;
