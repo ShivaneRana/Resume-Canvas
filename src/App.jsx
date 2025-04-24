@@ -25,12 +25,13 @@ function Content() {
   const tempResume = {...exampleTemplate,id:tempId};
   const [resumeList,updateResumeList] = useImmer([{...tempResume}]);
   const [activeResumeId,updateActiveResumeId] = useImmer(resumeList[0].id);
+  const [length,setLength] = useState(resumeList.length);
 
   useEffect(() => {
     const length = resumeList.length;
     const newId = resumeList[length - 1].id;
     changeActiveResumeId(newId);
-  },[resumeList])
+  },[length])
 
   useEffect(() => {
     console.log("Current active Resume~")
@@ -47,14 +48,17 @@ function Content() {
    const tempId = uuidv4();
    const tempResume = {...baseTemplate,id:tempId};
    updateResumeList([...resumeList,tempResume]);
+    setLength(length + 1);
     console.log("base resume added");
   }
+
 
   // adding example resume to resumeList
   function addExampleResume(){
    const tempId = uuidv4();
    const tempResume = {...exampleTemplate,id:tempId};
    updateResumeList([...resumeList, tempResume]);
+    setLength(length + 1);
    console.log("example resume added");
   }
     
@@ -73,6 +77,7 @@ function Content() {
     const tempId = uuidv4();
     const tempResume = {...currentResume,id:tempId};
     updateResumeList([...resumeList, tempResume]);
+    setLength(length + 1);
     console.log("create a copy of current activeResume")
   }
 
