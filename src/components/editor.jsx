@@ -16,6 +16,7 @@ import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
 import SkillDetails from "./skillDetails.jsx";
 import { useState, useContext } from "react";
+import { resumeContext } from "../App.jsx";
 
 // represents the entire editor side
 function Editor() {
@@ -73,20 +74,34 @@ function ResumeSlot() {
 }
 
 function ButtonSlot() {
+  const context = useContext(resumeContext);
+
   return (
     <div className={style.buttonSlot}>
       {/* add button */}
-      <button>
+      <button
+      onClick={() => {
+        context.addBaseResume();
+      }}
+      >
         <img alt="add icon" src={addIcon} title="Add new resume"></img>
       </button>
 
       {/* copy button */}
-      <button>
+      <button
+      onClick={() => {
+        context.copyResume();
+      }}
+      >
         <img alt="copy icon" src={copyIcon} title="Copy existing resume"></img>
       </button>
 
       {/* example button */}
-      <button>
+      <button
+      onClick={() => {
+        context.addExampleResume();
+      }}
+      >
         <img
           alt="example icon"
           src={exampleIcon}
@@ -113,7 +128,11 @@ function ButtonSlot() {
       </button>
 
       {/* print button */}
-      <button>
+      <button
+      onClick={() => {
+        context.print();
+      }}
+      >
         <img
           alt="print icon"
           src={printIcon}
