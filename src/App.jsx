@@ -26,6 +26,11 @@ function Content() {
   const [resumeList,updateResumeList] = useImmer([{...tempResume}]);
   const [activeResumeId,updateActiveResumeId] = useImmer(resumeList[0].id);
 
+  useEffect(() => {
+    console.log("Current active Resume~")
+    console.log(activeResumeId);
+  },[activeResumeId])
+
   //return the index of the  active resume;
   function findIndex(id){
     return resumeList.findIndex(resume => resume.id === id);
@@ -61,7 +66,14 @@ function Content() {
     const currentResume = resumeList[currentIndex];
     const tempId = uuidv4();
     const tempResume = {...currentResume,id:tempId};
-    console.log(tempResume);
+    updateResumeList([...resumeList, tempResume]);
+    console.log("create a copy of current activeResume")
+  }
+
+  function changeActiveResumeId(id){
+    const newIndex = findIndex(id);
+    updateActiveResumeId(resumeList[newIndex].id);
+    console.log("activeResumeId changed")
   }
 
   console.log("Content component rendered");
@@ -73,6 +85,7 @@ function Content() {
       addBaseResume,
       copyResume,
       print,
+      changeActiveResumeId,
       resumeList,
       activeResumeId
       }}
