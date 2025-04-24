@@ -18,7 +18,7 @@ function App() {
   );
 }
 
-export let context = createContext();
+export let resumeContext = createContext();
 
 function Content() {
   const tempId = uuidv4();
@@ -31,18 +31,51 @@ function Content() {
     return resumeList.findIndex(resume => resume.id === id);
   }
 
+  function addBaseResume(){
+   const tempId = uuidv4();
+   const tempResume = {...baseTemplate,id:tempId};
+   updateResumeList([...resumeList,tempResume]);
+    console.log("base resume added");
+  }
+
+  function addExampleResume(){
+   const tempId = uuidv4();
+   const tempResume = {...exampleTemplate,id:tempId};
+   updateResumeList([...resumeList, tempResume]);
+   console.log("example resume added");
+  }
+    
+  function print(){
+    console.log("printing.......")
+    resumeList.map(resume => {
+      console.log(resume);
+    })
+  }
+
+  function copyResume(){
+    const currentIndex = findIndex(activeResumeId);
+    const  currentResume = resumeList[currentIndex];
+    const tempId = uuidv4();
+    const tempResume = {...currentResume,id:tempId};
+    console.log(tempResume);
+  }
+
   console.log("Content component rendered");
   return (
-    <context.Provider
+    <resumeContext.Provider
       value={{
-        
+      findIndex,
+      addExampleResume,
+      addBaseResume,
+      copyResume,
+      print 
       }}
     >
       <div className={style.content}>
         <Editor></Editor>
         <Resume></Resume>
       </div>
-    </context.Provider>
+    </resumeContext.Provider>
   );
 }
 
