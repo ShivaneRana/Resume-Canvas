@@ -43,33 +43,34 @@ function TopLayer() {
 }
 
 function ResumeSlot() {
+  const context = useContext(resumeContext);
+
   return (
-    <div className={style.resumeSlot}></div>
-    // <div className={style.resumeSlot}>
-    //   {context.resumeList.map((resume) => {
-    //     return (
-    //       <button
-    //         onClick={() => {
-    //           context.changeActiveResume(resume);
-    //         }}
-    //         key={resume.id}
-    //       >
-    //         <img
-    //           title="Resume slot"
-    //           alt="resume icon"
-    //           src={
-    //             resume.id === context.activeResume.id
-    //               ? resumeActiveIcon
-    //               : resumeIcon
-    //           }
-    //           className={
-    //             resume.id === context.activeResume.id ? style.activeRes : ""
-    //           }
-    //         ></img>
-    //       </button>
-    //     );
-    //   })}
-    // </div>
+    <div className={style.resumeSlot}>
+      {context.resumeList.map((resume) => {
+        return (
+          <button
+            onClick={() => {
+              context.changeActiveResumeId(resume.id);
+            }}
+            key={resume.id}
+          >
+            <img
+              title="Resume slot"
+              alt="resume icon"
+              src={
+                resume.id === context.activeResumeId
+                  ? resumeActiveIcon
+                  : resumeIcon
+              }
+              className={
+                resume.id === context.activeResumeId ? style.activeRes : ""
+              }
+            ></img>
+          </button>
+        );
+      })}
+    </div>
   );
 }
 
