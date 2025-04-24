@@ -24,7 +24,12 @@ function Content() {
   const tempId = uuidv4();
   const tempResume = {...exampleTemplate,id:tempId};
   const [resumeList,updateResumeList] = useImmer([{...tempResume}]);
-  const [activeResumeId,setActiveResumeId] = useImmer(resumeList[0].id);
+  const [activeResumeId,updateActiveResumeId] = useImmer(resumeList[0].id);
+
+  //return the index of the  active resume;
+  function findIndex(id){
+    return resumeList.findIndex(resume => resume.id === id);
+  }
 
   console.log("Content component rendered");
   return (
