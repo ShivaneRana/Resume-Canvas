@@ -27,6 +27,12 @@ function Content() {
   const [activeResumeId,updateActiveResumeId] = useImmer(resumeList[0].id);
 
   useEffect(() => {
+    const length = resumeList.length;
+    const newId = resumeList[length - 1].id;
+    changeActiveResumeId(newId);
+  },[resumeList])
+
+  useEffect(() => {
     console.log("Current active Resume~")
     console.log(activeResumeId);
   },[activeResumeId])
