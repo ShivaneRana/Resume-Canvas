@@ -8,7 +8,7 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 
 //components
-import { useState,useContext} from "react";
+import { useState, useContext } from "react";
 import { resumeContext } from "../App";
 import { useEffect } from "react";
 
@@ -71,24 +71,28 @@ function DisplayButton() {
 
 function FullName() {
   const context = useContext(resumeContext);
-  const [value,setValue] = useState(context.activeResume.personalDetail.fullName);
+  const [value, setValue] = useState(
+    context.activeResume.personalDetail.fullName,
+  );
 
   // ensures that everytime you change resume, the input value reflect the change.
   useEffect(() => {
     setValue(context.activeResume.personalDetail.fullName);
-  },[context.activeResume])
+  }, [context.activeResume]);
 
-
-  return( 
+  return (
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>
       <input
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value);
-      }}
-      name="fullname" type="text" placeholder="Enter fullname"></input>
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+        name="fullname"
+        type="text"
+        placeholder="Enter fullname"
+      ></input>
     </div>
   );
 }

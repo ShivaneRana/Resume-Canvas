@@ -64,10 +64,10 @@
 }
 
 /* apply to the current active resume*/
-.activeRes{
+.activeRes {
   transform: scale(1.5);
 }
 
-.activeRes:hover{
+.activeRes:hover {
   transform: scale(1.2);
 }

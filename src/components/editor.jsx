@@ -15,7 +15,7 @@ import resumeActiveIcon from "../assets/images/resume_active.svg";
 import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
 import SkillDetails from "./skillDetails.jsx";
-import { useState,useContext} from "react";
+import { useState, useContext } from "react";
 import { resumeContext } from "../App.jsx";
 import { useEffect } from "react";
 
@@ -47,22 +47,28 @@ function ResumeSlot() {
   let context = useContext(resumeContext);
   return (
     <div className={style.resumeSlot}>
-      {context.resumeList.map(resume => {
-        
-        return(
+      {context.resumeList.map((resume) => {
+        return (
           <button
-          onClick={() => {
-            context.changeActiveResume(resume); 
-          }}
-          key={resume.id}>
+            onClick={() => {
+              context.changeActiveResume(resume);
+            }}
+            key={resume.id}
+          >
             <img
-            title="Resume slot"
-            alt="resume icon"
-            src={ resume.id === context.activeResume.id ? resumeActiveIcon : resumeIcon}
-            className={resume.id === context.activeResume.id ? style.activeRes : ""}
+              title="Resume slot"
+              alt="resume icon"
+              src={
+                resume.id === context.activeResume.id
+                  ? resumeActiveIcon
+                  : resumeIcon
+              }
+              className={
+                resume.id === context.activeResume.id ? style.activeRes : ""
+              }
             ></img>
           </button>
-        )
+        );
       })}
     </div>
   );
@@ -79,23 +85,18 @@ function ButtonSlot() {
           context.addNewResume();
         }}
       >
-        <img
-        alt="add icon"
-        src={addIcon}
-        title="Add new resume"
-        ></img>
+        <img alt="add icon" src={addIcon} title="Add new resume"></img>
       </button>
+
       {/* copy button */}
-      <button 
+      <button
         onClick={() => {
           context.copyActiveResume();
         }}
       >
-        <img
-        alt="copy icon"
-        src={copyIcon}
-        title="Copy existing resume"></img>
+        <img alt="copy icon" src={copyIcon} title="Copy existing resume"></img>
       </button>
+
       {/* example button */}
       <button
         onClick={() => {
@@ -103,25 +104,30 @@ function ButtonSlot() {
         }}
       >
         <img
-        alt="example icon"
-        src={exampleIcon}
-        title="Generate an example resume"
+          alt="example icon"
+          src={exampleIcon}
+          title="Generate an example resume"
         ></img>
       </button>
+
       {/* clear button */}
       <button>
         <img
-        alt="clear icon"
-        src={clearIcon}
-        title="Clear existing resume"></img>
+          alt="clear icon"
+          src={clearIcon}
+          title="Clear existing resume"
+        ></img>
       </button>
+
       {/* delete button*/}
       <button>
         <img
-        alt="delete icon"
-        src={deleteIcon}
-        title="Delete current resume"></img>
+          alt="delete icon"
+          src={deleteIcon}
+          title="Delete current resume"
+        ></img>
       </button>
+
       {/* print button */}
       <button
         onClick={() => {
@@ -129,9 +135,9 @@ function ButtonSlot() {
         }}
       >
         <img
-        alt="print icon"
-        src={printIcon}
-        title="Print existing resume"
+          alt="print icon"
+          src={printIcon}
+          title="Print existing resume"
         ></img>
       </button>
     </div>

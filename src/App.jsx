@@ -6,7 +6,7 @@ import Navbar from "./components/navbar.jsx";
 import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
 import { v4 as uuidv4 } from "uuid";
-import { useState,createContext , useEffect} from "react";
+import { useState, createContext, useEffect } from "react";
 
 function App() {
   return (
@@ -21,61 +21,69 @@ export let resumeContext = createContext();
 
 function Content() {
   const k = uuidv4();
-  const temp = {id:k,...exampleTemplate};
-  
+  const temp = { id: k, ...exampleTemplate };
+
   // populate the resumeList by default.
-  let [resumeList, setResumeList] = useState([{...temp}]);
+  let [resumeList, setResumeList] = useState([{ ...temp }]);
   let [activeResume, setActiveResume] = useState(resumeList[0]);
 
   //ensure there is always one resume in the list
   useEffect(() => {
-    if(resumeList.length ===  0){
+    if (resumeList.length === 0) {
       addExampleResume();
       console.log("list was empty and was filled with example resume");
-    } else if(!activeResume){
+    } else if (!activeResume) {
       changeActiveResume(resumeList[0]);
     }
-  },[resumeList,activeResume])
-
+  }, [resumeList, activeResume]);
 
   //add new resume to the resume list ( example )
   function addExampleResume() {
     const newId = uuidv4();
-    const tempResume = {id: newId,...exampleTemplate};
-    const tempList = [...resumeList,{...tempResume}];
+    const tempResume = { id: newId, ...exampleTemplate };
+    const tempList = [...resumeList, { ...tempResume }];
     setResumeList(tempList);
     changeActiveResume(tempResume);
   }
 
   // add new resume to resume list ( base )
-  function addNewResume(){
+  function addNewResume() {
     const newId = uuidv4();
-    const tempResume = {id: newId,...baseTemplate}
-    const tempList = [...resumeList,{...tempResume}];
+    const tempResume = { id: newId, ...baseTemplate };
+    const tempList = [...resumeList, { ...tempResume }];
     setResumeList(tempList);
     changeActiveResume(tempResume);
   }
 
   //responsible for changing current resume
   function changeActiveResume(newResume) {
-    const tempResume = {...newResume};
+    const tempResume = { ...newResume };
     setActiveResume(tempResume);
     console.log("active resume changed");
     console.log(tempResume);
   }
 
-  function copyActiveResume(){
+  function copyActiveResume() {
     const newId = uuidv4();
-    const tempResume = {...activeResume,id: newId};
-    const tempList = [...resumeList,{...tempResume}];
+    const tempResume = { ...activeResume, id: newId };
+    const tempList = [...resumeList, { ...tempResume }];
     setResumeList(tempList);
     changeActiveResume(tempResume);
   }
 
-  console.log("Content component rendered")
+  console.log("Content component rendered");
   return (
     <resumeContext.Provider
-      value={{ addNewResume,changeActiveResume,copyActiveResume, setActiveResume, setResumeList ,addExampleResume, activeResume, resumeList }}
+      value={{
+        addNewResume,
+        changeActiveResume,
+        copyActiveResume,
+        setActiveResume,
+        setResumeList,
+        addExampleResume,
+        activeResume,
+        resumeList,
+      }}
     >
       <div className={style.content}>
         <Editor></Editor>
@@ -98,7 +106,6 @@ const exampleTemplate = {
   aboutMe:
     "Passionate full-stack developer with 5+ years of experience building responsive web applications and scalable backend systems. Skilled in JavaScript, React, Node.js, and cloud services. Committed to writing clean, efficient code and continuously learning new technologies.",
 };
-
 
 const baseTemplate = {
   personalDetail: {
