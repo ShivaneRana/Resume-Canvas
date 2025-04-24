@@ -9,7 +9,7 @@ import hideIcon from "../assets/images/hide.svg";
 
 //components
 import { useState, useContext } from "react";
-import { useEffect } from "react";
+import { resumeContext } from "../App.jsx";
 
 function PersonalDetail() {
   const [expanded, setExpanded] = useState(true);
@@ -69,11 +69,20 @@ function DisplayButton() {
 }
 
 function FullName() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.defaultDiv}>
       <h3>Full Name: </h3>
       <label htmlFor="fullname"></label>
-      <input name="fullname" type="text" placeholder="Enter fullname"></input>
+      <input
+      value={resume.personalDetail.fullName}
+      onChange={(e) => {
+        context.changeName(context.activeResumeId,e.target.value);
+      }}
+      name="fullname" type="text" placeholder="Enter fullname"></input>
     </div>
   );
 }
