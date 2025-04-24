@@ -31,6 +31,7 @@ function Content() {
     return resumeList.findIndex(resume => resume.id === id);
   }
 
+  // adding base resume to resumeList
   function addBaseResume(){
    const tempId = uuidv4();
    const tempResume = {...baseTemplate,id:tempId};
@@ -38,6 +39,7 @@ function Content() {
     console.log("base resume added");
   }
 
+  // adding example resume to resumeList
   function addExampleResume(){
    const tempId = uuidv4();
    const tempResume = {...exampleTemplate,id:tempId};
@@ -45,6 +47,7 @@ function Content() {
    console.log("example resume added");
   }
     
+  // printing entire resumeList
   function print(){
     console.log("printing.......")
     resumeList.map(resume => {
@@ -52,9 +55,10 @@ function Content() {
     })
   }
 
+  // copying active resume
   function copyResume(){
     const currentIndex = findIndex(activeResumeId);
-    const  currentResume = resumeList[currentIndex];
+    const currentResume = resumeList[currentIndex];
     const tempId = uuidv4();
     const tempResume = {...currentResume,id:tempId};
     console.log(tempResume);
@@ -68,7 +72,9 @@ function Content() {
       addExampleResume,
       addBaseResume,
       copyResume,
-      print 
+      print,
+      resumeList,
+      activeResumeId
       }}
     >
       <div className={style.content}>
