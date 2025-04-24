@@ -82,6 +82,15 @@ function Content() {
     console.log("activeResumeId changed")
   }
 
+  function changeName(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find(item => item.id === id);
+      if(resume){
+        resume.personalDetail.fullName = value;
+      }
+    })
+  }
+
   console.log("Content component rendered");
   return (
     <resumeContext.Provider
@@ -92,6 +101,7 @@ function Content() {
       copyResume,
       print,
       changeActiveResumeId,
+      changeName,
       resumeList,
       activeResumeId
       }}
