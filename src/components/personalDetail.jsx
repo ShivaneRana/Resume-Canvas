@@ -88,11 +88,19 @@ function FullName() {
 }
 
 function Address() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
   return (
     <div className={style.defaultDiv}>
       <h3>Address : </h3>
       <label htmlFor="address"></label>
-      <input name="address" type="text" placeholder="Enter address"></input>
+      <input
+      value={resume.personalDetail.address}
+      onChange={(e) => {
+        context.changeAddress(e.target.value);
+      }}
+      name="address" type="text" placeholder="Enter address"></input>
     </div>
   );
 }
