@@ -18,17 +18,26 @@ function App() {
   );
 }
 
-export let resumeContext = createContext();
+export let context = createContext();
 
 function Content() {
+  const tempId = uuidv4();
+  const tempResume = {...exampleTemplate,id:tempId};
+  const [resumeList,updateResumeList] = useImmer([{...tempResume}]);
+  const [activeResumeId,setActiveResumeId] = useImmer(resumeList[0].id);
+
   console.log("Content component rendered");
   return (
-    <resumeContext.Provider value={{}}>
+    <context.Provider
+      value={{
+        
+      }}
+    >
       <div className={style.content}>
         <Editor></Editor>
         <Resume></Resume>
       </div>
-    </resumeContext.Provider>
+    </context.Provider>
   );
 }
 
