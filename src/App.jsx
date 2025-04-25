@@ -21,12 +21,14 @@ function App() {
 export let resumeContext = createContext();
 
 function Content() {
-  const tempId = uuidv4();
-  const tempResume = { ...exampleTemplate, id: tempId };
+  const tempId = uuidv4(); // temporary and only for initial creation
+  const tempResume = { ...exampleTemplate, id: tempId }; // temporary and only for initail creation
   const [resumeList, updateResumeList] = useImmer([{ ...tempResume }]);
   const [activeResumeId, updateActiveResumeId] = useImmer(resumeList[0].id);
   const [length, setLength] = useState(resumeList.length);
 
+  //responsible for always keeping resumeList populated
+  // set activeResumeId to last element in list if list not empty
   useEffect(() => {
     if (length !== 0) {
       const length = resumeList.length;
@@ -39,6 +41,7 @@ function Content() {
     }
   }, [length]);
 
+  // indicate change in activeResumeId
   useEffect(() => {
     console.log("Current active Resume~");
     console.log(activeResumeId);
@@ -79,23 +82,27 @@ function Content() {
     });
   }
 
-  // copying active resume
+  // copying active resume and append to list
   function copyResume() {
     const currentIndex = findIndex(activeResumeId);
     const currentResume = resumeList[currentIndex];
     const tempId = uuidv4();
     const tempResume = { ...currentResume, id: tempId };
-    updateResumeList([...resumeList, tempResume]);
+    updateResumeList(draft => {
+        draft.push(tempResume)
+    })
     setLength(length + 1);
     console.log("create a copy of current activeResume");
   }
 
+  // change active resume by calculating index based on id
   function changeActiveResumeId(id) {
     const newIndex = findIndex(id);
     updateActiveResumeId(resumeList[newIndex].id);
     console.log("activeResumeId changed");
   }
 
+  // responsible for change value of all input field in personalDetail section
   function changePersonalDetail(id, value ,field) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
