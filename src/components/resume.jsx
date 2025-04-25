@@ -61,10 +61,17 @@ function SocialLinks() {
 }
 
 function AboutMe() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.aboutMeDiv}>
       <h2>About me</h2>
       <hr className={style.line}></hr>
+      <p>
+        {resume.aboutMe}
+      </p>
     </div>
   );
 }
