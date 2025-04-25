@@ -101,7 +101,7 @@ function Address() {
       <input
         value={resume.personalDetail.address}
         onChange={(e) => {
-          context.changeAddress(e.target.value);
+          context.changeAddress(context.activeResumeId,e.target.value);
         }}
         name="address"
         type="text"
@@ -112,11 +112,19 @@ function Address() {
 }
 
 function PhoneNumber() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.defaultDiv}>
       <h3>Phone Number : </h3>
       <label htmlFor="phonenumber"></label>
       <input
+        value={resume.personalDetail.phoneNumber}
+        onChange={(e) => {
+          context.changePhoneNumber(context.activeResumeId,e.target.value);
+        }}
         name="phonenumber"
         type="tel"
         placeholder="Enter your personal number"
@@ -126,21 +134,38 @@ function PhoneNumber() {
 }
 
 function Email() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.defaultDiv}>
       <h3>Email: </h3>
       <label htmlFor="email"></label>
-      <input name="email" type="email" placeholder="Enter your email"></input>
+      <input
+      value={resume.personalDetail.email}
+      onChange={(e) => {
+        context.changeEmail(context.activeResumeId,e.target.value);
+      }}  
+      name="email" type="email" placeholder="Enter your email"></input>
     </div>
   );
 }
 
 function Github() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.defaultDiv}>
       <h3>Github: </h3>
       <label htmlFor="github"></label>
       <input
+        value={resume.personalDetail.github}
+        onChange={(e) => {
+          context.changeGithub(context.activeResumeId,e.target.value);
+        }}
         name="github"
         type="url"
         placeholder="Enter your github profile url"
@@ -150,11 +175,19 @@ function Github() {
 }
 
 function Linkedin() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.defaultDiv}>
       <h3>Linkedin: </h3>
       <label htmlFor="linkedin"></label>
       <input
+        value={resume.personalDetail.linkedIn}
+        onChange={(e) => { 
+          context.changeLinkedIn(context.activeResumeId,e.target.value);
+        }}
         name="linkedin"
         type="url"
         placeholder="Enter your linkedin profile url"
@@ -164,11 +197,18 @@ function Linkedin() {
 }
 
 function PersonalWebsite() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
   return (
     <div className={style.defaultDiv}>
       <h3>Personal website: </h3>
       <label htmlFor="personalwebsite"></label>
       <input
+        value={resume.personalDetail.personalWebsite}
+        onChange={(e) => {
+          context.changePersonalWebsite(context.activeResumeId,e.target.value);
+        }}
         name="personalwebsite"
         type="url"
         placeholder="Enter your personal website url"
