@@ -53,7 +53,9 @@ function Content() {
   function addBaseResume() {
     const tempId = uuidv4();
     const tempResume = { ...baseTemplate, id: tempId };
-    updateResumeList([...resumeList, tempResume]);
+    updateResumeList(draft => {
+      draft.push(tempResume);
+    });
     setLength(length + 1);
     console.log("base resume added");
   }
@@ -62,7 +64,9 @@ function Content() {
   function addExampleResume() {
     const tempId = uuidv4();
     const tempResume = { ...exampleTemplate, id: tempId };
-    updateResumeList([...resumeList, tempResume]);
+    updateResumeList(draft => {
+      draft.push(tempResume);
+    });
     setLength(length + 1);
     console.log("example resume added");
   }
