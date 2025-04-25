@@ -40,12 +40,25 @@ function SocialLinks() {
   const resume = context.resumeList[index];
 
   return <div className={style.socialLinksDiv}>
-    <a href={resume.personalDetail.email} target="_blank">{resume.personalDetail.email}</a>
-    <a href={resume.personalDetail.phoneNumber} target="_blank">{resume.personalDetail.phoneNumber}</a>
-    <a href={resume.personalDetail.address} target="_blank">{resume.personalDetail.address}</a>
-    <a href={resume.personalDetail.linkedIn} target="_blank">{resume.personalDetail.linkedIn}</a>
-    <a href={resume.personalDetail.github} target="_blank">{resume.personalDetail.github}</a>
-    <a href={resume.personalDetail.personalWebsite} target="_blank">{resume.personalDetail.personalDetail}</a>
+<p>
+  <a href={resume.personalDetail.email} target="_blank">{resume.personalDetail.email}</a>
+</p>
+<p>
+  <a href={resume.personalDetail.phoneNumber} target="_blank">{resume.personalDetail.phoneNumber}</a>
+</p>
+<p>
+  <a href={resume.personalDetail.address} target="_blank">{resume.personalDetail.address}</a>
+</p>
+<p>
+  <a href={resume.personalDetail.linkedIn} target="_blank">{resume.personalDetail.linkedIn}</a>
+</p>
+<p>
+  <a href={resume.personalDetail.github} target="_blank">{resume.personalDetail.github}</a>
+</p>
+<p>
+  <a href={resume.personalDetail.personalWebsite} target="_blank">{resume.personalDetail.personalDetail}</a>
+</p>
+
   </div>;
 }
 
