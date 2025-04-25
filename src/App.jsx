@@ -112,6 +112,15 @@ function Content() {
     });
   }
 
+  function changeAboutMe(id,value){
+    updateResumeList(draft => {
+      const resume = draft.find(item => item.id === id);
+      if(resume){
+        resume.aboutMe = value;
+      }
+    })
+  }
+
   console.log("Content component rendered");
   return (
     <resumeContext.Provider
@@ -123,6 +132,7 @@ function Content() {
         print,
         changeActiveResumeId,
         changePersonalDetail,
+        changeAboutMe,
         resumeList,
         activeResumeId,
       }}
