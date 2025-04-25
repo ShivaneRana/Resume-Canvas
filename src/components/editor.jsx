@@ -120,7 +120,11 @@ function ButtonSlot() {
       </button>
 
       {/* delete button*/}
-      <button>
+      <button
+        onClick={() => {
+          context.removeResume();
+        }}
+      >
         <img
           alt="delete icon"
           src={deleteIcon}

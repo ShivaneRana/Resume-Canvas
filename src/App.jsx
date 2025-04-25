@@ -25,29 +25,8 @@ function Content() {
   const tempResume = { ...exampleTemplate, id: tempId }; // temporary and only for initail creation
   const [resumeList, updateResumeList] = useImmer([{ ...tempResume }]);
   const [activeResumeId, updateActiveResumeId] = useImmer(resumeList[0].id);
-  const [length, setLength] = useState(resumeList.length);
 
-  //responsible for always keeping resumeList populated
-  // set activeResumeId to last element in list if list not empty
-  useEffect(() => {
-    if (length !== 0) {
-      const length = resumeList.length;
-      const newId = resumeList[length - 1].id;
-      changeActiveResumeId(newId);
-    } else {
-      addExampleResume();
-      const newId = resumeList[length - 1].id;
-      changeActiveResumeId(newId);
-    }
-  }, [length]);
-
-  // indicate change in activeResumeId
-  useEffect(() => {
-    console.log("Current active Resume~");
-    console.log(activeResumeId);
-  }, [activeResumeId]);
-
-  //return the index of the  active resume;
+  //return the index of the from id;
   function findIndex(id) {
     return resumeList.findIndex((resume) => resume.id === id);
   }
@@ -58,9 +37,8 @@ function Content() {
     const tempResume = { ...baseTemplate, id: tempId };
     updateResumeList((draft) => {
       draft.push(tempResume);
+      changeActiveResumeId(tempId);
     });
-    setLength(length + 1);
-    console.log("base resume added");
   }
 
   // adding example resume to resumeList
@@ -69,9 +47,8 @@ function Content() {
     const tempResume = { ...exampleTemplate, id: tempId };
     updateResumeList((draft) => {
       draft.push(tempResume);
+      changeActiveResumeId(tempId);
     });
-    setLength(length + 1);
-    console.log("example resume added");
   }
 
   // printing entire resumeList
@@ -90,16 +67,25 @@ function Content() {
     const tempResume = { ...currentResume, id: tempId };
     updateResumeList((draft) => {
       draft.push(tempResume);
+      changeActiveResumeId(tempId);
     });
-    setLength(length + 1);
-    console.log("create a copy of current activeResume");
   }
 
   // change active resume by calculating index based on id
   function changeActiveResumeId(id) {
-    const newIndex = findIndex(id);
-    updateActiveResumeId(resumeList[newIndex].id);
-    console.log("activeResumeId changed");
+    updateActiveResumeId(id);
+  }
+
+  function removeResume() {
+    updateResumeList((draft) => {
+      const index = findIndex(activeResumeId);
+      if (index !== -1) {
+        draft.splice(index, 1);
+        if (draft.length > 0) {
+          updateActiveResumeId(draft[draft.length - 1].id);
+        }
+      }
+    });
   }
 
   // responsible for change value of all input field in personalDetail section
@@ -121,7 +107,6 @@ function Content() {
     });
   }
 
-  console.log("Content component rendered");
   return (
     <resumeContext.Provider
       value={{
@@ -131,6 +116,7 @@ function Content() {
         copyResume,
         print,
         changeActiveResumeId,
+        removeResume,
         changePersonalDetail,
         changeAboutMe,
         resumeList,
