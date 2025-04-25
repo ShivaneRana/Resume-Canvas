@@ -1,4 +1,14 @@
+//style
 import style from "../styles/resume.module.css";
+
+//icon
+import githubIcon from "../assets/images/github.svg";
+import emailIcon from "../assets/images/email.svg";
+import phoneIcon from "../assets/images/phone.svg";
+import linkIcon from "../assets/images/link.svg";
+import addressIcon from "../assets/images/address.svg";
+import linkedinIcon from "../assets/images/linkedin.svg";
+
 import { resumeContext } from "../App.jsx";
 import { useContext } from "react";
 
@@ -40,36 +50,12 @@ function SocialLinks() {
 
   return (
     <div className={style.socialLinksDiv}>
-      <p>
-        <a href={resume.personalDetail.email} target="_blank">
-          {resume.personalDetail.email}
-        </a>
-      </p>
-      <p>
-        <a href={resume.personalDetail.phoneNumber} target="_blank">
-          {resume.personalDetail.phoneNumber}
-        </a>
-      </p>
-      <p>
-        <a href={resume.personalDetail.address} target="_blank">
-          {resume.personalDetail.address}
-        </a>
-      </p>
-      <p>
-        <a href={resume.personalDetail.linkedIn} target="_blank">
-          {resume.personalDetail.linkedIn}
-        </a>
-      </p>
-      <p>
-        <a href={resume.personalDetail.github} target="_blank">
-          {resume.personalDetail.github}
-        </a>
-      </p>
-      <p>
-        <a href={resume.personalDetail.personalWebsite} target="_blank">
-          {resume.personalDetail.personalDetail}
-        </a>
-      </p>
+      {resume.personalDetail.email && Email()}
+      {resume.personalDetail.phoneNumber && PhoneNumber()}
+      {resume.personalDetail.address && Address()}
+      {resume.personalDetail.github && Github()}
+      {resume.personalDetail.linkedIn && LinkedIn()}
+      {resume.personalDetail.personalWebsite && Link()}
     </div>
   );
 }
@@ -127,4 +113,89 @@ function Additional() {
     </div>
   );
 }
+
+function Email(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+  return(
+      <p>
+        <img src={emailIcon} alt="email icon"></img>
+        <a href={resume.personalDetail.email} target="_blank">
+          {resume.personalDetail.email}
+        </a>
+      </p>
+  )
+}
+
+function Address(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+  return(
+    <p>
+        <img src={addressIcon} alt="address icon"></img>
+        <a href={resume.personalDetail.address} target="_blank">
+          {resume.personalDetail.address}
+        </a>
+      </p>
+  )
+}
+
+function PhoneNumber(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+  return(
+    <p>
+        <img src={phoneIcon} alt="phone icon"></img>
+        <a href={resume.personalDetail.phoneNumber} target="_blank">
+          {resume.personalDetail.phoneNumber}
+        </a>
+      </p>
+  )
+}
+
+function LinkedIn(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+  return(
+    <p>
+        <img src={linkIcon} alt="linkedin icon"></img>
+        <a href={resume.personalDetail.linkedIn} target="_blank">
+          {resume.personalDetail.linkedIn}
+        </a>
+      </p>
+  )
+}
+
+function Link(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+  return(
+    <p>
+        <img src={linkIcon} alt="link icon"></img>
+        <a href={resume.personalDetail.personalWebsite} target="_blank">
+          {resume.personalDetail.personalWebsite}
+        </a>
+      </p>
+  )
+}
+
+function Github(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+  return(
+    <p>
+        <img src={githubIcon} alt="github icon"></img>
+        <a href={resume.personalDetail.github} target="_blank">
+          {resume.personalDetail.github}
+        </a>
+      </p>
+  )
+}
+
 export default Resume;

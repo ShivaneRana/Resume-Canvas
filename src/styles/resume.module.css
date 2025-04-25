@@ -44,6 +44,8 @@
 
 .socialLinksDiv > p {
   margin-top: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .socialLinksDiv > p > a {
@@ -51,6 +53,11 @@
   font-size: 12px;
   color: black;
   text-decoration: none;
+}
+
+.socialLinksDiv > p > img{
+  height: 16px;
+  width: 16px;
 }
 
 .socialLinksDiv > p > a:hover {
