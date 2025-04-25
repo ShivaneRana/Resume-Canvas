@@ -109,7 +109,53 @@ function Content() {
       }
     });
   }
+  
+  function changeEmail(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      if(resume){
+        resume.personalDetail.email = value
+      }
+    })
+  }
 
+  function changePhoneNumber(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      if(resume){
+        resume.personalDetail.phoneNumber = value;
+      }
+    })
+  }
+  
+  function changeGithub(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      if(resume){
+        resume.personalDetail.github = value;
+      }
+    })
+  }
+
+  function changeLinkedId(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      if(resume){
+        resume.personalDetail.linkedIn = value
+      }
+    })
+  }
+  
+  function changePersonalWebsite(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      if(resume){
+        resume.personalDetail.personalWebsite = value;
+      }
+    })
+  }
+  
+  
   console.log("Content component rendered");
   return (
     <resumeContext.Provider
@@ -122,6 +168,11 @@ function Content() {
         changeActiveResumeId,
         changeName,
         changeAddress,
+        changeEmail,
+        changePhoneNumber,
+        changeLinkedId,
+        changeGithub,
+        changePersonalWebsite,
         resumeList,
         activeResumeId,
       }}
