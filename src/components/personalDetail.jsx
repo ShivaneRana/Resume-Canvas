@@ -80,7 +80,7 @@ function FullName() {
       <input
         value={resume.personalDetail.fullName}
         onChange={(e) => {
-          context.changeName(context.activeResumeId, e.target.value);
+          context.changePersonalDetail(context.activeResumeId,e.target.value,"fullName");
         }}
         name="fullname"
         type="text"
@@ -101,7 +101,7 @@ function Address() {
       <input
         value={resume.personalDetail.address}
         onChange={(e) => {
-          context.changeAddress(context.activeResumeId,e.target.value);
+          context.changePersonalDetail(context.activeResumeId,e.target.value,"address");
         }}
         name="address"
         type="text"
@@ -123,7 +123,7 @@ function PhoneNumber() {
       <input
         value={resume.personalDetail.phoneNumber}
         onChange={(e) => {
-          context.changePhoneNumber(context.activeResumeId,e.target.value);
+          context.changePersonalDetail(context.activeResumeId,e.target.value,"phoneNumber");
         }}
         name="phonenumber"
         type="tel"
@@ -145,7 +145,7 @@ function Email() {
       <input
       value={resume.personalDetail.email}
       onChange={(e) => {
-        context.changeEmail(context.activeResumeId,e.target.value);
+        context.changePersonalDetail(context.activeResumeId,e.target.value,"email");
       }}  
       name="email" type="email" placeholder="Enter your email"></input>
     </div>
@@ -164,7 +164,7 @@ function Github() {
       <input
         value={resume.personalDetail.github}
         onChange={(e) => {
-          context.changeGithub(context.activeResumeId,e.target.value);
+          context.changePersonalDetail(context.activeResumeId,e.target.value,"github");
         }}
         name="github"
         type="url"
@@ -186,7 +186,7 @@ function Linkedin() {
       <input
         value={resume.personalDetail.linkedIn}
         onChange={(e) => { 
-          context.changeLinkedIn(context.activeResumeId,e.target.value);
+          context.changePersonalDetail(context.activeResumeId,e.target.value,"linkedIn");
         }}
         name="linkedin"
         type="url"
@@ -207,7 +207,7 @@ function PersonalWebsite() {
       <input
         value={resume.personalDetail.personalWebsite}
         onChange={(e) => {
-          context.changePersonalWebsite(context.activeResumeId,e.target.value);
+          context.changePersonalDetail(context.activeResumeId,e.target.value,"personalWebsite");
         }}
         name="personalwebsite"
         type="url"

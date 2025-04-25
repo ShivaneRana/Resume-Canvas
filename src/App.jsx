@@ -92,69 +92,14 @@ function Content() {
     console.log("activeResumeId changed");
   }
 
-  function changeName(id, value) {
+  function changePersonalDetail(id, value ,field) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
       if (resume) {
-        resume.personalDetail.fullName = value;
+        resume.personalDetail[field] = value;
       }
     });
   }
-
-  function changeAddress(id, value) {
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      if (resume) {
-        resume.personalDetail.address = value;
-      }
-    });
-  }
-  
-  function changeEmail(id,value){
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      if(resume){
-        resume.personalDetail.email = value
-      }
-    })
-  }
-
-  function changePhoneNumber(id,value){
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      if(resume){
-        resume.personalDetail.phoneNumber = value;
-      }
-    })
-  }
-  
-  function changeGithub(id,value){
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      if(resume){
-        resume.personalDetail.github = value;
-      }
-    })
-  }
-
-  function changeLinkedId(id,value){
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      if(resume){
-        resume.personalDetail.linkedIn = value
-      }
-    })
-  }
-  
-  function changePersonalWebsite(id,value){
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      if(resume){
-        resume.personalDetail.personalWebsite = value;
-      }
-    })
-  }
-  
   
   console.log("Content component rendered");
   return (
@@ -166,13 +111,7 @@ function Content() {
         copyResume,
         print,
         changeActiveResumeId,
-        changeName,
-        changeAddress,
-        changeEmail,
-        changePhoneNumber,
-        changeLinkedId,
-        changeGithub,
-        changePersonalWebsite,
+        changePersonalDetail,
         resumeList,
         activeResumeId,
       }}
