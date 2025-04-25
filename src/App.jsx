@@ -56,7 +56,7 @@ function Content() {
   function addBaseResume() {
     const tempId = uuidv4();
     const tempResume = { ...baseTemplate, id: tempId };
-    updateResumeList(draft => {
+    updateResumeList((draft) => {
       draft.push(tempResume);
     });
     setLength(length + 1);
@@ -67,7 +67,7 @@ function Content() {
   function addExampleResume() {
     const tempId = uuidv4();
     const tempResume = { ...exampleTemplate, id: tempId };
-    updateResumeList(draft => {
+    updateResumeList((draft) => {
       draft.push(tempResume);
     });
     setLength(length + 1);
@@ -88,9 +88,9 @@ function Content() {
     const currentResume = resumeList[currentIndex];
     const tempId = uuidv4();
     const tempResume = { ...currentResume, id: tempId };
-    updateResumeList(draft => {
-        draft.push(tempResume)
-    })
+    updateResumeList((draft) => {
+      draft.push(tempResume);
+    });
     setLength(length + 1);
     console.log("create a copy of current activeResume");
   }
@@ -103,7 +103,7 @@ function Content() {
   }
 
   // responsible for change value of all input field in personalDetail section
-  function changePersonalDetail(id, value ,field) {
+  function changePersonalDetail(id, value, field) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
       if (resume) {
@@ -111,7 +111,7 @@ function Content() {
       }
     });
   }
-  
+
   console.log("Content component rendered");
   return (
     <resumeContext.Provider

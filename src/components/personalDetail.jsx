@@ -80,7 +80,11 @@ function FullName() {
       <input
         value={resume.personalDetail.fullName}
         onChange={(e) => {
-          context.changePersonalDetail(context.activeResumeId,e.target.value,"fullName");
+          context.changePersonalDetail(
+            context.activeResumeId,
+            e.target.value,
+            "fullName",
+          );
         }}
         name="fullname"
         type="text"
@@ -101,7 +105,11 @@ function Address() {
       <input
         value={resume.personalDetail.address}
         onChange={(e) => {
-          context.changePersonalDetail(context.activeResumeId,e.target.value,"address");
+          context.changePersonalDetail(
+            context.activeResumeId,
+            e.target.value,
+            "address",
+          );
         }}
         name="address"
         type="text"
@@ -123,7 +131,11 @@ function PhoneNumber() {
       <input
         value={resume.personalDetail.phoneNumber}
         onChange={(e) => {
-          context.changePersonalDetail(context.activeResumeId,e.target.value,"phoneNumber");
+          context.changePersonalDetail(
+            context.activeResumeId,
+            e.target.value,
+            "phoneNumber",
+          );
         }}
         name="phonenumber"
         type="tel"
@@ -143,11 +155,18 @@ function Email() {
       <h3>Email: </h3>
       <label htmlFor="email"></label>
       <input
-      value={resume.personalDetail.email}
-      onChange={(e) => {
-        context.changePersonalDetail(context.activeResumeId,e.target.value,"email");
-      }}  
-      name="email" type="email" placeholder="Enter your email"></input>
+        value={resume.personalDetail.email}
+        onChange={(e) => {
+          context.changePersonalDetail(
+            context.activeResumeId,
+            e.target.value,
+            "email",
+          );
+        }}
+        name="email"
+        type="email"
+        placeholder="Enter your email"
+      ></input>
     </div>
   );
 }
@@ -164,7 +183,11 @@ function Github() {
       <input
         value={resume.personalDetail.github}
         onChange={(e) => {
-          context.changePersonalDetail(context.activeResumeId,e.target.value,"github");
+          context.changePersonalDetail(
+            context.activeResumeId,
+            e.target.value,
+            "github",
+          );
         }}
         name="github"
         type="url"
@@ -185,8 +208,12 @@ function Linkedin() {
       <label htmlFor="linkedin"></label>
       <input
         value={resume.personalDetail.linkedIn}
-        onChange={(e) => { 
-          context.changePersonalDetail(context.activeResumeId,e.target.value,"linkedIn");
+        onChange={(e) => {
+          context.changePersonalDetail(
+            context.activeResumeId,
+            e.target.value,
+            "linkedIn",
+          );
         }}
         name="linkedin"
         type="url"
@@ -207,7 +234,11 @@ function PersonalWebsite() {
       <input
         value={resume.personalDetail.personalWebsite}
         onChange={(e) => {
-          context.changePersonalDetail(context.activeResumeId,e.target.value,"personalWebsite");
+          context.changePersonalDetail(
+            context.activeResumeId,
+            e.target.value,
+            "personalWebsite",
+          );
         }}
         name="personalwebsite"
         type="url"
