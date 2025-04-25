@@ -9,6 +9,8 @@ import hideIcon from "../assets/images/hide.svg";
 
 //components
 import { useState } from "react";
+import { resumeContext } from "../App.jsx";
+import { useContext } from "react";
 
 function AboutMe() {
   // this section is expanded by default
@@ -46,10 +48,18 @@ function Header({ func, isExpanded }) {
 }
 
 function Content() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.content}>
       <label htmlFor="objective"></label>
       <textarea
+        value={resume.aboutMe}
+        onChange={(e) => {
+          context.changeAboutMe(context.activeResumeId,e.target.value);
+        }}
         name="objective"
         placeholder="Enter description about yourself"
       ></textarea>
