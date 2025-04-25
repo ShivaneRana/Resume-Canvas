@@ -1,4 +1,7 @@
 import style from "../styles/resume.module.css";
+import { resumeContext } from "../App.jsx";
+import { useContext } from "react";
+
 
 function Resume() {
   return (
@@ -20,11 +23,30 @@ function Resume() {
 }
 
 function Name() {
-  return <div className={style.nameDiv}></div>;
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
+  return <div className={style.nameDiv}>
+    <h1>
+      {resume.personalDetail.fullName}
+    </h1>
+  </div>;
 }
 
 function SocialLinks() {
-  return <div className={style.socialLinksDiv}></div>;
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
+  return <div className={style.socialLinksDiv}>
+    <a href={resume.personalDetail.email} target="_blank">{resume.personalDetail.email}</a>
+    <a href={resume.personalDetail.phoneNumber} target="_blank">{resume.personalDetail.phoneNumber}</a>
+    <a href={resume.personalDetail.address} target="_blank">{resume.personalDetail.address}</a>
+    <a href={resume.personalDetail.linkedIn} target="_blank">{resume.personalDetail.linkedIn}</a>
+    <a href={resume.personalDetail.github} target="_blank">{resume.personalDetail.github}</a>
+    <a href={resume.personalDetail.personalWebsite} target="_blank">{resume.personalDetail.personalDetail}</a>
+  </div>;
 }
 
 function AboutMe() {
