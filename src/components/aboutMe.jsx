@@ -58,7 +58,7 @@ function Content() {
       <textarea
         value={resume.aboutMe}
         onChange={(e) => {
-          context.changeAboutMe(context.activeResumeId,e.target.value);
+          context.changeAboutMe(context.activeResumeId, e.target.value);
         }}
         name="objective"
         placeholder="Enter description about yourself"

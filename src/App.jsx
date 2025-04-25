@@ -112,13 +112,13 @@ function Content() {
     });
   }
 
-  function changeAboutMe(id,value){
-    updateResumeList(draft => {
-      const resume = draft.find(item => item.id === id);
-      if(resume){
+  function changeAboutMe(id, value) {
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      if (resume) {
         resume.aboutMe = value;
       }
-    })
+    });
   }
 
   console.log("Content component rendered");
