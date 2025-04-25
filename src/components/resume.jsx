@@ -2,7 +2,6 @@ import style from "../styles/resume.module.css";
 import { resumeContext } from "../App.jsx";
 import { useContext } from "react";
 
-
 function Resume() {
   return (
     <div className={style.mainContainer}>
@@ -27,11 +26,11 @@ function Name() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.nameDiv}>
-    <h1>
-      {resume.personalDetail.fullName}
-    </h1>
-  </div>;
+  return (
+    <div className={style.nameDiv}>
+      <h1>{resume.personalDetail.fullName}</h1>
+    </div>
+  );
 }
 
 function SocialLinks() {
@@ -39,27 +38,40 @@ function SocialLinks() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.socialLinksDiv}>
-<p>
-  <a href={resume.personalDetail.email} target="_blank">{resume.personalDetail.email}</a>
-</p>
-<p>
-  <a href={resume.personalDetail.phoneNumber} target="_blank">{resume.personalDetail.phoneNumber}</a>
-</p>
-<p>
-  <a href={resume.personalDetail.address} target="_blank">{resume.personalDetail.address}</a>
-</p>
-<p>
-  <a href={resume.personalDetail.linkedIn} target="_blank">{resume.personalDetail.linkedIn}</a>
-</p>
-<p>
-  <a href={resume.personalDetail.github} target="_blank">{resume.personalDetail.github}</a>
-</p>
-<p>
-  <a href={resume.personalDetail.personalWebsite} target="_blank">{resume.personalDetail.personalDetail}</a>
-</p>
-
-  </div>;
+  return (
+    <div className={style.socialLinksDiv}>
+      <p>
+        <a href={resume.personalDetail.email} target="_blank">
+          {resume.personalDetail.email}
+        </a>
+      </p>
+      <p>
+        <a href={resume.personalDetail.phoneNumber} target="_blank">
+          {resume.personalDetail.phoneNumber}
+        </a>
+      </p>
+      <p>
+        <a href={resume.personalDetail.address} target="_blank">
+          {resume.personalDetail.address}
+        </a>
+      </p>
+      <p>
+        <a href={resume.personalDetail.linkedIn} target="_blank">
+          {resume.personalDetail.linkedIn}
+        </a>
+      </p>
+      <p>
+        <a href={resume.personalDetail.github} target="_blank">
+          {resume.personalDetail.github}
+        </a>
+      </p>
+      <p>
+        <a href={resume.personalDetail.personalWebsite} target="_blank">
+          {resume.personalDetail.personalDetail}
+        </a>
+      </p>
+    </div>
+  );
 }
 
 function AboutMe() {

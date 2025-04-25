@@ -81,7 +81,7 @@ function Content() {
       const index = findIndex(activeResumeId);
       if (index !== -1) {
         draft.splice(index, 1);
-  
+
         if (draft.length > 0) {
           updateActiveResumeId(draft[draft.length - 1].id);
         } else {
