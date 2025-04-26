@@ -6,7 +6,7 @@ import Navbar from "./components/navbar.jsx";
 import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
 import { v4 as uuidv4 } from "uuid";
-import { useState, createContext, useEffect } from "react";
+import { createContext} from "react";
 import { useImmer } from "use-immer";
 
 function App() {
@@ -25,6 +25,21 @@ function Content() {
   const tempResume = { ...exampleTemplate, id: tempId }; // temporary and only for initail creation
   const [resumeList, updateResumeList] = useImmer([{ ...tempResume }]);
   const [activeResumeId, updateActiveResumeId] = useImmer(resumeList[0].id);
+  const [hiddenComponent,updateHiddenComponent] = useImmer({
+    "personalDetail":false,
+    "aboutMe":false,
+  })
+
+  //toggle hidden component on/off based on previous value
+  function changeHiddenComponent(field){
+    if((hiddenComponent[field]) === undefined){
+      throw Error("field does not exist");
+    }else{
+      updateHiddenComponent(draft => {
+        draft[field] = !(draft[field]);
+      })
+    }
+  }
 
   //return the index of the from id;
   function findIndex(id) {
@@ -129,6 +144,8 @@ function Content() {
     <resumeContext.Provider
       value={{
         findIndex,
+        hiddenComponent,
+        changeHiddenComponent,
         addExampleResume,
         addBaseResume,
         copyResume,
