@@ -10,6 +10,7 @@ import hideIcon from "../assets/images/hide.svg";
 //components
 import { useState, useContext } from "react";
 import { resumeContext } from "../App.jsx";
+import { useEffect } from "react";
 
 function PersonalDetail() {
   const [expanded, setExpanded] = useState(true);
@@ -61,9 +62,22 @@ function Content() {
 }
 
 function DisplayButton() {
+  const context = useContext(resumeContext);
+  const [icon,setIcon] = useState(context.hiddenComponent.personalDetail ? hideIcon : showIcon);
+  const title = context.hiddenComponent.personalDetail ? "Hide section" : "Show section";
+
+  useEffect(() => {
+    setIcon(context.hiddenComponent.personalDetail ? hideIcon : showIcon);
+  },[context.hiddenComponent])
+
   return (
-    <button>
-      <img alt="show/hide icon" src={showIcon}></img>
+    <button
+      onClick={() => {
+        context.changeHiddenComponent("personalDetail")
+      }}
+      title={title}
+    >
+      <img alt="show/hide icon" src={icon}></img>
     </button>
   );
 }
