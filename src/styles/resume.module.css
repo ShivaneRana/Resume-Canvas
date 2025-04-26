@@ -24,11 +24,12 @@
 /* contains social link and name */
 .personalDetailDiv{
   display: flex;
+  justify-content: space-between;
 }
 
 /* exists inside the PersonalDetailDiv */
 .nameDiv {
-  width: 50%;
+  min-width: 50%;
   min-height: 100%;
   display: flex;
   justify-content: flex-start;
@@ -37,7 +38,8 @@
 
 /* exists inside the PersonalDetailDiv */
 .socialLinksDiv {
-  width: 50%;
+  width: max-content;
+  max-width: 50%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
