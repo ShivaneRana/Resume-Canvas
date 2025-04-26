@@ -26,8 +26,8 @@ function Content() {
   const [resumeList, updateResumeList] = useImmer([{ ...tempResume }]);
   const [activeResumeId, updateActiveResumeId] = useImmer(resumeList[0].id);
   const [hiddenComponent,updateHiddenComponent] = useImmer({
-    "personalDetail":false,
-    "aboutMe":false,
+    "personalDetail":true,
+    "aboutMe":true,
   })
 
   //toggle hidden component on/off based on previous value
