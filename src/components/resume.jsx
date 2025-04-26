@@ -11,7 +11,6 @@ import linkedinIcon from "../assets/images/linkedin.svg";
 
 import { resumeContext } from "../App.jsx";
 import { useContext } from "react";
-import { useEffect } from "react";
 
 function Resume() {
   const context = useContext(resumeContext);
@@ -20,7 +19,7 @@ function Resume() {
     <div className={style.mainContainer}>
       <div>
         {context.hiddenComponent["personalDetail"] && <PersonalDetailDiv></PersonalDetailDiv>}
-        <AboutMe></AboutMe>
+        {context.hiddenComponent["aboutMe"] && <AboutMe></AboutMe>}
         <Skill></Skill>
         <Education></Education>
         <Project></Project>
@@ -162,7 +161,7 @@ function LinkedIn(){
   const resume = context.resumeList[index];
   return(
     <p>
-        <img src={linkIcon} alt="linkedin icon"></img>
+        <img src={linkedinIcon} alt="linkedin icon"></img>
         <a href={resume.personalDetail.linkedIn} target="_blank">
           {resume.personalDetail.linkedIn}
         </a>
