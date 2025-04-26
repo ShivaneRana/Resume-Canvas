@@ -87,12 +87,23 @@ function Content() {
         } else {
           // Instead of leaving empty, push a new resume immediately
           const tempId = uuidv4();
-          const tempResume = { ...exampleTemplate, id: tempId };
+          const tempResume = { ...baseTemplate, id: tempId };
           draft.push(tempResume);
           updateActiveResumeId(tempId);
         }
       }
     });
+  }
+
+  //clear existing resume
+  function clearActiveResume(){
+    const index = findIndex(activeResumeId);
+    const tempId = uuidv4();
+    const tempResume = {...baseTemplate,id:tempId};
+    updateResumeList(draft => {
+      draft.splice(index,1,tempResume);
+      changeActiveResumeId(tempId)
+    })
   }
 
   // responsible for change value of all input field in personalDetail section
@@ -124,6 +135,7 @@ function Content() {
         print,
         changeActiveResumeId,
         removeResume,
+        clearActiveResume,
         changePersonalDetail,
         changeAboutMe,
         resumeList,
