@@ -16,10 +16,7 @@ function Resume() {
   return (
     <div className={style.mainContainer}>
       <div>
-        <div>
-          <Name></Name>
-          <SocialLinks></SocialLinks>
-        </div>
+        <PersonalDetailDiv></PersonalDetailDiv>
         <AboutMe></AboutMe>
         <Skill></Skill>
         <Education></Education>
@@ -31,24 +28,16 @@ function Resume() {
   );
 }
 
-function Name() {
+function PersonalDetailDiv(){
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return (
+  return(
+    <div className={style.personalDetailDiv}>
     <div className={style.nameDiv}>
       <h1>{resume.personalDetail.fullName}</h1>
     </div>
-  );
-}
-
-function SocialLinks() {
-  const context = useContext(resumeContext);
-  const index = context.findIndex(context.activeResumeId);
-  const resume = context.resumeList[index];
-
-  return (
     <div className={style.socialLinksDiv}>
       {resume.personalDetail.email && Email()}
       {resume.personalDetail.phoneNumber && PhoneNumber()}
@@ -57,7 +46,8 @@ function SocialLinks() {
       {resume.personalDetail.linkedIn && LinkedIn()}
       {resume.personalDetail.personalWebsite && Link()}
     </div>
-  );
+    </div>
+  )
 }
 
 function AboutMe() {
