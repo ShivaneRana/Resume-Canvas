@@ -45,15 +45,13 @@
   align-items: center;
 }
 
-/* display icon */
-.header > div:nth-child(2) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .content {
   min-width: 90%;
   height: 100%;
+}
+
+.addDialog{
+  min-width: 100%;
+  height: 200px;
   background-color: red;
 }
