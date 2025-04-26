@@ -111,7 +111,11 @@ function ButtonSlot() {
       </button>
 
       {/* clear button */}
-      <button>
+      <button
+      onClick={() => {
+        context.clearActiveResume();
+      }}
+      >
         <img
           alt="clear icon"
           src={clearIcon}
