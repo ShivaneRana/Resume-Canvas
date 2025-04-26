@@ -8,9 +8,8 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 
 //components
-import { useState } from "react";
+import { useState , useContext , useEffect} from "react";
 import { resumeContext } from "../App.jsx";
-import { useContext } from "react";
 
 function AboutMe() {
   // this section is expanded by default
@@ -68,9 +67,22 @@ function Content() {
 }
 
 function DisplayButton() {
+  const context = useContext(resumeContext);
+  const [icon,setIcon] = useState(context.hiddenComponent.aboueMe ? hideIcon : showIcon);
+  const title = context.hiddenComponent.aboueMe ? "Hide section" : "Show section";
+
+  useEffect(() => {
+    setIcon(context.hiddenComponent.aboutMe ? hideIcon : showIcon);
+  },[context.hiddenComponent])
+  
   return (
-    <button>
-      <img alt="show/hide icon" src={showIcon}></img>
+    <button
+      onClick={() => {
+        context.changeHiddenComponent("aboutMe")
+      }}
+      title={title}
+    >
+      <img alt="show/hide icon" src={icon}></img>
     </button>
   );
 }
