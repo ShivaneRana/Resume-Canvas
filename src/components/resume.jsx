@@ -11,12 +11,15 @@ import linkedinIcon from "../assets/images/linkedin.svg";
 
 import { resumeContext } from "../App.jsx";
 import { useContext } from "react";
+import { useEffect } from "react";
 
 function Resume() {
+  const context = useContext(resumeContext);
+
   return (
     <div className={style.mainContainer}>
       <div>
-        <PersonalDetailDiv></PersonalDetailDiv>
+        {context.hiddenComponent["personalDetail"] && <PersonalDetailDiv></PersonalDetailDiv>}
         <AboutMe></AboutMe>
         <Skill></Skill>
         <Education></Education>
