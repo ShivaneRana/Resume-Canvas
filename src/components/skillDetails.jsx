@@ -22,10 +22,14 @@ function SkillDetails() {
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const context = useContext(resumeContext);
 
-  // ensure that the skill section is not expanded while switching resume
   useEffect(() => {
+    // ensure that the skill section is not expanded while switching resume
     if(expanded === true){
       toggleExpanded();
+    }
+    // ensure that section is not hidden when new resume is displayed
+    if(context.hiddenComponent.skill === false){
+      context.changeHiddenComponent("skill");
     }
   },[context.activeResumeId])
 

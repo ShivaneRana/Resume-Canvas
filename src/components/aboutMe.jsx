@@ -14,6 +14,13 @@ import { resumeContext } from "../App.jsx";
 function AboutMe() {
   // this section is expanded by default
   const [expanded, setExpanded] = useState(true);
+  const context = useContext(resumeContext);
+
+  useEffect(() => {
+    if(context.hiddenComponent.aboutMe === false){
+      context.changeHiddenComponent("aboutMe");
+    }
+  },[context.activeResumeId])
 
   function toggleExpanded() {
     setExpanded(!expanded);
