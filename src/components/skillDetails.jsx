@@ -19,6 +19,7 @@ function SkillDetails() {
   const [expanded, setExpanded] = useState(false);
   const [dialogBoxState,setDialogBoxState] = useState(false);
 
+  // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
     if(dialogBoxState === true){
       toggleDialogBoxState();
@@ -27,6 +28,9 @@ function SkillDetails() {
 
   }
 
+  // exapand content when toggleing dialogBox state
+  // without it may open but the content is shrunk,
+  // making it look as if the function is not working.
   function toggleDialogBoxState(){
     if(expanded === false){
       toggleExpanded();
