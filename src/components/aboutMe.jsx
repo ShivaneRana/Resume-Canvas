@@ -8,7 +8,7 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 
 //components
-import { useState , useContext , useEffect} from "react";
+import { useState, useContext, useEffect } from "react";
 import { resumeContext } from "../App.jsx";
 
 function AboutMe() {
@@ -68,17 +68,21 @@ function Content() {
 
 function DisplayButton() {
   const context = useContext(resumeContext);
-  const [icon,setIcon] = useState(context.hiddenComponent.aboueMe ? hideIcon : showIcon);
-  const title = context.hiddenComponent.aboueMe ? "Hide section" : "Show section";
+  const [icon, setIcon] = useState(
+    context.hiddenComponent.aboueMe ? hideIcon : showIcon,
+  );
+  const title = context.hiddenComponent.aboueMe
+    ? "Hide section"
+    : "Show section";
 
   useEffect(() => {
     setIcon(context.hiddenComponent.aboutMe ? hideIcon : showIcon);
-  },[context.hiddenComponent])
-  
+  }, [context.hiddenComponent]);
+
   return (
     <button
       onClick={() => {
-        context.changeHiddenComponent("aboutMe")
+        context.changeHiddenComponent("aboutMe");
       }}
       title={title}
     >

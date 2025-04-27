@@ -50,18 +50,18 @@
   height: 100%;
 }
 
-.dialogBox{
+.dialogBox {
   width: 100%;
   min-height: 300px;
   outline: 2px dashed black;
 }
 
-.showArea{
+.showArea {
   width: 100%;
 }
 
-.tray{
-  width: 100%; 
+.tray {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,12 +71,12 @@
   margin-bottom: 5px;
 }
 
-.tray > h4{
+.tray > h4 {
   font-size: 16px;
   min-width: max-content;
 }
 
-.tray > div{
+.tray > div {
   display: flex;
   align-items: center;
   justify-content: space-evenly;

@@ -63,17 +63,21 @@ function Content() {
 
 function DisplayButton() {
   const context = useContext(resumeContext);
-  const [icon,setIcon] = useState(context.hiddenComponent.personalDetail ? hideIcon : showIcon);
-  const title = context.hiddenComponent.personalDetail ? "Hide section" : "Show section";
+  const [icon, setIcon] = useState(
+    context.hiddenComponent.personalDetail ? hideIcon : showIcon,
+  );
+  const title = context.hiddenComponent.personalDetail
+    ? "Hide section"
+    : "Show section";
 
   useEffect(() => {
     setIcon(context.hiddenComponent.personalDetail ? hideIcon : showIcon);
-  },[context.hiddenComponent])
+  }, [context.hiddenComponent]);
 
   return (
     <button
       onClick={() => {
-        context.changeHiddenComponent("personalDetail")
+        context.changeHiddenComponent("personalDetail");
       }}
       title={title}
     >

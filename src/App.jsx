@@ -6,7 +6,7 @@ import Navbar from "./components/navbar.jsx";
 import Resume from "./components/resume.jsx";
 import Editor from "./components/editor.jsx";
 import { v4 as uuidv4 } from "uuid";
-import { createContext} from "react";
+import { createContext } from "react";
 import { useImmer } from "use-immer";
 
 function App() {
@@ -25,20 +25,20 @@ function Content() {
   const tempResume = { ...exampleTemplate, id: tempId }; // temporary and only for initail creation
   const [resumeList, updateResumeList] = useImmer([{ ...tempResume }]);
   const [activeResumeId, updateActiveResumeId] = useImmer(resumeList[0].id);
-  const [hiddenComponent,updateHiddenComponent] = useImmer({
-    "personalDetail":true,
-    "aboutMe":true,
-    "skill":true,
-  })
+  const [hiddenComponent, updateHiddenComponent] = useImmer({
+    personalDetail: true,
+    aboutMe: true,
+    skill: true,
+  });
 
   //toggle hidden component on/off based on previous value
-  function changeHiddenComponent(field){
-    if((hiddenComponent[field]) === undefined){
+  function changeHiddenComponent(field) {
+    if (hiddenComponent[field] === undefined) {
       throw Error("field does not exist");
-    }else{
-      updateHiddenComponent(draft => {
-        draft[field] = !(draft[field]);
-      })
+    } else {
+      updateHiddenComponent((draft) => {
+        draft[field] = !draft[field];
+      });
     }
   }
 
@@ -112,14 +112,14 @@ function Content() {
   }
 
   //clear existing resume
-  function clearActiveResume(){
+  function clearActiveResume() {
     const index = findIndex(activeResumeId);
     const tempId = uuidv4();
-    const tempResume = {...baseTemplate,id:tempId};
-    updateResumeList(draft => {
-      draft.splice(index,1,tempResume);
-      changeActiveResumeId(tempId)
-    })
+    const tempResume = { ...baseTemplate, id: tempId };
+    updateResumeList((draft) => {
+      draft.splice(index, 1, tempResume);
+      changeActiveResumeId(tempId);
+    });
   }
 
   // responsible for change value of all input field in personalDetail section
@@ -180,11 +180,11 @@ const exampleTemplate = {
   },
   aboutMe:
     "Detail-oriented full-stack developer with over 6 years of experience designing and implementing modern web applications. Adept at building responsive front-ends using React and managing scalable APIs with Node.js and Express. Strong advocate for accessible design and test-driven development. Experienced in Agile workflows and collaborating with cross-functional teams to deliver user-focused solutions.",
- skill:[
-  ["technical skill", "vscode", "github", "docker", "kubernetes"],
-  ["backend skill", "postgresql", "sql", "node.js", "express.js"],
-  ["frontend skill", "react", "next.js", "nest.js", "gsap"],
-],
+  skill: [
+    ["technical skill", "vscode", "github", "docker", "kubernetes"],
+    ["backend skill", "postgresql", "sql", "node.js", "express.js"],
+    ["frontend skill", "react", "next.js", "nest.js", "gsap"],
+  ],
 };
 
 const baseTemplate = {
@@ -198,7 +198,7 @@ const baseTemplate = {
     personalWebsite: "",
   },
   aboutMe: "",
-  skill:[],
+  skill: [],
 };
 
 export default App;

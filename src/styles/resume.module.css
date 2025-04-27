@@ -22,7 +22,7 @@
 }
 
 /* contains social link and name */
-.personalDetailDiv{
+.personalDetailDiv {
   display: flex;
   justify-content: space-between;
 }
@@ -59,7 +59,7 @@
   text-decoration: none;
 }
 
-.socialLinksDiv > p > img{
+.socialLinksDiv > p > img {
   height: 16px;
   width: 16px;
 }

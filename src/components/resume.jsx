@@ -18,7 +18,9 @@ function Resume() {
   return (
     <div className={style.mainContainer}>
       <div>
-        {context.hiddenComponent["personalDetail"] && <PersonalDetailDiv></PersonalDetailDiv>}
+        {context.hiddenComponent["personalDetail"] && (
+          <PersonalDetailDiv></PersonalDetailDiv>
+        )}
         {context.hiddenComponent["aboutMe"] && <AboutMe></AboutMe>}
         {context.hiddenComponent["skill"] && <Skill></Skill>}
         <Education></Education>
@@ -30,26 +32,26 @@ function Resume() {
   );
 }
 
-function PersonalDetailDiv(){
+function PersonalDetailDiv() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return(
+  return (
     <div className={style.personalDetailDiv}>
-    <div className={style.nameDiv}>
-      <h1>{resume.personalDetail.fullName}</h1>
+      <div className={style.nameDiv}>
+        <h1>{resume.personalDetail.fullName}</h1>
+      </div>
+      <div className={style.socialLinksDiv}>
+        {resume.personalDetail.email && Email()}
+        {resume.personalDetail.phoneNumber && PhoneNumber()}
+        {resume.personalDetail.address && Address()}
+        {resume.personalDetail.github && Github()}
+        {resume.personalDetail.linkedIn && LinkedIn()}
+        {resume.personalDetail.personalWebsite && Link()}
+      </div>
     </div>
-    <div className={style.socialLinksDiv}>
-      {resume.personalDetail.email && Email()}
-      {resume.personalDetail.phoneNumber && PhoneNumber()}
-      {resume.personalDetail.address && Address()}
-      {resume.personalDetail.github && Github()}
-      {resume.personalDetail.linkedIn && LinkedIn()}
-      {resume.personalDetail.personalWebsite && Link()}
-    </div>
-    </div>
-  )
+  );
 }
 
 function AboutMe() {
@@ -61,9 +63,7 @@ function AboutMe() {
     <div className={style.aboutMeDiv}>
       <h2>About me</h2>
       <hr className={style.line}></hr>
-      <p>
-        {resume.aboutMe}
-      </p>
+      <p>{resume.aboutMe}</p>
     </div>
   );
 }
@@ -113,88 +113,88 @@ function Additional() {
   );
 }
 
-function Email(){
+function Email() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  return(
-      <p>
-        <img src={emailIcon} alt="email icon"></img>
-        <a href={resume.personalDetail.email} target="_blank">
-          {resume.personalDetail.email}
-        </a>
-      </p>
-  )
+  return (
+    <p>
+      <img src={emailIcon} alt="email icon"></img>
+      <a href={resume.personalDetail.email} target="_blank">
+        {resume.personalDetail.email}
+      </a>
+    </p>
+  );
 }
 
-function Address(){
+function Address() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  return(
+  return (
     <p>
-        <img src={addressIcon} alt="address icon"></img>
-        <a href={resume.personalDetail.address} target="_blank">
-          {resume.personalDetail.address}
-        </a>
-      </p>
-  )
+      <img src={addressIcon} alt="address icon"></img>
+      <a href={resume.personalDetail.address} target="_blank">
+        {resume.personalDetail.address}
+      </a>
+    </p>
+  );
 }
 
-function PhoneNumber(){
+function PhoneNumber() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  return(
+  return (
     <p>
-        <img src={phoneIcon} alt="phone icon"></img>
-        <a href={resume.personalDetail.phoneNumber} target="_blank">
-          {resume.personalDetail.phoneNumber}
-        </a>
-      </p>
-  )
+      <img src={phoneIcon} alt="phone icon"></img>
+      <a href={resume.personalDetail.phoneNumber} target="_blank">
+        {resume.personalDetail.phoneNumber}
+      </a>
+    </p>
+  );
 }
 
-function LinkedIn(){
+function LinkedIn() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  return(
+  return (
     <p>
-        <img src={linkedinIcon} alt="linkedin icon"></img>
-        <a href={resume.personalDetail.linkedIn} target="_blank">
-          {resume.personalDetail.linkedIn}
-        </a>
-      </p>
-  )
+      <img src={linkedinIcon} alt="linkedin icon"></img>
+      <a href={resume.personalDetail.linkedIn} target="_blank">
+        {resume.personalDetail.linkedIn}
+      </a>
+    </p>
+  );
 }
 
-function Link(){
+function Link() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  return(
+  return (
     <p>
-        <img src={linkIcon} alt="link icon"></img>
-        <a href={resume.personalDetail.personalWebsite} target="_blank">
-          {resume.personalDetail.personalWebsite}
-        </a>
-      </p>
-  )
+      <img src={linkIcon} alt="link icon"></img>
+      <a href={resume.personalDetail.personalWebsite} target="_blank">
+        {resume.personalDetail.personalWebsite}
+      </a>
+    </p>
+  );
 }
 
-function Github(){
+function Github() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  return(
+  return (
     <p>
-        <img src={githubIcon} alt="github icon"></img>
-        <a href={resume.personalDetail.github} target="_blank">
-          {resume.personalDetail.github}
-        </a>
-      </p>
-  )
+      <img src={githubIcon} alt="github icon"></img>
+      <a href={resume.personalDetail.github} target="_blank">
+        {resume.personalDetail.github}
+      </a>
+    </p>
+  );
 }
 
 export default Resume;
