@@ -10,9 +10,7 @@ import addIcon from "../assets/images/add.svg";
 import closeIcon from "../assets/images/close.svg";
 
 //components
-import { useState } from "react";
-import { createContext } from "react";
-import { useContext } from "react";
+import { useState, useEffect , createContext ,useContext} from "react";
 import { resumeContext } from "../App.jsx";
 
 const internalContext = createContext();
@@ -88,6 +86,13 @@ function Content() {
 
 function DisplayButton() {
   const context = useContext(internalContext);
+  const mainContext = useContext(resumeContext);
+  const [icon,setIcon] = useState(mainContext.hiddenComponent.skill ? hideIcon : showIcon);
+  const title = mainContext.hiddenComponent.skill ? "Hide section" : "Show section";
+
+  useEffect(() => {
+    setIcon(mainContext.hiddenComponent.skill ? hideIcon : showIcon);
+  },[mainContext.hiddenComponent])
 
   return (
     <div className={style.displayButtonDiv}>
@@ -100,8 +105,13 @@ function DisplayButton() {
       src={addIcon}
       title="Add skill group"></img>
     </button>
-    <button>
-      <img alt="show/hide icon" src={hideIcon}></img>
+    <button
+      onClick={() => {
+        mainContext.changeHiddenComponent("skill")
+      }}
+      title={title}
+    >
+      <img alt="show/hide icon" src={icon}></img>
     </button>
     </div>
   );
@@ -134,7 +144,6 @@ function DialogBox(){
 }
 
 function EditorialArea(){
-  const context = useContext(resumeContext);
   
   return(
     <div className={style.editorialArea}>
