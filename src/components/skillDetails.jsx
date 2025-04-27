@@ -7,10 +7,13 @@ import shrinkICon from "../assets/images/shrink.svg";
 import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 import addIcon from "../assets/images/add.svg";
+import closeIcon from "../assets/images/close.svg";
+
 //components
 import { useState } from "react";
 import { createContext } from "react";
 import { useContext } from "react";
+import { resumeContext } from "../App.jsx";
 
 const internalContext = createContext();
 
@@ -78,7 +81,7 @@ function Content() {
 
   return(
   <div className={style.content}>
-    {context.dialogBoxState && <DialogBox></DialogBox>}
+    {context.dialogBoxState && <DialogBox></DialogBox>}  
   </div>
   );
 }
@@ -105,10 +108,44 @@ function DisplayButton() {
 }
 
 function DialogBox(){
-  console.log("Dialog box added")
   return(
     <div className={style.addDialog}>
-      dialog box 
+      <div className={style.topLayer}>
+        <h4>Skill group :</h4>
+        <label htmlFor="skill group"></label>
+        <input name="skill group" type="text" placeholder="Group title"></input>
+      </div>
+      <div className={style.middleLayer}>
+        <div>
+          <h4>Skills :</h4>
+          <button>+ Add</button>
+        </div>
+        <EditorialArea>
+
+        </EditorialArea>
+      </div>
+      <div className={style.bottomLayer}>
+        <button>
+          <img src={closeIcon} alt="close icon"></img>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function EditorialArea(){
+  const context = useContext(resumeContext);
+  
+  return(
+    <div className={style.editorialArea}>
+    </div>
+  )
+}
+
+function Field(){
+  return(
+    <div>
+      <input></input> 
     </div>
   )
 }
