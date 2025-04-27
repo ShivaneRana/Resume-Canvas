@@ -180,11 +180,11 @@ const exampleTemplate = {
   },
   aboutMe:
     "Detail-oriented full-stack developer with over 6 years of experience designing and implementing modern web applications. Adept at building responsive front-ends using React and managing scalable APIs with Node.js and Express. Strong advocate for accessible design and test-driven development. Experienced in Agile workflows and collaborating with cross-functional teams to deliver user-focused solutions.",
-  skill:{
-    "technical skill":["vscode","github","docker","kubernetes"],
-    "backend skill":["postgresql","sql","node.js","express.js"],
-    "frontend skill":["react","next.js","nest.js","gsap"],
-  },
+ skill:[
+  ["technical skill", "vscode", "github", "docker", "kubernetes"],
+  ["backend skill", "postgresql", "sql", "node.js", "express.js"],
+  ["frontend skill", "react", "next.js", "nest.js", "gsap"],
+],
 };
 
 const baseTemplate = {
@@ -198,7 +198,7 @@ const baseTemplate = {
     personalWebsite: "",
   },
   aboutMe: "",
-  skill:{},
+  skill:[],
 };
 
 export default App;

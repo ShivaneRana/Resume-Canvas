@@ -12,6 +12,7 @@ import closeIcon from "../assets/images/close.svg";
 //components
 import { useState, useEffect , createContext ,useContext} from "react";
 import { resumeContext } from "../App.jsx";
+import { v4 as uuidv4 } from "uuid";
 
 const internalContext = createContext();
 
@@ -83,7 +84,20 @@ function Content() {
   return(
   <div className={style.content}>
     <div className={style.showArea}>
-      
+      {
+        resume.skill.map((item) => {
+          return(
+            <div key={uuidv4()} className={style.tray}>
+              <h4>{item[0]+" => "}</h4>
+              <div>
+              {item.slice(1).map((item,index) => {
+                  return <p key={uuidv4()}>{(index+1) +"."+item}</p>
+              })}
+              </div>
+            </div>
+          )
+        })
+      }
     </div>
     {context.dialogBoxState && <DialogBox></DialogBox>}  
   </div>
