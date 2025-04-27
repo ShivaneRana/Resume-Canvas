@@ -28,6 +28,7 @@ function Content() {
   const [hiddenComponent,updateHiddenComponent] = useImmer({
     "personalDetail":true,
     "aboutMe":true,
+    "skill":true,
   })
 
   //toggle hidden component on/off based on previous value
