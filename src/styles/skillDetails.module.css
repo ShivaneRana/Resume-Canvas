@@ -50,85 +50,8 @@
   height: 100%;
 }
 
-.addDialog{
-  min-width: 100%;
-  outline: 2px dashed black;
-}
-
-.addDialog > .topLayer{
+.dialogBox{
   width: 100%;
-  min-height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px;
-  gap: 5px;
-}
-
-.topLayer > input{
-  padding: 10px;
-  width: 100%;
-  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.addDialog > .middleLayer{
-  width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.middleLayer > div{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.addDialog > .middleLayer > div h4{
-  width: 100%;
-  min-height: 10px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.middleLayer > div > button{
-  width: 10%;
-  background-color: transparent;
-  border: none;
-  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 17px;
-}
-
-.middleLayer > div > button:hover{
-  transform: scale(1.2);
-}
-
-.addDialog > .middleLayer > .editorialArea{
-  width: 100%;
-  padding: 5px 0px 5px 0px;
-}
-
-.addDialog > .bottomLayer{
-  width: 100%;
-  min-height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bottomLayer > button{
-  background-color: transparent;
-  border: none;
-}
-
-.bottomLayer > button > img{
-  width: 30px;
-  height: 30px;
-}
-
-.bottomLayer > button > img:hover{
-  transform: var(--scaleValue);
+  min-height: 300px;
+  background-color: red;
 }

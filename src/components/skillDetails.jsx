@@ -76,29 +76,35 @@ function Header() {
 
 function Content() {
   const context = useContext(internalContext);
+  const mainContext = useContext(resumeContext);
+  const index = mainContext.findIndex(mainContext.activeResumeId);
+  const resume = mainContext.resumeList[index];
 
   return(
   <div className={style.content}>
+    <div className={style.showArea}>
+      
+    </div>
     {context.dialogBoxState && <DialogBox></DialogBox>}  
   </div>
   );
 }
 
 function DisplayButton() {
-  const context = useContext(internalContext);
-  const mainContext = useContext(resumeContext);
-  const [icon,setIcon] = useState(mainContext.hiddenComponent.skill ? hideIcon : showIcon);
-  const title = mainContext.hiddenComponent.skill ? "Hide section" : "Show section";
+  const dialogBoxContext = useContext(internalContext);
+  const context = useContext(resumeContext);
+  const [icon,setIcon] = useState(context.hiddenComponent.skill ? hideIcon : showIcon);
+  const title = context.hiddenComponent.skill ? "Hide section" : "Show section";
 
   useEffect(() => {
-    setIcon(mainContext.hiddenComponent.skill ? hideIcon : showIcon);
-  },[mainContext.hiddenComponent])
+    setIcon(context.hiddenComponent.skill ? hideIcon : showIcon);
+  },[context.hiddenComponent])
 
   return (
     <div className={style.displayButtonDiv}>
     <button
     onClick={() => {
-      context.toggleDialogBoxState();
+      dialogBoxContext.toggleDialogBoxState();
     }}>
       <img 
       alt="add icon"
@@ -107,7 +113,7 @@ function DisplayButton() {
     </button>
     <button
       onClick={() => {
-        mainContext.changeHiddenComponent("skill")
+        context.changeHiddenComponent("skill")
       }}
       title={title}
     >
@@ -119,42 +125,7 @@ function DisplayButton() {
 
 function DialogBox(){
   return(
-    <div className={style.addDialog}>
-      <div className={style.topLayer}>
-        <h4>Skill group :</h4>
-        <label htmlFor="skill group"></label>
-        <input name="skill group" type="text" placeholder="Group title"></input>
-      </div>
-      <div className={style.middleLayer}>
-        <div>
-          <h4>Skills :</h4>
-          <button>+ Add</button>
-        </div>
-        <EditorialArea>
-
-        </EditorialArea>
-      </div>
-      <div className={style.bottomLayer}>
-        <button>
-          <img src={closeIcon} alt="close icon"></img>
-        </button>
-      </div>
-    </div>
-  )
-}
-
-function EditorialArea(){
-  
-  return(
-    <div className={style.editorialArea}>
-    </div>
-  )
-}
-
-function Field(){
-  return(
-    <div>
-      <input></input> 
+    <div className={style.dialogBox}>
     </div>
   )
 }
