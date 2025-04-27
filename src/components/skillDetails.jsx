@@ -20,6 +20,15 @@ function SkillDetails() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(false);
   const [dialogBoxState, setDialogBoxState] = useState(false);
+  const context = useContext(resumeContext);
+
+  // ensure that the skill section is not expanded while switching resume
+  useEffect(() => {
+    if(expanded === true){
+      toggleExpanded();
+    }
+  },[context.activeResumeId])
+
 
   // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
