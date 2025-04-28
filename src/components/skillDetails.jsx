@@ -155,7 +155,26 @@ function ShowArea(){
 }
 
 function DialogBox() {
-  return <div className={style.dialogBox}></div>;
+  return(
+  <div className={style.dialogBox}>
+    <div className={style.topDiv}>
+      <h3>Skill group :</h3>
+      <label htmlFor="skill group"></label>
+      <input
+      name="skill group"
+      type="text"
+      placeholder={"Enter skill group"}>
+      </input>
+    </div> 
+    <div className={style.middleDiv}>
+      <h3>Skill :</h3>
+      <label htmlFor="skill"></label>
+      <input name="skill" type="text" placeholder="Enter skill"></input>
+    </div> 
+    <div className={style.bottomDiv}>
+      <button><img alt="close icon" src={closeIcon}></img></button>
+    </div> 
+  </div>);
 }
 
 export default SkillDetails;
