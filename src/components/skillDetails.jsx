@@ -70,17 +70,17 @@ function SkillDetails() {
 }
 
 function Header() {
-  const context = useContext(internalContext);
-  let icon = context.expanded ? shrinkICon : expandIcon;
-  let title = context.expanded ? "Show less" : "Show more";
+  const interanal_context  = useContext(internalContext);
+  let icon = interanal_context.expanded ? shrinkICon : expandIcon;
+  let title = interanal_context ? "Show less" : "Show more";
 
   return (
     <div className={style.header}>
       <div>
-        <button onClick={context.toggleExpanded}>
+        <button onClick={interanal_context.toggleExpanded}>
           <img alt="expand/collapse icon" src={icon} title={title}></img>
         </button>
-        <h2 onClick={context.toggleExpanded}>Skills: </h2>
+        <h2 onClick={interanal_context.toggleExpanded}>Skills: </h2>
       </div>
       <DisplayButton></DisplayButton>
     </div>
@@ -88,28 +88,12 @@ function Header() {
 }
 
 function Content() {
-  const context = useContext(internalContext);
-  const mainContext = useContext(resumeContext);
-  const index = mainContext.findIndex(mainContext.activeResumeId);
-  const resume = mainContext.resumeList[index];
-
+  const interanal_context = useContext(internalContext);
+ 
   return (
     <div className={style.content}>
-      <div className={style.showArea}>
-        {resume.skill.map((item) => {
-          return (
-            <div key={uuidv4()} className={style.tray}>
-              <h4>{item[0] + " => "}</h4>
-              <div>
-                {item.slice(1).map((item, index) => {
-                  return <p key={uuidv4()}>{index + 1 + "." + item}</p>;
-                })}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      {context.dialogBoxState && <DialogBox></DialogBox>}
+      <ShowArea></ShowArea>
+      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
   );
 }
@@ -145,6 +129,29 @@ function DisplayButton() {
       </button>
     </div>
   );
+}
+
+function ShowArea(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
+  return(
+      <div className={style.showArea}>
+        {resume.skill.map((item) => {
+          return (
+            <div key={uuidv4()} className={style.tray}>
+              <h4>{item[0] + " => "}</h4>
+              <div>
+                {item.slice(1).map((item, index) => {
+                  return <p key={uuidv4()}>{index + 1 + "." + item}</p>;
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+  )
 }
 
 function DialogBox() {
