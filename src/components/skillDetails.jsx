@@ -18,17 +18,15 @@ const internalContext = createContext();
 
 function SkillDetails() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(true); // false temp
+  const [expanded, setExpanded] = useState(false); // false temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const context = useContext(resumeContext);
 
   useEffect(() => {
     // ensure that the skill section is not expanded while switching resume
-
-    // temp
-    // if(expanded === true){
-    //   toggleExpanded();
-    // }
+    if(expanded === true){
+      toggleExpanded();
+    }
 
     // ensure that section is not hidden when new resume is displayed
     if(context.hiddenComponent.skill === false){
@@ -95,10 +93,7 @@ function Content() {
  
   return (
     <div className={style.content}>
-      <ShowArea></ShowArea>
-      {/* temp */}
-      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
-      <DialogBox></DialogBox>
+      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
   );
 }
@@ -134,63 +129,6 @@ function DisplayButton() {
       </button>
     </div>
   );
-}
-
-function ShowArea(){
-  const context = useContext(resumeContext);
-  const index = context.findIndex(context.activeResumeId);
-  const resume = context.resumeList[index];
-
-  return(
-      <div className={style.showArea}>
-        {resume.skill.map((item) => {
-          return (
-            <div key={uuidv4()} className={style.tray}>
-              <h4>{item[0] + " => "}</h4>
-              <div>
-                {item.slice(1).map((item, index) => {
-                  return <p key={uuidv4()}>{index + 1 + "." + item}</p>;
-                })}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-  )
-}
-
-function DialogBox() {
-  return(
-  <div className={style.dialogBox}>
-    <div className={style.topDiv}>
-      <h3>Skill group :</h3>
-      <label htmlFor="skill group"></label>
-      <input
-      name="skill group"
-      type="text"
-      placeholder={"Enter skill group"}>
-      </input>
-    </div> 
-    <div className={style.middleDiv}>
-      <h3>Skill :</h3>
-      <SkillInput></SkillInput>
-    </div> 
-    <div>
-      <button title="Add new skill">+ Add skill</button>
-    </div>
-    <div className={style.bottomDiv}>
-      <button title="Close dialog box"><img alt="close icon" src={closeIcon}></img></button>
-    </div> 
-  </div>);
-}
-
-function SkillInput(){
-  return(
-    <>
-      <label htmlFor="skill"></label>
-      <input name="skill" type="text" placeholder="Enter skill"></input>
-    </>
-  )
 }
 
 export default SkillDetails;

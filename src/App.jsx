@@ -141,6 +141,16 @@ function Content() {
     });
   }
 
+  function addSkill(id,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      if(resume){
+        resume.skill.push(value)
+      }
+    })
+
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -156,6 +166,7 @@ function Content() {
         clearActiveResume,
         changePersonalDetail,
         changeAboutMe,
+        addSkill,
         resumeList,
         activeResumeId,
       }}
