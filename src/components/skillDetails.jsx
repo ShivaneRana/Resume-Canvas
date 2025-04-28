@@ -173,13 +173,24 @@ function DialogBox() {
     </div> 
     <div className={style.middleDiv}>
       <h3>Skill :</h3>
-      <label htmlFor="skill"></label>
-      <input name="skill" type="text" placeholder="Enter skill"></input>
+      <SkillInput></SkillInput>
     </div> 
+    <div>
+      <button title="Add new skill">+ Add skill</button>
+    </div>
     <div className={style.bottomDiv}>
-      <button><img alt="close icon" src={closeIcon}></img></button>
+      <button title="Close dialog box"><img alt="close icon" src={closeIcon}></img></button>
     </div> 
   </div>);
+}
+
+function SkillInput(){
+  return(
+    <>
+      <label htmlFor="skill"></label>
+      <input name="skill" type="text" placeholder="Enter skill"></input>
+    </>
+  )
 }
 
 export default SkillDetails;
