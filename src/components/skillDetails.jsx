@@ -131,4 +131,12 @@ function DisplayButton() {
   );
 }
 
+function DialogBox(){
+  return(
+    <div className={style.dialogBox}>
+
+    </div>
+  )
+}
+
 export default SkillDetails;
