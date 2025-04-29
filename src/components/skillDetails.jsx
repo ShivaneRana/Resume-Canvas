@@ -93,6 +93,7 @@ function Content() {
  
   return (
     <div className={style.content}>
+      <ShowArea></ShowArea>
       {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
   );
@@ -129,6 +130,24 @@ function DisplayButton() {
       </button>
     </div>
   );
+}
+
+function ShowArea(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
+
+  return(
+    <div className={style.showArea}>
+      {
+        resume.skill.map(item => {
+          return <p>{item[0]}
+          </p>
+        })
+      }
+    </div>
+  )
 }
 
 function DialogBox(){
