@@ -18,15 +18,16 @@ const internalContext = createContext();
 
 function SkillDetails() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false); // false temp
+  const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const context = useContext(resumeContext);
 
   useEffect(() => {
     // ensure that the skill section is not expanded while switching resume
-    if(expanded === true){
-      toggleExpanded();
-    }
+    //temp
+    // if(expanded === true){
+    //   toggleExpanded();
+    // }
 
     // ensure that section is not hidden when new resume is displayed
     if(context.hiddenComponent.skill === false){
