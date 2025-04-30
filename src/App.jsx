@@ -29,6 +29,10 @@ function Content() {
     personalDetail: true,
     aboutMe: true,
     skill: true,
+    work:true,
+    additional:true,
+    project:true,
+    education:true,
   });
 
 
