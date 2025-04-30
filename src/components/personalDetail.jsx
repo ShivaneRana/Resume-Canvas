@@ -124,7 +124,7 @@ function Address() {
   const resume = context.resumeList[index];
   return (
     <div className={style.defaultDiv}>
-      <h3>Address : </h3>
+      <h3>Address: </h3>
       <label htmlFor="address"></label>
       <input
         value={resume.personalDetail.address}
@@ -150,7 +150,7 @@ function PhoneNumber() {
 
   return (
     <div className={style.defaultDiv}>
-      <h3>Phone Number : </h3>
+      <h3>Phone Number: </h3>
       <label htmlFor="phonenumber"></label>
       <input
         value={resume.personalDetail.phoneNumber}
