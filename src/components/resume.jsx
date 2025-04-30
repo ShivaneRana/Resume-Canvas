@@ -23,9 +23,9 @@ function Resume() {
         )}
         {context.hiddenComponent["aboutMe"] && <AboutMe></AboutMe>}
         {context.hiddenComponent["skill"] && <Skill></Skill>}
+        {context.hiddenComponent["work"] && <Work></Work>}
         <Education></Education>
         <Project></Project>
-        <WorkExperience></WorkExperience>
         <Additional></Additional>
       </div>
     </div>
@@ -95,7 +95,7 @@ function Project() {
   );
 }
 
-function WorkExperience() {
+function Work() {
   return (
     <div className={style.workExperienceDiv}>
       <h2>Work Experience</h2>
