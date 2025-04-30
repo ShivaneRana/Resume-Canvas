@@ -15,6 +15,7 @@ import resumeActiveIcon from "../assets/images/resume_active.svg";
 import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
 import Work from "./work.jsx";
+import Project from "./project.jsx";
 import SkillDetails from "./skillDetails.jsx";
 import { useState, useContext } from "react";
 import { resumeContext } from "../App.jsx";
@@ -29,6 +30,7 @@ function Editor() {
       <AboutMe></AboutMe>
       <SkillDetails></SkillDetails>
       <Work></Work>
+      <Project></Project>
     </div>
   );
 }
