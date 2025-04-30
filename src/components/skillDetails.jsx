@@ -12,7 +12,6 @@ import closeIcon from "../assets/images/close.svg";
 //components
 import { useState, useEffect, createContext, useContext } from "react";
 import { resumeContext } from "../App.jsx";
-import { v4 as uuidv4 } from "uuid";
 
 const internalContext = createContext();
 
@@ -117,6 +116,7 @@ function DisplayButton() {
       <button
         onClick={() => {
           dialogBoxContext.toggleDialogBoxState();
+
         }}
       >
         <img alt="add icon" src={addIcon} title="Add skill group"></img>
@@ -141,20 +141,18 @@ function ShowArea(){
 
   return(
     <div className={style.showArea}>
-      {
-        resume.skill.map(item => {
-          return <p>{item[0]}
-          </p>
-        })
-      }
     </div>
   )
 }
 
 function DialogBox(){
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
+
   return(
     <div className={style.dialogBox}>
-
     </div>
   )
 }
