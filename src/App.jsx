@@ -31,6 +31,7 @@ function Content() {
     skill: true,
   });
 
+
   //toggle hidden component on/off based on previous value
   function changeHiddenComponent(field) {
     if (hiddenComponent[field] === undefined) {
@@ -141,15 +142,6 @@ function Content() {
     });
   }
 
-  function addSkill(id,value){
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      if(resume){
-        resume.skill.push(value)
-      }
-    })
-
-  }
 
   return (
     <resumeContext.Provider
@@ -166,7 +158,6 @@ function Content() {
         clearActiveResume,
         changePersonalDetail,
         changeAboutMe,
-        addSkill,
         resumeList,
         activeResumeId,
       }}
@@ -192,9 +183,18 @@ const exampleTemplate = {
   aboutMe:
     "Detail-oriented full-stack developer with over 6 years of experience designing and implementing modern web applications. Adept at building responsive front-ends using React and managing scalable APIs with Node.js and Express. Strong advocate for accessible design and test-driven development. Experienced in Agile workflows and collaborating with cross-functional teams to deliver user-focused solutions.",
   skill: [
-    ["Technical Skill","github","neovim","docker","git","bash","kubernetes"],
-    ["Frontend Skill","React","Next.js","GSAP"],
-    ["Backend Skill","sql","postgressql","mongoDB","noSql"],
+    {id:uuidv4(),
+    skillGroup:"Technical Skill",
+    skillList:["Github","Git","Vscode","Kubernetes","docker"]
+    },
+    {id:uuidv4(),
+    skillGroup:"Frontend Skill",
+    skillList:["GSAP","React","Nest.js","angular","vue"]
+    },
+    {id:uuidv4(),
+    skillGroup:"Backend Skill",
+    skillList:["SQL","Nosql","mongodb","express.js","posgresSQL"],
+    },
   ],
 };
 
