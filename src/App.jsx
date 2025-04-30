@@ -29,12 +29,11 @@ function Content() {
     personalDetail: true,
     aboutMe: true,
     skill: true,
-    work:true,
-    additional:true,
-    project:true,
-    education:true,
+    work: true,
+    additional: true,
+    project: true,
+    education: true,
   });
-
 
   //toggle hidden component on/off based on previous value
   function changeHiddenComponent(field) {
@@ -146,7 +145,6 @@ function Content() {
     });
   }
 
-
   return (
     <resumeContext.Provider
       value={{
@@ -187,17 +185,20 @@ const exampleTemplate = {
   aboutMe:
     "Detail-oriented full-stack developer with over 6 years of experience designing and implementing modern web applications. Adept at building responsive front-ends using React and managing scalable APIs with Node.js and Express. Strong advocate for accessible design and test-driven development. Experienced in Agile workflows and collaborating with cross-functional teams to deliver user-focused solutions.",
   skill: [
-    {id:uuidv4(),
-    skillGroup:"Technical Skill",
-    skillList:["Github","Git","Vscode","Kubernetes","docker"]
+    {
+      id: uuidv4(),
+      skillGroup: "Technical Skill",
+      skillList: ["Github", "Git", "Vscode", "Kubernetes", "docker"],
     },
-    {id:uuidv4(),
-    skillGroup:"Frontend Skill",
-    skillList:["GSAP","React","Nest.js","angular","vue"]
+    {
+      id: uuidv4(),
+      skillGroup: "Frontend Skill",
+      skillList: ["GSAP", "React", "Nest.js", "angular", "vue"],
     },
-    {id:uuidv4(),
-    skillGroup:"Backend Skill",
-    skillList:["SQL","Nosql","mongodb","express.js","posgresSQL"],
+    {
+      id: uuidv4(),
+      skillGroup: "Backend Skill",
+      skillList: ["SQL", "Nosql", "mongodb", "express.js", "posgresSQL"],
     },
   ],
 };

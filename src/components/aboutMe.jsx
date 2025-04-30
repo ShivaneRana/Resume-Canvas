@@ -17,10 +17,10 @@ function AboutMe() {
   const context = useContext(resumeContext);
 
   useEffect(() => {
-    if(context.hiddenComponent.aboutMe === false){
+    if (context.hiddenComponent.aboutMe === false) {
       context.changeHiddenComponent("aboutMe");
     }
-  },[context.activeResumeId])
+  }, [context.activeResumeId]);
 
   function toggleExpanded() {
     setExpanded(!expanded);

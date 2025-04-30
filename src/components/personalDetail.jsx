@@ -14,12 +14,12 @@ import { useEffect } from "react";
 
 function PersonalDetail() {
   const [expanded, setExpanded] = useState(true);
-  const context = useContext(resumeContext)
+  const context = useContext(resumeContext);
   useEffect(() => {
-    if(context.hiddenComponent.personalDetail === false){
-      context.changeHiddenComponent("personalDetail")
+    if (context.hiddenComponent.personalDetail === false) {
+      context.changeHiddenComponent("personalDetail");
     }
-  },[context.activeResumeId])
+  }, [context.activeResumeId]);
 
   function toggleExpanded() {
     setExpanded(!expanded);
