@@ -16,6 +16,7 @@ import PersonalDetail from "./personalDetail.jsx";
 import AboutMe from "./aboutMe.jsx";
 import Work from "./work.jsx";
 import Project from "./project.jsx";
+import Education from "./education.jsx";
 import SkillDetails from "./skillDetails.jsx";
 import { useState, useContext } from "react";
 import { resumeContext } from "../App.jsx";
@@ -31,6 +32,7 @@ function Editor() {
       <SkillDetails></SkillDetails>
       <Work></Work>
       <Project></Project>
+      <Education></Education>
     </div>
   );
 }
