@@ -24,16 +24,15 @@ function Additional() {
   useEffect(() => {
     // ensure that the work section is not expanded while switching resume
     //temp
-    if(expanded === true){
+    if (expanded === true) {
       toggleExpanded();
     }
 
     // ensure that section is not hidden when new resume is displayed
-    if(context.hiddenComponent.additional === false){
+    if (context.hiddenComponent.additional === false) {
       context.changeHiddenComponent("additional");
     }
-  },[context.activeResumeId])
-
+  }, [context.activeResumeId]);
 
   // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
@@ -71,7 +70,7 @@ function Additional() {
 }
 
 function Header() {
-  const interanal_context  = useContext(internalContext);
+  const interanal_context = useContext(internalContext);
   let icon = interanal_context.expanded ? shrinkICon : expandIcon;
   let title = interanal_context ? "Show less" : "Show more";
 
@@ -90,7 +89,7 @@ function Header() {
 
 function Content() {
   const interanal_context = useContext(internalContext);
- 
+
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
@@ -105,7 +104,9 @@ function DisplayButton() {
   const [icon, setIcon] = useState(
     context.hiddenComponent.project ? hideIcon : showIcon,
   );
-  const title = context.hiddenComponent.additional ? "Hide section" : "Show section";
+  const title = context.hiddenComponent.additional
+    ? "Hide section"
+    : "Show section";
 
   useEffect(() => {
     setIcon(context.hiddenComponent.additional ? hideIcon : showIcon);
@@ -116,7 +117,6 @@ function DisplayButton() {
       <button
         onClick={() => {
           dialogBoxContext.toggleDialogBoxState();
-
         }}
       >
         <img alt="add icon" src={addIcon} title="Add work group"></img>
@@ -133,28 +133,20 @@ function DisplayButton() {
   );
 }
 
-function ShowArea(){
+function ShowArea() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-
-  return(
-    <div className={style.showArea}>
-    </div>
-  )
+  return <div className={style.showArea}></div>;
 }
 
-function DialogBox(){
+function DialogBox() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-
-  return(
-    <div className={style.dialogBox}>
-    </div>
-  )
+  return <div className={style.dialogBox}></div>;
 }
 
 export default Additional;

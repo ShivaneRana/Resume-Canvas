@@ -145,13 +145,13 @@ function Content() {
     });
   }
 
-  function addSkill(id,value){
+  function addSkill(id, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
-      if(resume){
+      if (resume) {
         resume.skill = value;
       }
-    })
+    });
   }
 
   return (

@@ -138,19 +138,24 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}>
-    {
-      resume.skill.map(item => {
-        return(
-        <div key={item.id} className={style.tray}>
-          <h3>{item.skillGroup+": "}</h3>
-          {item.skillList.map((element,index) => {
-            return <p key={element+index+element}>{(index+1)+"."+element}</p>
-          })}
-        </div>)
-      })
-    }
-  </div>;
+  return (
+    <div className={style.showArea}>
+      {resume.skill.map((item) => {
+        return (
+          <div key={item.id} className={style.tray}>
+            <h3>{item.skillGroup + ": "}</h3>
+            {item.skillList.map((element, index) => {
+              return (
+                <p key={element + index + element}>
+                  {index + 1 + "." + element}
+                </p>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 function DialogBox() {
@@ -159,32 +164,38 @@ function DialogBox() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.dialogBox}>
-    <div className={style.topDiv}>
-      <h3>Skill group: </h3>
-      <label htmlFor="skillgroup"></label>
-      <input type="text" name="skillgroup" placeholder="Enter group title"></input>
-    </div>
-    <div className={style.middleDiv}>
-      <h3>Skill: </h3>
-      <label htmlFor="skillList"></label>
-      <div className={style.inputDiv}>
-      <input type="text" name="skillList" placeholder="Enter skill"></input>
-      <button>
-        <img src={closeIcon}></img>
-      </button>
+  return (
+    <div className={style.dialogBox}>
+      <div className={style.topDiv}>
+        <h3>Skill group: </h3>
+        <label htmlFor="skillgroup"></label>
+        <input
+          type="text"
+          name="skillgroup"
+          placeholder="Enter group title"
+        ></input>
+      </div>
+      <div className={style.middleDiv}>
+        <h3>Skill: </h3>
+        <label htmlFor="skillList"></label>
+        <div className={style.inputDiv}>
+          <input type="text" name="skillList" placeholder="Enter skill"></input>
+          <button>
+            <img src={closeIcon}></img>
+          </button>
+        </div>
+      </div>
+      <div className={style.bottomDiv}>
+        <button
+          onClick={() => {
+            console.log("close button was pressed");
+          }}
+        >
+          <img src={closeIcon}></img>
+        </button>
       </div>
     </div>
-    <div className={style.bottomDiv}>
-      <button
-        onClick={() => {
-          console.log("close button was pressed")
-        }}
-      >
-        <img src={closeIcon}></img>
-      </button>
-    </div>
-  </div>;
+  );
 }
 
 export default SkillDetails;

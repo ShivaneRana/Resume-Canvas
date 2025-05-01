@@ -26,7 +26,7 @@ function Resume() {
         {context.hiddenComponent["work"] && <Work></Work>}
         {context.hiddenComponent["project"] && <Project></Project>}
         {context.hiddenComponent["education"] && <Education></Education>}
-        {context.hiddenComponent["additional"] && <Additional></Additional> }
+        {context.hiddenComponent["additional"] && <Additional></Additional>}
       </div>
     </div>
   );
