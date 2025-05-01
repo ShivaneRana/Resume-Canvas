@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: flex-start;
 }
 
 .mainContainer > div {
@@ -97,4 +98,10 @@
 
 .workExperienceDiv {
   margin-top: 5px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .mainContainer {
+    align-self: center;
+  }
 }
