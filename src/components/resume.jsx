@@ -91,7 +91,7 @@ function Skill() {
               })}
             </div>
           );
-      })}
+        })}
       </div>
     </div>
   );

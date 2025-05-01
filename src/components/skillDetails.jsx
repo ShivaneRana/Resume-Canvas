@@ -19,7 +19,7 @@ function SkillDetails() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
-  const [currentTarget,setCurrentTarget] = useState(null);
+  const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function SkillDetails() {
     //   toggleExpanded();
     // }
 
-    if(dialogBoxState === true){
+    if (dialogBoxState === true) {
       toggleDialogBoxState();
     }
 
@@ -47,7 +47,7 @@ function SkillDetails() {
     setExpanded(!expanded);
   }
 
-  function changeTarget(id){
+  function changeTarget(id) {
     setCurrentTarget(id);
   }
 
@@ -105,7 +105,9 @@ function Content() {
     <div className={style.content}>
       <ShowArea></ShowArea>
       {/* temp */}
-      {interanal_context.dialogBoxState && <DialogBox UUID={interanal_context.currentTarget}></DialogBox>}
+      {interanal_context.dialogBoxState && (
+        <DialogBox UUID={interanal_context.currentTarget}></DialogBox>
+      )}
     </div>
   );
 }
@@ -128,8 +130,8 @@ function DisplayButton() {
         onClick={() => {
           const newUUID = uuidv4();
           internal_context.changeTarget(newUUID);
-          context.addSkill(context.activeResumeId,newUUID);
-          if(internal_context.dialogBoxState === false){
+          context.addSkill(context.activeResumeId, newUUID);
+          if (internal_context.dialogBoxState === false) {
             internal_context.toggleDialogBoxState();
           }
         }}
@@ -157,9 +159,7 @@ function ShowArea() {
     <div className={style.showArea}>
       {resume.skill.map((item) => {
         return (
-          <div
-          key={item.id}
-          className={style.tray}>
+          <div key={item.id} className={style.tray}>
             <h3>{item.skillGroup + ": "}</h3>
             {item.skillList.map((element, index) => {
               return (
@@ -175,13 +175,13 @@ function ShowArea() {
   );
 }
 
-function DialogBox({UUID}) {
+function DialogBox({ UUID }) {
   const interanal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
-  const resume = context.resumeList[index]; 
+  const resume = context.resumeList[index];
   // filter return array btw
-  const targetSkill = resume.skill.filter(item => item.id === UUID)[0];
+  const targetSkill = resume.skill.filter((item) => item.id === UUID)[0];
 
   return (
     <div className={style.dialogBox}>
@@ -212,15 +212,20 @@ function DialogBox({UUID}) {
   );
 }
 
-function InputDiv({value}){
-  return(
+function InputDiv({ value }) {
+  return (
     <div className={style.inputDiv}>
-      <input value={value} type="text" name="skillList" placeholder="Enter skill"></input>
-        <button>
-          <img src={closeIcon}></img>
+      <input
+        value={value}
+        type="text"
+        name="skillList"
+        placeholder="Enter skill"
+      ></input>
+      <button>
+        <img src={closeIcon}></img>
       </button>
     </div>
-  )
+  );
 }
 
 export default SkillDetails;

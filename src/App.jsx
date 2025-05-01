@@ -145,19 +145,19 @@ function Content() {
     });
   }
 
- function addSkill(id,newUUID){
-  const tempUUID = newUUID;
+  function addSkill(id, newUUID) {
+    const tempUUID = newUUID;
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
       if (resume) {
         resume.skill.push({
-          id:tempUUID,
-          skillGroup:"",
-          skillList:[""]
+          id: tempUUID,
+          skillGroup: "",
+          skillList: [""],
         });
       }
     });
- }
+  }
 
   return (
     <resumeContext.Provider
