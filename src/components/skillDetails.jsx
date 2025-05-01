@@ -8,10 +8,10 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 import addIcon from "../assets/images/add.svg";
 import closeIcon from "../assets/images/close.svg";
-
 //components
 import { useState, useEffect, createContext, useContext } from "react";
 import { resumeContext } from "../App.jsx";
+import { v4 as uuidv4 } from "uuid";
 
 const internalContext = createContext();
 
@@ -19,6 +19,7 @@ function SkillDetails() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
+  const [currentTarget,setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
@@ -27,6 +28,10 @@ function SkillDetails() {
     // if (expanded === true) {
     //   toggleExpanded();
     // }
+
+    if(dialogBoxState === true){
+      toggleDialogBoxState();
+    }
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.skill === false) {
@@ -40,6 +45,10 @@ function SkillDetails() {
       toggleDialogBoxState();
     }
     setExpanded(!expanded);
+  }
+
+  function changeTarget(id){
+    setCurrentTarget(id);
   }
 
   // exapand content when toggleing dialogBox state
@@ -57,8 +66,10 @@ function SkillDetails() {
       value={{
         expanded,
         dialogBoxState,
+        currentTarget,
         toggleExpanded,
         toggleDialogBoxState,
+        changeTarget,
       }}
     >
       <div className={style.mainContainer}>
@@ -94,14 +105,13 @@ function Content() {
     <div className={style.content}>
       <ShowArea></ShowArea>
       {/* temp */}
-      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
-      <DialogBox></DialogBox>
+      {interanal_context.dialogBoxState && <DialogBox UUID={interanal_context.currentTarget}></DialogBox>}
     </div>
   );
 }
 
 function DisplayButton() {
-  const dialogBoxContext = useContext(internalContext);
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const [icon, setIcon] = useState(
     context.hiddenComponent.skill ? hideIcon : showIcon,
@@ -116,7 +126,12 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
-          dialogBoxContext.toggleDialogBoxState();
+          const newUUID = uuidv4();
+          internal_context.changeTarget(newUUID);
+          context.addSkill(context.activeResumeId,newUUID);
+          if(internal_context.dialogBoxState === false){
+            internal_context.toggleDialogBoxState();
+          }
         }}
       >
         <img alt="add icon" src={addIcon} title="Add skill group"></img>
@@ -142,12 +157,14 @@ function ShowArea() {
     <div className={style.showArea}>
       {resume.skill.map((item) => {
         return (
-          <div key={item.id} className={style.tray}>
+          <div
+          key={item.id}
+          className={style.tray}>
             <h3>{item.skillGroup + ": "}</h3>
             {item.skillList.map((element, index) => {
               return (
-                <p key={element + index + element}>
-                  {index + 1 + "." + element}
+                <p key={`${item.id}-${index}`}>
+                  {element && index + 1 + "." + element}
                 </p>
               );
             })}
@@ -158,11 +175,13 @@ function ShowArea() {
   );
 }
 
-function DialogBox() {
+function DialogBox({UUID}) {
   const interanal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
-  const resume = context.resumeList[index];
+  const resume = context.resumeList[index]; 
+  // filter return array btw
+  const targetSkill = resume.skill.filter(item => item.id === UUID)[0];
 
   return (
     <div className={style.dialogBox}>
@@ -178,17 +197,12 @@ function DialogBox() {
       <div className={style.middleDiv}>
         <h3>Skill: </h3>
         <label htmlFor="skillList"></label>
-        <div className={style.inputDiv}>
-          <input type="text" name="skillList" placeholder="Enter skill"></input>
-          <button>
-            <img src={closeIcon}></img>
-          </button>
-        </div>
+        <InputDiv></InputDiv>
       </div>
       <div className={style.bottomDiv}>
         <button
           onClick={() => {
-            console.log("close button was pressed");
+            interanal_context.toggleDialogBoxState();
           }}
         >
           <img src={closeIcon}></img>
@@ -196,6 +210,17 @@ function DialogBox() {
       </div>
     </div>
   );
+}
+
+function InputDiv({value}){
+  return(
+    <div className={style.inputDiv}>
+      <input value={value} type="text" name="skillList" placeholder="Enter skill"></input>
+        <button>
+          <img src={closeIcon}></img>
+      </button>
+    </div>
+  )
 }
 
 export default SkillDetails;
