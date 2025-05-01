@@ -61,13 +61,16 @@
   gap: 10px;
 }
 
+.tray:hover{
+  cursor: pointer;
+}
+
 .tray > p {
   font-weight: bold;
 }
 
 .tray > p:hover {
   text-decoration: underline;
-  cursor: pointer;
 }
 
 .dialogBox {
