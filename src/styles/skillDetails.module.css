@@ -50,8 +50,97 @@
   height: 100%;
 }
 
+.showArea{
+}
+
+.tray{
+  margin-bottom: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tray > p{
+  font-weight: bold;
+}
+
+.tray > p:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .dialogBox {
   width: 100%;
-  height: 300px;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  outline: 2px dashed black;
+}
+
+
+.topDiv{
+  width: 100%;
+  display: flex; flex-direction: column;
+}
+
+.topDiv > input{
+  padding: 5px;
+  font-size: 15px;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.middleDiv{
+  width: 100%;
+}
+
+.inputDiv{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.inputDiv > input{
+  padding: 5px;
+  font-size: 15px;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  width: 90%;
+}
+
+.inputDiv > button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+
+.inputDiv > button > img{
+  height: 30px;
+  width: 30px;
+}
+
+.bottomDiv{
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomDiv > button{
+  background-color: transparent;
+  border: none;
+}
+
+.bottomDiv > button:hover{
+  transform: scale(1.3);
+}
+
+.bottomDiv > button > img{
+  height: 30px;
+  width: 30px;
 }
