@@ -39,6 +39,9 @@ function SkillDetails() {
       toggleDialogBoxState();
     }
 
+    //set current target to null when switching tab
+    setCurrentTarget(null);
+
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.skill === false) {
       context.changeHiddenComponent("skill");
