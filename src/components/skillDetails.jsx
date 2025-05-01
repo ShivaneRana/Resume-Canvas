@@ -113,7 +113,6 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {/* temp */}
       {interanal_context.dialogBoxState && (
         <DialogBox UUID={interanal_context.currentTarget}></DialogBox>
       )}
@@ -152,7 +151,7 @@ function DisplayButton() {
           context.changeHiddenComponent("skill");
         }}
         title={title}
-      >
+        >
         <img alt="show/hide icon" src={icon}></img>
       </button>
     </div>
@@ -163,13 +162,17 @@ function ShowArea() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
+  const interanal_context = useContext(internalContext);
 
   return (
     <div className={style.showArea}>
       {resume.skill.map((item) => {
         return (
           <div onClick={() => {
-            console.log(item.id)
+            interanal_context.changeTarget(item.id);
+            if(interanal_context.dialogBoxState === false){
+              interanal_context.toggleDialogBoxState();
+            }
           }}
           key={item.id}
           className={style.tray}>
@@ -202,6 +205,7 @@ function DialogBox({ UUID }) {
         <h3>Skill group: </h3>
         <label htmlFor="skillgroup"></label>
         <input
+          value={targetSkill.skillGroup}
           type="text"
           name="skillgroup"
           placeholder="Enter group title"
@@ -210,7 +214,11 @@ function DialogBox({ UUID }) {
       <div className={style.middleDiv}>
         <h3>Skill: </h3>
         <label htmlFor="skillList"></label>
-        <InputDiv></InputDiv>
+        {
+          targetSkill.skillList.map((item,index) => {
+            return <InputDiv key={`${item.id}"$$$$$"-${index}`} value={item}></InputDiv>
+          })
+        }
         <button title="Add new skill">+Add</button>
       </div>
       <div className={style.bottomDiv}>
@@ -219,7 +227,7 @@ function DialogBox({ UUID }) {
             interanal_context.toggleDialogBoxState();
           }}
         >
-          <img src={closeIcon}></img>
+          <img alt="close icon" src={closeIcon}></img>
         </button>
       </div>
     </div>
@@ -227,6 +235,10 @@ function DialogBox({ UUID }) {
 }
 
 function InputDiv({ value }) {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.inputDiv}>
       <input
