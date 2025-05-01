@@ -22,6 +22,12 @@ function SkillDetails() {
   const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
+  // responsible for logging the current target
+  useEffect(() => {
+    console.log("current target~");
+    console.log(currentTarget)
+  },[currentTarget])
+
   useEffect(() => {
     // ensure that the skill section is not expanded while switching resume
     //temp
@@ -159,7 +165,11 @@ function ShowArea() {
     <div className={style.showArea}>
       {resume.skill.map((item) => {
         return (
-          <div key={item.id} className={style.tray}>
+          <div onClick={() => {
+            console.log(item.id)
+          }}
+          key={item.id}
+          className={style.tray}>
             <h3>{item.skillGroup + ": "}</h3>
             {item.skillList.map((element, index) => {
               return (
@@ -198,6 +208,7 @@ function DialogBox({ UUID }) {
         <h3>Skill: </h3>
         <label htmlFor="skillList"></label>
         <InputDiv></InputDiv>
+        <button title="Add new skill">+Add</button>
       </div>
       <div className={style.bottomDiv}>
         <button
