@@ -85,7 +85,7 @@ function Skill() {
               {item.skillList.map((element, index) => {
                 return (
                   <p key={element + index + element}>
-                    {index + 1 + "." + element}
+                    {element && index + 1 + "." + element}
                   </p>
                 );
               })}
