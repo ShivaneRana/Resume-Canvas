@@ -206,6 +206,9 @@ function DialogBox({ UUID }) {
         <label htmlFor="skillgroup"></label>
         <input
           value={targetSkill.skillGroup}
+          onChange={(e) => {
+            
+          }}
           type="text"
           name="skillgroup"
           placeholder="Enter group title"
@@ -243,6 +246,9 @@ function InputDiv({ value }) {
     <div className={style.inputDiv}>
       <input
         value={value}
+        onChange={() => {
+
+        }}
         type="text"
         name="skillList"
         placeholder="Enter skill"
