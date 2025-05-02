@@ -178,7 +178,11 @@ function ShowArea() {
                 return <p key={item.id}>{index + 1 + "." + item.content}</p>;
               })}
             </div>
-            <button title="Delete skill set">
+            <button
+            onClick={() => {
+              context.removeSkillSet(context.activeResumeId,element.id);
+            }}
+            title="Delete skill set">
               <img src={deleteIcon} alt="delete skill set icon"></img>
             </button>
           </div>
