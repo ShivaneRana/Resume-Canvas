@@ -136,7 +136,7 @@ function DisplayButton() {
       <button
         onClick={() => {
           const UUID = uuidv4();
-          context.addSkill(context.activeResumeId,UUID);
+          context.addSkillSet(context.activeResumeId,UUID);
           internal_context.changeCurrentTarget(UUID);
           internal_context.toggleDialogBoxState();
         }}
@@ -179,8 +179,8 @@ function ShowArea() {
               <h4>{element.skillGroup + ":  "}</h4>
               {element.skillList.map((item, index) => {
                 return (
-                  <p key={element.id + "$$$" + index + item}>
-                    {index + 1 + "." + item}
+                  <p key={item.id}>
+                    {index + 1 + "." + item.content}
                   </p>
                 );
               })}
@@ -219,7 +219,7 @@ function DialogBox() {
         <h3>Skills: </h3>
          {
             currentSkill.skillList.map((item,index) => {
-              return <InputDiv></InputDiv>
+              return <InputDiv key={item.id}></InputDiv>
             })
          }
         <button title="Add new skill">+Add skill</button>
