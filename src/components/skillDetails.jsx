@@ -195,9 +195,12 @@ function DialogBox() {
   const internal_context = useContext(internalContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
+
+  // return the current Skill Set being worked on
   const currentSkill = resume.skill.filter(
     (item) => item.id === internal_context.currentTarget,
   )[0];
+  // return early if the current skill is undefined
   if (!currentSkill) return null;
 
   return (
@@ -229,6 +232,7 @@ function DialogBox() {
         <button
          onClick={() => {
             internal_context.toggleDialogBoxState();
+            internal_context.changeCurrentTarget(null);
          }}
          title="Close">
           <img alt="close icon" src={closeIcon}></img>
@@ -238,13 +242,16 @@ function DialogBox() {
   );
 }
 
-function InputDiv() {
+function InputDiv({value}) {
   const context = useContext(resumeContext);
+  const internal_context = useContext(internalContext);
 
   return (
     <div className={style.inputDiv}>
       <label htmlFor="skills"></label>
-      <input name="skills" type="text" placeholder="Enter skill"></input>
+      <input
+       value={value}
+       name="skills" type="text" placeholder="Enter skill"></input>
       <button title="Delete skill">
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
