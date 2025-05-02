@@ -27,14 +27,13 @@ function Editor() {
   return (
     <div className={style.mainContainer}>
       <TopLayer></TopLayer>
-      {/* temp */}
-      {/* <PersonalDetail></PersonalDetail> */}
-      {/* <AboutMe></AboutMe> */}
+      <PersonalDetail></PersonalDetail>
+      <AboutMe></AboutMe>
       <SkillDetails></SkillDetails>
-      {/* <Work></Work> */}
-      {/* <Project></Project> */}
-      {/* <Education></Education> */}
-      {/* <Additional></Additional> */}
+      <Work></Work>
+      <Project></Project>
+      <Education></Education>
+      <Additional></Additional>
     </div>
   );
 }
