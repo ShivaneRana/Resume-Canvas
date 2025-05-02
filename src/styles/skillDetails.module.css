@@ -46,19 +46,18 @@
 }
 
 .content {
-  min-width: 90%;
+  width: 90%;
   height: 100%;
 }
 
 .showArea {
-  width: 100%;
-  min-height: 300px;
-  background-color: red;
+  min-width: 100%;
+  padding: 10px;
 }
 
 .dialogBox {
-  width: 100%;
-  margin-top: 20px;
+  min-width: 100%;
+  margin-top: 10px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -67,7 +66,7 @@
 }
 
 .topDiv,.middleDiv{
-  width: 100%;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,4 +146,13 @@
 .inputDiv > button > img{
   height: 30px;
   width: 30px;
+}
+
+.tray{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+  gap: 5px;
 }
