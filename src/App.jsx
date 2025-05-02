@@ -153,7 +153,7 @@ function Content() {
         resume.skill.push({
           id: tempUUID,
           skillGroup: "",
-          skillList: [""],
+          skillList: [],
         });
       }
     });
