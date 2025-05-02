@@ -105,9 +105,7 @@ function DisplayButton() {
   const [icon, setIcon] = useState(
     context.hiddenComponent.skill ? hideIcon : showIcon,
   );
-  const title = context.hiddenComponent.skill
-    ? "Hide section"
-    : "Show section";
+  const title = context.hiddenComponent.skill ? "Hide section" : "Show section";
 
   useEffect(() => {
     setIcon(context.hiddenComponent.skill ? hideIcon : showIcon);
@@ -139,9 +137,7 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}>
-   
-  </div>;
+  return <div className={style.showArea}></div>;
 }
 
 function DialogBox() {
@@ -149,13 +145,15 @@ function DialogBox() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.dialogBox}>
-    <div className={style.topDiv}>
+  return (
+    <div className={style.dialogBox}>
+      <div className={style.topDiv}>
         <h3>Skill group: </h3>
+      </div>
+      <div className={style.middleDiv}></div>
+      <div className={style.bottomDiv}></div>
     </div>
-    <div className={style.middleDiv}></div>
-    <div className={style.bottomDiv}></div>
-  </div>;
+  );
 }
 
 export default SkillDetails;
