@@ -77,22 +77,6 @@ function Skill() {
     <div className={style.skillDiv}>
       <h2>Skill</h2>
       <hr className={style.line}></hr>
-      <div>
-        {resume.skill.map((item) => {
-          return (
-            <div key={item.id} className={style.tray}>
-              <p>{item.skillGroup + ": "}</p>
-              {item.skillList.map((element, index) => {
-                return (
-                  <p key={element + index + element}>
-                    {element && index + 1 + "." + element}
-                  </p>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 }

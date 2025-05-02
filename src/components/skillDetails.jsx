@@ -8,39 +8,25 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 import addIcon from "../assets/images/add.svg";
 import closeIcon from "../assets/images/close.svg";
+
 //components
 import { useState, useEffect, createContext, useContext } from "react";
 import { resumeContext } from "../App.jsx";
-import { v4 as uuidv4 } from "uuid";
 
 const internalContext = createContext();
 
 function SkillDetails() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(true); // false is default value true is temp
+  const [expanded, setExpanded] = useState(false); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
-  const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
-  // responsible for logging the current target
   useEffect(() => {
-    console.log("current target~");
-    console.log(currentTarget)
-  },[currentTarget])
-
-  useEffect(() => {
-    // ensure that the skill section is not expanded while switching resume
+    // ensure that the work section is not expanded while switching resume
     //temp
-    // if (expanded === true) {
-    //   toggleExpanded();
-    // }
-
-    if (dialogBoxState === true) {
-      toggleDialogBoxState();
+    if (expanded === true) {
+      toggleExpanded();
     }
-
-    //set current target to null when switching tab
-    setCurrentTarget(null);
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.skill === false) {
@@ -54,10 +40,6 @@ function SkillDetails() {
       toggleDialogBoxState();
     }
     setExpanded(!expanded);
-  }
-
-  function changeTarget(id) {
-    setCurrentTarget(id);
   }
 
   // exapand content when toggleing dialogBox state
@@ -75,10 +57,8 @@ function SkillDetails() {
       value={{
         expanded,
         dialogBoxState,
-        currentTarget,
         toggleExpanded,
         toggleDialogBoxState,
-        changeTarget,
       }}
     >
       <div className={style.mainContainer}>
@@ -92,7 +72,7 @@ function SkillDetails() {
 function Header() {
   const interanal_context = useContext(internalContext);
   let icon = interanal_context.expanded ? shrinkICon : expandIcon;
-  let title = interanal_context ? "Show less" : "Show more";
+  let title = interanal_context.expanded ? "Show less" : "Show more";
 
   return (
     <div className={style.header}>
@@ -100,7 +80,7 @@ function Header() {
         <button onClick={interanal_context.toggleExpanded}>
           <img alt="expand/collapse icon" src={icon} title={title}></img>
         </button>
-        <h2 onClick={interanal_context.toggleExpanded}>Skills: </h2>
+        <h2 onClick={interanal_context.toggleExpanded}>Skill: </h2>
       </div>
       <DisplayButton></DisplayButton>
     </div>
@@ -113,20 +93,20 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {interanal_context.dialogBoxState && (
-        <DialogBox UUID={interanal_context.currentTarget}></DialogBox>
-      )}
+      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
   );
 }
 
 function DisplayButton() {
-  const internal_context = useContext(internalContext);
+  const dialogBoxContext = useContext(internalContext);
   const context = useContext(resumeContext);
   const [icon, setIcon] = useState(
     context.hiddenComponent.skill ? hideIcon : showIcon,
   );
-  const title = context.hiddenComponent.skill ? "Hide section" : "Show section";
+  const title = context.hiddenComponent.skill
+    ? "Hide section"
+    : "Show section";
 
   useEffect(() => {
     setIcon(context.hiddenComponent.skill ? hideIcon : showIcon);
@@ -136,22 +116,17 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
-          const newUUID = uuidv4();
-          internal_context.changeTarget(newUUID);
-          context.addSkill(context.activeResumeId, newUUID);
-          if (internal_context.dialogBoxState === false) {
-            internal_context.toggleDialogBoxState();
-          }
+          dialogBoxContext.toggleDialogBoxState();
         }}
       >
-        <img alt="add icon" src={addIcon} title="Add skill group"></img>
+        <img alt="add icon" src={addIcon} title="Add work group"></img>
       </button>
       <button
         onClick={() => {
-          context.changeHiddenComponent("skill");
+          context.changeHiddenComponent("additional");
         }}
         title={title}
-        >
+      >
         <img alt="show/hide icon" src={icon}></img>
       </button>
     </div>
@@ -162,102 +137,16 @@ function ShowArea() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  const interanal_context = useContext(internalContext);
 
-  return (
-    <div className={style.showArea}>
-      {resume.skill.map((item) => {
-        return (
-          <div onClick={() => {
-            interanal_context.changeTarget(item.id);
-            if(interanal_context.dialogBoxState === false){
-              interanal_context.toggleDialogBoxState();
-            }
-          }}
-          key={item.id}
-          className={style.tray}>
-            <h3>{item.skillGroup + ": "}</h3>
-            {item.skillList.map((element, index) => {
-              return (
-                <p key={`${item.id}-${index}`}>
-                  {element && index + 1 + "." + element}
-                </p>
-              );
-            })}
-          </div>
-        );
-      })}
-    </div>
-  );
+  return <div className={style.showArea}></div>;
 }
 
-function DialogBox({ UUID }) {
-  const interanal_context = useContext(internalContext);
-  const context = useContext(resumeContext);
-  const index = context.findIndex(context.activeResumeId);
-  const resume = context.resumeList[index];
-  // filter return array btw
-  const targetSkill = resume.skill.filter((item) => item.id === UUID)[0];
-
-  return (
-    <div className={style.dialogBox}>
-      <div className={style.topDiv}>
-        <h3>Skill group: </h3>
-        <label htmlFor="skillgroup"></label>
-        <input
-          value={targetSkill.skillGroup}
-          onChange={(e) => {
-            
-          }}
-          type="text"
-          name="skillgroup"
-          placeholder="Enter group title"
-        ></input>
-      </div>
-      <div className={style.middleDiv}>
-        <h3>Skill: </h3>
-        <label htmlFor="skillList"></label>
-        {
-          targetSkill.skillList.map((item,index) => {
-            return <InputDiv key={`${item.id}"$$$$$"-${index}`} value={item}></InputDiv>
-          })
-        }
-        <button title="Add new skill">+Add</button>
-      </div>
-      <div className={style.bottomDiv}>
-        <button
-          onClick={() => {
-            interanal_context.toggleDialogBoxState();
-          }}
-        >
-          <img alt="close icon" src={closeIcon}></img>
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function InputDiv({ value }) {
+function DialogBox() {
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return (
-    <div className={style.inputDiv}>
-      <input
-        value={value}
-        onChange={() => {
-
-        }}
-        type="text"
-        name="skillList"
-        placeholder="Enter skill"
-      ></input>
-      <button>
-        <img src={closeIcon}></img>
-      </button>
-    </div>
-  );
+  return <div className={style.dialogBox}></div>;
 }
 
 export default SkillDetails;
