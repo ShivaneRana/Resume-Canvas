@@ -45,6 +45,8 @@ function SkillDetails() {
   }
 
   function changeCurrentTarget(id) {
+    console.log(`current target changed to ~`);
+    console.log(id);
     setCurrentTarget(id);
   }
 
@@ -78,17 +80,17 @@ function SkillDetails() {
 }
 
 function Header() {
-  const interanal_context = useContext(internalContext);
-  let icon = interanal_context.expanded ? shrinkICon : expandIcon;
-  let title = interanal_context.expanded ? "Show less" : "Show more";
+  const internal_context = useContext(internalContext);
+  let icon = internal_context.expanded ? shrinkICon : expandIcon;
+  let title = internal_context.expanded ? "Show less" : "Show more";
 
   return (
     <div className={style.header}>
       <div>
-        <button onClick={interanal_context.toggleExpanded}>
+        <button onClick={internal_context.toggleExpanded}>
           <img alt="expand/collapse icon" src={icon} title={title}></img>
         </button>
-        <h2 onClick={interanal_context.toggleExpanded}>Skill: </h2>
+        <h2 onClick={internal_context.toggleExpanded}>Skill: </h2>
       </div>
       <DisplayButton></DisplayButton>
     </div>
@@ -96,7 +98,7 @@ function Header() {
 }
 
 function Content() {
-  const interanal_context = useContext(internalContext);
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
@@ -104,7 +106,7 @@ function Content() {
   return (
     <div className={style.content}>
       {resume.skill.length !== 0 && <ShowArea></ShowArea>}
-      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
+      {/* {internal_context.dialogBoxState && <DialogBox></DialogBox>} */}
       <DialogBox></DialogBox>
     </div>
   );
@@ -144,6 +146,7 @@ function DisplayButton() {
 }
 
 function ShowArea() {
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
@@ -154,7 +157,7 @@ function ShowArea() {
         return (
           <div
             onClick={() => {
-              console.log(element.skillGroup);
+              internal_context.changeCurrentTarget(element.id);
             }}
             key={element.id}
             className={style.tray}
@@ -193,9 +196,6 @@ function DialogBox() {
       </div>
       <div className={style.middleDiv}>
         <h3>Skills: </h3>
-        <InputDiv></InputDiv>
-        <InputDiv></InputDiv>
-        <InputDiv></InputDiv>
         <button title="Add new skill">+Add skill</button>
       </div>
       <div className={style.bottomDiv}>
@@ -207,11 +207,15 @@ function DialogBox() {
   );
 }
 
-function InputDiv() {
+function InputDiv({value}) {
   return (
     <div className={style.inputDiv}>
       <label htmlFor="skills"></label>
-      <input name="skills" type="text" placeholder="Enter skill"></input>
+      <input
+      value={value}
+      name="skills"
+      type="text"
+      placeholder="Enter skill"></input>
       <button title="Delete skill">
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
