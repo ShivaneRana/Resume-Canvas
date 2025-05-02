@@ -88,26 +88,6 @@
   margin-top: 5px;
 }
 
-.skillDiv > Div {
-  width: 100%;
-}
-
-.tray {
-  margin-bottom: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tray > p:nth-child(1) {
-  font-weight: bold;
-}
-
-.tray > p:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .educationDiv {
   margin-top: 5px;
 }
