@@ -35,7 +35,6 @@ function SkillDetails() {
     if (context.hiddenComponent.skill === false) {
       context.changeHiddenComponent("skill");
     }
-
   }, [context.activeResumeId]);
 
   // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
@@ -123,15 +122,14 @@ function DisplayButton() {
       <button
         onClick={() => {
           const UUID = uuidv4();
-          context.addSkillSet(context.activeResumeId,UUID);
+          context.addSkillSet(context.activeResumeId, UUID);
           internal_context.changeCurrentTarget(UUID);
           // if the dialog box is not display display it.
-          if(internal_context.expanded === false){
+          if (internal_context.expanded === false) {
             internal_context.toggleExpanded();
           }
 
-          if(internal_context.dialogBoxState === false){
-            
+          if (internal_context.dialogBoxState === false) {
             internal_context.toggleDialogBoxState();
           }
         }}
@@ -160,29 +158,26 @@ function ShowArea() {
     <div className={style.showArea}>
       {resume.skill.map((element) => {
         return (
-          <div
-            key={element.id}
-            className={style.tray}
-          >
+          <div key={element.id} className={style.tray}>
             <div
-            className={internal_context.currentTarget === element.id ? style.selected: ""}
-            onClick={() => {
-              internal_context.changeCurrentTarget(element.id);
-              if(internal_context.expanded === false){
-              internal_context.toggleExpanded();
+              className={
+                internal_context.currentTarget === element.id
+                  ? style.selected
+                  : ""
               }
-              if(internal_context.dialogBoxState === false){
-                internal_context.toggleDialogBoxState();
-              }
-            }}
-             >
+              onClick={() => {
+                internal_context.changeCurrentTarget(element.id);
+                if (internal_context.expanded === false) {
+                  internal_context.toggleExpanded();
+                }
+                if (internal_context.dialogBoxState === false) {
+                  internal_context.toggleDialogBoxState();
+                }
+              }}
+            >
               <h4>{element.skillGroup + ":  "}</h4>
               {element.skillList.map((item, index) => {
-                return (
-                  <p key={item.id}>
-                    {index + 1 + "." + item.content}
-                  </p>
-                );
+                return <p key={item.id}>{index + 1 + "." + item.content}</p>;
               })}
             </div>
             <button title="Delete skill set">
@@ -200,8 +195,10 @@ function DialogBox() {
   const internal_context = useContext(internalContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
-  const currentSkill = (resume.skill.filter(item => item.id === internal_context.currentTarget)[0]);
-  if(!currentSkill) return null;
+  const currentSkill = resume.skill.filter(
+    (item) => item.id === internal_context.currentTarget,
+  )[0];
+  if (!currentSkill) return null;
 
   return (
     <div className={style.dialogBox}>
@@ -209,24 +206,27 @@ function DialogBox() {
         <h3>Skill group: </h3>
         <label htmlFor="skill group"></label>
         <input
-         value={currentSkill.skillGroup}
-         onChange={(e) => {
-          context.changeSkillGroup(context.activeResumeId,currentSkill.id,e.target.value);
-         }}
-         type="text" placeholder="Enter group title"></input>
+          value={currentSkill.skillGroup}
+          onChange={(e) => {
+            context.changeSkillGroup(
+              context.activeResumeId,
+              currentSkill.id,
+              e.target.value,
+            );
+          }}
+          type="text"
+          placeholder="Enter group title"
+        ></input>
       </div>
       <div className={style.middleDiv}>
         <h3>Skills: </h3>
-         {
-            currentSkill.skillList.map((item,index) => {
-              return <InputDiv key={item.id}></InputDiv>
-            })
-         }
+        {currentSkill.skillList.map((item, index) => {
+          return <InputDiv key={item.id}></InputDiv>;
+        })}
         <button title="Add new skill">+Add skill</button>
       </div>
       <div className={style.bottomDiv}>
-        <button
-        title="Close">
+        <button title="Close">
           <img alt="close icon" src={closeIcon}></img>
         </button>
       </div>
@@ -240,10 +240,7 @@ function InputDiv() {
   return (
     <div className={style.inputDiv}>
       <label htmlFor="skills"></label>
-      <input
-      name="skills"
-      type="text"
-      placeholder="Enter skill"></input>
+      <input name="skills" type="text" placeholder="Enter skill"></input>
       <button title="Delete skill">
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
