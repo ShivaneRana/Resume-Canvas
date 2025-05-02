@@ -183,3 +183,8 @@
   height: 30px;
   width: 30px;
 }
+
+.selected{
+  background-color: black;
+  color: white;
+}
