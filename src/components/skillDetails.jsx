@@ -163,7 +163,7 @@ function ShowArea() {
         return (
           <div
             key={element.id}
-            className={style.tray}
+            className={internal_context.currentTarget === element.id ? `${style.tray} ${style.selected}` : style.tray}
           >
             <div
             onClick={() => {
@@ -202,17 +202,14 @@ function DialogBox() {
         <h3>Skill group: </h3>
         <label htmlFor="skill group"></label>
         <input
-         value={currentSkill.skillGroup}
-         onClick={(e) => {
-
-         }}
+        //  value={currentSkill.skillGroup}
          type="text" placeholder="Enter group title"></input>
       </div>
       <div className={style.middleDiv}>
         <h3>Skills: </h3>
          {
             currentSkill.skillList.map((item,index) => {
-              return <InputDiv value={item}></InputDiv>
+              return <InputDiv key={`${item}---${index}`} value={item}></InputDiv>
             })
          }
         <button title="Add new skill">+Add skill</button>
@@ -231,10 +228,7 @@ function InputDiv({value}) {
     <div className={style.inputDiv}>
       <label htmlFor="skills"></label>
       <input
-      value={value}
-      onChange={(e) => {
-      
-      }}
+      // value={value}
       name="skills"
       type="text"
       placeholder="Enter skill"></input>
