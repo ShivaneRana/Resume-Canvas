@@ -101,12 +101,11 @@
   flex-wrap: wrap;
 }
 
-.tray > div > p{
+.tray > div > p {
   margin-left: 10px;
-  
 }
 
-.skillDiv > .tray > div{
+.skillDiv > .tray > div {
   display: flex;
 }
 
