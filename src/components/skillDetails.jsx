@@ -41,6 +41,7 @@ function SkillDetails() {
   function toggleExpanded() {
     if (dialogBoxState === true) {
       setDialogBoxState(false)
+      setCurrentTarget(null)
     }
     setExpanded(!expanded);
   }
@@ -208,14 +209,17 @@ function DialogBox() {
         <h3>Skill group: </h3>
         <label htmlFor="skill group"></label>
         <input
-        //  value={currentSkill.skillGroup}
+         value={currentSkill.skillGroup}
+         onChange={(e) => {
+          context.changeSkillGroup(context.activeResumeId,currentSkill.id,e.target.value);
+         }}
          type="text" placeholder="Enter group title"></input>
       </div>
       <div className={style.middleDiv}>
         <h3>Skills: </h3>
          {
             currentSkill.skillList.map((item,index) => {
-              return <InputDiv key={`${item}---${index}`} value={item}></InputDiv>
+              return <InputDiv></InputDiv>
             })
          }
         <button title="Add new skill">+Add skill</button>
@@ -229,12 +233,13 @@ function DialogBox() {
   );
 }
 
-function InputDiv({value}) {
+function InputDiv() {
+  const context = useContext(resumeContext);
+
   return (
     <div className={style.inputDiv}>
       <label htmlFor="skills"></label>
       <input
-      // value={value}
       name="skills"
       type="text"
       placeholder="Enter skill"></input>
