@@ -157,7 +157,6 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-
   return (
     <div className={style.showArea}>
       {resume.skill.map((element) => {
@@ -202,10 +201,20 @@ function DialogBox() {
       <div className={style.topDiv}>
         <h3>Skill group: </h3>
         <label htmlFor="skill group"></label>
-        <input type="text" placeholder="Enter group title"></input>
+        <input
+         value={currentSkill.skillGroup}
+         onClick={(e) => {
+
+         }}
+         type="text" placeholder="Enter group title"></input>
       </div>
       <div className={style.middleDiv}>
         <h3>Skills: </h3>
+         {
+            currentSkill.skillList.map((item,index) => {
+              return <InputDiv value={item}></InputDiv>
+            })
+         }
         <button title="Add new skill">+Add skill</button>
       </div>
       <div className={style.bottomDiv}>
@@ -223,6 +232,9 @@ function InputDiv({value}) {
       <label htmlFor="skills"></label>
       <input
       value={value}
+      onChange={(e) => {
+      
+      }}
       name="skills"
       type="text"
       placeholder="Enter skill"></input>
