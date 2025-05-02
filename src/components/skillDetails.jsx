@@ -26,21 +26,21 @@ function SkillDetails() {
 
   useEffect(() => {
     // ensure that the work section is not expanded while switching resume
-    //temp
-    if (expanded === true) {
-      toggleExpanded();
-    }
+
+    setDialogBoxState(false);
+    setCurrentTarget(null);
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.skill === false) {
       context.changeHiddenComponent("skill");
     }
+
   }, [context.activeResumeId]);
 
   // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
     if (dialogBoxState === true) {
-      toggleDialogBoxState();
+      setDialogBoxState(false)
     }
     setExpanded(!expanded);
   }
@@ -59,8 +59,10 @@ function SkillDetails() {
       toggleExpanded();
     }
 
-    if(dialogBoxState === false){
-      setDialogBoxState(!dialogBoxState);
+    if(dialogBoxState === true){
+      setDialogBoxState(true);
+    }else{
+      setDialogBoxState(!dialogBoxState)
     }
   }
 
@@ -70,6 +72,7 @@ function SkillDetails() {
         expanded,
         dialogBoxState,
         currentTarget,
+        setDialogBoxState,
         toggleExpanded,
         toggleDialogBoxState,
         changeCurrentTarget,
@@ -169,6 +172,7 @@ function ShowArea() {
             className={internal_context.currentTarget === element.id ? style.selected: ""}
             onClick={() => {
               internal_context.changeCurrentTarget(element.id);
+              internal_context.toggleDialogBoxState();
             }}
              >
               <h4>{element.skillGroup + ":  "}</h4>
@@ -196,6 +200,7 @@ function DialogBox() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
   const currentSkill = (resume.skill.filter(item => item.id === internal_context.currentTarget)[0]);
+  if(!currentSkill) return null;
 
   return (
     <div className={style.dialogBox}>
