@@ -123,7 +123,7 @@ function DisplayButton() {
       </button>
       <button
         onClick={() => {
-          context.changeHiddenComponent("additional");
+          context.changeHiddenComponent("skill");
         }}
         title={title}
       >

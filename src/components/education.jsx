@@ -1,5 +1,5 @@
 //styles
-import style from "../styles/work.module.css";
+import style from "../styles/education.module.css";
 
 // assets
 import expandIcon from "../assets/images/expand.svg";
@@ -72,7 +72,7 @@ function Education() {
 function Header() {
   const interanal_context = useContext(internalContext);
   let icon = interanal_context.expanded ? shrinkICon : expandIcon;
-  let title = interanal_context ? "Show less" : "Show more";
+  let title = interanal_context.expanded ? "Show less" : "Show more";
 
   return (
     <div className={style.header}>

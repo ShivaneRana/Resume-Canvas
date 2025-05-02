@@ -72,7 +72,7 @@ function Work() {
 function Header() {
   const interanal_context = useContext(internalContext);
   let icon = interanal_context.expanded ? shrinkICon : expandIcon;
-  let title = interanal_context ? "Show less" : "Show more";
+  let title = interanal_context.expanded ? "Show less" : "Show more";
 
   return (
     <div className={style.header}>
@@ -102,9 +102,9 @@ function DisplayButton() {
   const dialogBoxContext = useContext(internalContext);
   const context = useContext(resumeContext);
   const [icon, setIcon] = useState(
-    context.hiddenComponent.skill ? hideIcon : showIcon,
+    context.hiddenComponent.work ? hideIcon : showIcon,
   );
-  const title = context.hiddenComponent.skill ? "Hide section" : "Show section";
+  const title = context.hiddenComponent.work ? "Hide section" : "Show section";
 
   useEffect(() => {
     setIcon(context.hiddenComponent.work ? hideIcon : showIcon);
