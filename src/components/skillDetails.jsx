@@ -251,7 +251,11 @@ function InputDiv({id,uuid,valueUuid,value}) {
        value={value}
        onChange={(e) => context.changeSkillListItem(id,uuid,valueUuid,e.target.value)}
        name="skills" type="text" placeholder="Enter skill"></input>
-      <button title="Delete skill">
+      <button
+       onClick={() => {
+        context.deleteSkillListItem(id,uuid,valueUuid);
+       }}
+       title="Delete skill">
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
     </div>
