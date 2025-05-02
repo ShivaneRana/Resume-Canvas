@@ -159,6 +159,14 @@ function Content() {
     });
   }
 
+  function removeSkillSet(id,UUID){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      const index = resume.skill.findIndex(element => element.id === UUID);
+      resume.skill.splice(index,1)
+    });
+  }
+
   function changeSkillGroup(id, uuid, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
@@ -220,6 +228,7 @@ function Content() {
         changeSkillGroup,
         changeSkillListItem,
         deleteSkillListItem,
+        removeSkillSet,
         resumeList,
         activeResumeId,
       }}
