@@ -190,6 +190,17 @@ function Content() {
     });
   }
 
+  function deleteSkillListItem(resumeId,skillUuid,valueUuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      const index = resume.skill.findIndex((element) => element.id === skillUuid);
+      if (index !== -1) {
+        const skillListItemIndex = resume.skill[index].skillList.find(element => element === valueUuid);
+        const currentSkillList = resume.skill[index].skillList.splice(skillListItemIndex,1);
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -208,6 +219,7 @@ function Content() {
         addSkillSet,
         changeSkillGroup,
         changeSkillListItem,
+        deleteSkillListItem,
         resumeList,
         activeResumeId,
       }}
