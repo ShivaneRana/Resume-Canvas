@@ -201,14 +201,24 @@ function Content() {
   function deleteSkillListItem(resumeId,skillUuid,valueUuid){
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
-      const index = resume.skill.findIndex((element) => element.id === skillUuid);
-      if (index !== -1) {
-        const skillListItemIndex = resume.skill[index].skillList.find(element => element === valueUuid);
-        const currentSkillList = resume.skill[index].skillList.splice(skillListItemIndex,1);
-      }
+      //index of the targeted skillSet
+      const index = resume.skill.findIndex(element => element.id === skillUuid);
+      const targetSkillItemIndex = resume.skill[index].skillList.findIndex(skill => skill.id === valueUuid);
+      console.log(targetSkillItemIndex);
+      resume.skill[index].skillList.splice(targetSkillItemIndex,1);
     });
   }
 
+  function addNewSkillListItem(resumeId,skillUuid,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      const index = resume.skill.findIndex((element) => element.id === skillUuid);
+      if (index !== -1) {
+        resume.skill[index].skillList.push(value);
+      }
+    });
+  }
+  
   return (
     <resumeContext.Provider
       value={{
@@ -229,6 +239,7 @@ function Content() {
         changeSkillListItem,
         deleteSkillListItem,
         removeSkillSet,
+        addNewSkillListItem,
         resumeList,
         activeResumeId,
       }}
