@@ -27,6 +27,7 @@ function SkillDetails() {
   useEffect(() => {
     // ensure that the work section is not expanded while switching resume
 
+    //reset state variable
     setDialogBoxState(false);
     setCurrentTarget(null);
 
@@ -39,16 +40,10 @@ function SkillDetails() {
 
   // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
-    if (dialogBoxState === true) {
-      setDialogBoxState(false)
-      setCurrentTarget(null)
-    }
     setExpanded(!expanded);
   }
 
   function changeCurrentTarget(id) {
-    console.log(`current target changed to ~`);
-    console.log(id);
     setCurrentTarget(id);
   }
 
@@ -56,15 +51,7 @@ function SkillDetails() {
   // without it may open but the content is shrunk,
   // making it look as if the function is not working.
   function toggleDialogBoxState() {
-    if (expanded === false) {
-      toggleExpanded();
-    }
-
-    if(dialogBoxState === true){
-      setDialogBoxState(true);
-    }else{
-      setDialogBoxState(!dialogBoxState)
-    }
+    setDialogBoxState(!dialogBoxState);
   }
 
   return (
@@ -73,7 +60,6 @@ function SkillDetails() {
         expanded,
         dialogBoxState,
         currentTarget,
-        setDialogBoxState,
         toggleExpanded,
         toggleDialogBoxState,
         changeCurrentTarget,
@@ -95,10 +81,10 @@ function Header() {
   return (
     <div className={style.header}>
       <div>
-        <button onClick={internal_context.toggleExpanded}>
+        <button onClick={() => internal_context.toggleExpanded()}>
           <img alt="expand/collapse icon" src={icon} title={title}></img>
         </button>
-        <h2 onClick={internal_context.toggleExpanded}>Skill: </h2>
+        <h2 onClick={() => internal_context.toggleExpanded()}>Skill: </h2>
       </div>
       <DisplayButton></DisplayButton>
     </div>
@@ -113,6 +99,7 @@ function Content() {
 
   return (
     <div className={style.content}>
+      {/* hide ShowArea if the skill array in empty in the resume */}
       {resume.skill.length !== 0 && <ShowArea></ShowArea>}
       {internal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
@@ -138,7 +125,15 @@ function DisplayButton() {
           const UUID = uuidv4();
           context.addSkillSet(context.activeResumeId,UUID);
           internal_context.changeCurrentTarget(UUID);
-          internal_context.toggleDialogBoxState();
+          // if the dialog box is not display display it.
+          if(internal_context.expanded === false){
+            internal_context.toggleExpanded();
+          }
+
+          if(internal_context.dialogBoxState === false){
+            
+            internal_context.toggleDialogBoxState();
+          }
         }}
       >
         <img alt="add icon" src={addIcon} title="Add work group"></img>
@@ -173,7 +168,12 @@ function ShowArea() {
             className={internal_context.currentTarget === element.id ? style.selected: ""}
             onClick={() => {
               internal_context.changeCurrentTarget(element.id);
-              internal_context.toggleDialogBoxState();
+              if(internal_context.expanded === false){
+              internal_context.toggleExpanded();
+              }
+              if(internal_context.dialogBoxState === false){
+                internal_context.toggleDialogBoxState();
+              }
             }}
              >
               <h4>{element.skillGroup + ":  "}</h4>
@@ -225,7 +225,8 @@ function DialogBox() {
         <button title="Add new skill">+Add skill</button>
       </div>
       <div className={style.bottomDiv}>
-        <button title="Close">
+        <button
+        title="Close">
           <img alt="close icon" src={closeIcon}></img>
         </button>
       </div>
