@@ -20,7 +20,7 @@ function SkillDetails() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
-  const [currentTarget,setCurrentTarget] = useState(null);
+  const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function SkillDetails() {
     setExpanded(!expanded);
   }
 
-  function changeCurrentTarget(id){
+  function changeCurrentTarget(id) {
     setCurrentTarget(id);
   }
 
@@ -148,32 +148,35 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}>
-    {
-      resume.skill.map(element => {
-        return(
-        <div
-        onClick={() => {
-          console.log(element.skillGroup)
-        }}
-        key={element.id}
-        className={style.tray}>
-          <div>
-          <h4>{element.skillGroup+":  "}</h4>
-          {
-            element.skillList.map((item,index) => {
-              return <p key={element.id+"$$$"+index+item}>{(index+1)+"."+item}</p>
-            })
-          }
+  return (
+    <div className={style.showArea}>
+      {resume.skill.map((element) => {
+        return (
+          <div
+            onClick={() => {
+              console.log(element.skillGroup);
+            }}
+            key={element.id}
+            className={style.tray}
+          >
+            <div>
+              <h4>{element.skillGroup + ":  "}</h4>
+              {element.skillList.map((item, index) => {
+                return (
+                  <p key={element.id + "$$$" + index + item}>
+                    {index + 1 + "." + item}
+                  </p>
+                );
+              })}
+            </div>
+            <button title="Delete skill set">
+              <img src={deleteIcon} alt="delete skill set icon"></img>
+            </button>
           </div>
-          <button title="Delete skill set">
-            <img src={deleteIcon} alt="delete skill set icon"></img>
-          </button>
-        </div>
-        )
-      })
-    }
-  </div>;
+        );
+      })}
+    </div>
+  );
 }
 
 function DialogBox() {
@@ -204,16 +207,16 @@ function DialogBox() {
   );
 }
 
-function InputDiv(){
-  return(
+function InputDiv() {
+  return (
     <div className={style.inputDiv}>
-      <label htmlFor="skills"></label> 
+      <label htmlFor="skills"></label>
       <input name="skills" type="text" placeholder="Enter skill"></input>
       <button>
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
     </div>
-  )
+  );
 }
 
 export default SkillDetails;
