@@ -19,14 +19,12 @@ const internalContext = createContext();
 
 function SkillDetails() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false); // false is default value true is temp
+  const [expanded, setExpanded] = useState(false); // false is default value, true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
-    // ensure that the work section is not expanded while switching resume
-
     //reset state variable
     setDialogBoxState(false);
     setCurrentTarget(null);
@@ -214,7 +212,7 @@ function DialogBox() {
             context.changeSkillGroup(
               context.activeResumeId,
               currentSkill.id,
-              e.target.value,
+              e.target.value
             );
           }}
           type="text"
@@ -223,8 +221,8 @@ function DialogBox() {
       </div>
       <div className={style.middleDiv}>
         <h3>Skills: </h3>
-        {currentSkill.skillList.map((item, index) => {
-          return <InputDiv key={item.id}></InputDiv>;
+        {currentSkill.skillList.map((item) => {
+          return <InputDiv key={item.id} value={item.content} id={context.activeResumeId} valueUuid={item.id} uuid={currentSkill.id}></InputDiv>;
         })}
         <button title="Add new skill">+Add skill</button>
       </div>
@@ -242,7 +240,7 @@ function DialogBox() {
   );
 }
 
-function InputDiv({value}) {
+function InputDiv({id,uuid,valueUuid,value}) {
   const context = useContext(resumeContext);
   const internal_context = useContext(internalContext);
 
@@ -251,6 +249,7 @@ function InputDiv({value}) {
       <label htmlFor="skills"></label>
       <input
        value={value}
+       onChange={(e) => context.changeSkillListItem(id,uuid,valueUuid,e.target.value)}
        name="skills" type="text" placeholder="Enter skill"></input>
       <button title="Delete skill">
         <img alt="delete icon" src={deleteIcon}></img>
