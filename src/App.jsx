@@ -145,7 +145,7 @@ function Content() {
     });
   }
 
-  function addSkill(id, newUUID) {
+  function addSkillSet(id, newUUID) {
     const tempUUID = newUUID;
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
@@ -184,7 +184,7 @@ function Content() {
         clearActiveResume,
         changePersonalDetail,
         changeAboutMe,
-        addSkill,
+        addSkillSet,
         changeSkillGroup,
         resumeList,
         activeResumeId,
@@ -214,20 +214,39 @@ const exampleTemplate = {
     {
       id: uuidv4(),
       skillGroup: "Technical Skill",
-      skillList: ["Github", "Git", "Vscode", "Kubernetes", "docker"],
+      skillList: [
+        { id: uuidv4(), content: "Github" },
+        { id: uuidv4(), content: "Git" },
+        { id: uuidv4(), content: "Vscode" },
+        { id: uuidv4(), content: "Kubernetes" },
+        { id: uuidv4(), content: "docker" },
+      ],
     },
     {
       id: uuidv4(),
       skillGroup: "Frontend Skill",
-      skillList: ["GSAP", "React", "Nest.js", "angular", "vue"],
+      skillList: [
+        { id: uuidv4(), content: "GSAP" },
+        { id: uuidv4(), content: "React" },
+        { id: uuidv4(), content: "Nest.js" },
+        { id: uuidv4(), content: "angular" },
+        { id: uuidv4(), content: "vue" },
+      ],
     },
     {
       id: uuidv4(),
       skillGroup: "Backend Skill",
-      skillList: ["SQL", "Nosql", "mongodb", "express.js", "posgresSQL"],
+      skillList: [
+        { id: uuidv4(), content: "SQL" },
+        { id: uuidv4(), content: "Nosql" },
+        { id: uuidv4(), content: "mongodb" },
+        { id: uuidv4(), content: "express.js" },
+        { id: uuidv4(), content: "posgresSQL" },
+      ],
     },
   ],
 };
+
 
 const baseTemplate = {
   personalDetail: {
