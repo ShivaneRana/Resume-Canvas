@@ -145,11 +145,16 @@ function ShowArea() {
     {
       resume.skill.map(element => {
         return(
-        <div key={element.id} className={style.tray}>
+        <div
+        onClick={() => {
+          console.log(element.skillGroup)
+        }}
+        key={element.id}
+        className={style.tray}>
           <h4>{element.skillGroup+":  "}</h4>
           {
             element.skillList.map((item,index) => {
-              return <p>{(index+1)+"."+item}</p>
+              return <p key={element.id+"$$$"+index+item}>{(index+1)+"."+item}</p>
             })
           }
         </div>
