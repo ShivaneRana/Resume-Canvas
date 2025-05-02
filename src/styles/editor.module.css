@@ -27,6 +27,7 @@
   width: 30px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .resumeSlot > button:hover {
@@ -52,6 +53,7 @@
   width: 30px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .buttonSlot > button:hover {

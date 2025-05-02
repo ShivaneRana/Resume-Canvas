@@ -196,10 +196,10 @@ function DialogBox() {
         <InputDiv></InputDiv>
         <InputDiv></InputDiv>
         <InputDiv></InputDiv>
-        <button>+Add skill</button>
+        <button title="Add new skill">+Add skill</button>
       </div>
       <div className={style.bottomDiv}>
-        <button>
+        <button title="Close">
           <img alt="close icon" src={closeIcon}></img>
         </button>
       </div>
@@ -212,7 +212,7 @@ function InputDiv() {
     <div className={style.inputDiv}>
       <label htmlFor="skills"></label>
       <input name="skills" type="text" placeholder="Enter skill"></input>
-      <button>
+      <button title="Delete skill">
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
     </div>
