@@ -17,16 +17,16 @@ const internalContext = createContext();
 
 function SkillDetails() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false); // false is default value true is temp
+  const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const context = useContext(resumeContext);
 
   useEffect(() => {
     // ensure that the work section is not expanded while switching resume
     //temp
-    if (expanded === true) {
-      toggleExpanded();
-    }
+    // if (expanded === true) {
+    //   toggleExpanded();
+    // }
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.skill === false) {
@@ -93,7 +93,8 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
+      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
+      <DialogBox></DialogBox>
     </div>
   );
 }
@@ -138,7 +139,9 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}></div>;
+  return <div className={style.showArea}>
+   
+  </div>;
 }
 
 function DialogBox() {
@@ -146,7 +149,13 @@ function DialogBox() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.dialogBox}></div>;
+  return <div className={style.dialogBox}>
+    <div className={style.topDiv}>
+        <h3>Skill group: </h3>
+    </div>
+    <div className={style.middleDiv}></div>
+    <div className={style.bottomDiv}></div>
+  </div>;
 }
 
 export default SkillDetails;

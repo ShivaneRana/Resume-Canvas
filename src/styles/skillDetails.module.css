@@ -50,37 +50,14 @@
   height: 100%;
 }
 
-.showArea {
-  width: 95%;
-}
-
-.tray {
-  margin-bottom: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tray:hover{
-  cursor: pointer;
-}
-
-.tray > p {
-  font-weight: bold;
-}
-
-.tray > p:hover {
-  text-decoration: underline;
+.showArea{
+  width: 100%;
 }
 
 .dialogBox {
   width: 95%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
+  min-height: 300px;
+  background-color: red;
   outline: 2px dashed black;
   margin-top: 20px;
 }
