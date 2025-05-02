@@ -228,7 +228,15 @@ function DialogBox() {
         {currentSkill.skillList.map((item) => {
           return <InputDiv key={item.id} value={item.content} id={context.activeResumeId} valueUuid={item.id} uuid={currentSkill.id}></InputDiv>;
         })}
-        <button title="Add new skill">+Add skill</button>
+        <button
+        onClick={() => {
+          const newSkill = {
+            id:uuidv4(),
+            content:"",
+          }
+          context.addNewSkillListItem(context.activeResumeId,currentSkill.id,newSkill);
+        }}
+        title="Add new skill">+Add skill</button>
       </div>
       <div className={style.bottomDiv}>
         <button
