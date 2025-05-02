@@ -165,8 +165,11 @@
   width: 95%;
   display: flex;
   align-items: center;
-  gap: 10px;
   flex-wrap: wrap;
+}
+
+.tray > div > p{
+  margin-left: 10px;
 }
 
 .tray > button {
