@@ -159,12 +159,12 @@ function Content() {
     });
   }
 
-  function changeSkill(id,uuid,value){
+  function changeSkillGroup(id,uuid,value){
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
       const index = resume.skill.findIndex(element => element.id === uuid);
       if(index !== -1){
-        resume.skill[index] = value;
+        resume.skill[index].skillGroup = value;
       }
     })
   }
@@ -185,7 +185,7 @@ function Content() {
         changePersonalDetail,
         changeAboutMe,
         addSkill,
-        changeSkill,
+        changeSkillGroup,
         resumeList,
         activeResumeId,
       }}
