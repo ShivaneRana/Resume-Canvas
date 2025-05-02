@@ -88,6 +88,28 @@
   margin-top: 5px;
 }
 
+.tray {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tray > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tray > div > p{
+  margin-left: 10px;
+  
+}
+
+.skillDiv > .tray > div{
+  display: flex;
+}
+
 .educationDiv {
   margin-top: 5px;
 }
