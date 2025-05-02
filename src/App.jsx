@@ -169,6 +169,27 @@ function Content() {
     });
   }
 
+  function changeSkillGroup(id,uuid,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === id);
+      const index = resume.skill.findIndex((element) => element.id === uuid);
+      if (index !== -1) {
+        resume.skill[index].skillGroup = value;
+      }
+    });
+  }
+
+  function changeSkillListItem(resumeId,skillUuid,valueUuid,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      const index = resume.skill.findIndex((element) => element.id === skillUuid);
+      if (index !== -1) {
+        const targetSkill = resume.skill[index].skillList.find(skill => skill.id === valueUuid);
+        targetSkill.content = value;
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -186,6 +207,7 @@ function Content() {
         changeAboutMe,
         addSkillSet,
         changeSkillGroup,
+        changeSkillListItem,
         resumeList,
         activeResumeId,
       }}
