@@ -90,10 +90,13 @@ function Header() {
 
 function Content() {
   const interanal_context = useContext(internalContext);
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
 
   return (
     <div className={style.content}>
-      <ShowArea></ShowArea>
+      {resume.skill.length !== 0 && <ShowArea></ShowArea>}
       {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
       <DialogBox></DialogBox>
     </div>
@@ -138,7 +141,22 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}></div>;
+  return <div className={style.showArea}>
+    {
+      resume.skill.map(element => {
+        return(
+        <div key={element.id} className={style.tray}>
+          <h4>{element.skillGroup+":  "}</h4>
+          {
+            element.skillList.map((item,index) => {
+              return <p>{(index+1)+"."+item}</p>
+            })
+          }
+        </div>
+        )
+      })
+    }
+  </div>;
 }
 
 function DialogBox() {
