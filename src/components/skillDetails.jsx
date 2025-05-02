@@ -175,7 +175,7 @@ function ShowArea() {
             >
               <h4>{element.skillGroup + ":  "}</h4>
               {element.skillList.map((item, index) => {
-                return <p key={item.id}>{index + 1 + "." + item.content}</p>;
+                return <p key={item.id}>{` •` + item.content}</p>;
               })}
             </div>
             <button
