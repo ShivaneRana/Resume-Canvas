@@ -52,12 +52,99 @@
 
 .showArea {
   width: 100%;
+  min-height: 300px;
+  background-color: red;
 }
 
 .dialogBox {
-  width: 95%;
-  min-height: 300px;
-  background-color: red;
-  outline: 2px dashed black;
+  width: 100%;
   margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  outline: 2px dashed black;
+}
+
+.topDiv,.middleDiv{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.topDiv > input{
+  min-width: 100%;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+/* add skill */
+.middleDiv > button{
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  color: gray;
+}
+
+.middleDiv > button:hover{
+  color: black;
+}
+
+.bottomDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.bottomDiv > button{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomDiv > button:hover{
+  transform: scale(1.3);
+}
+
+.bottomDiv > button > img{
+  width: 30px;
+  height: 30px;
+}
+
+.inputDiv{
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputDiv > input{
+  width: 95%;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.inputDiv > button{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputDiv > button > img{
+  height: 30px;
+  width: 30px;
 }

@@ -8,6 +8,7 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 import addIcon from "../assets/images/add.svg";
 import closeIcon from "../assets/images/close.svg";
+import deleteIcon from "../assets/images/delete.svg";
 
 //components
 import { useState, useEffect, createContext, useContext } from "react";
@@ -149,11 +150,35 @@ function DialogBox() {
     <div className={style.dialogBox}>
       <div className={style.topDiv}>
         <h3>Skill group: </h3>
+        <label htmlFor="skill group"></label>
+        <input type="text" placeholder="Enter group title"></input>
       </div>
-      <div className={style.middleDiv}></div>
-      <div className={style.bottomDiv}></div>
+      <div className={style.middleDiv}>
+        <h3>Skills: </h3>
+        <InputDiv></InputDiv>
+        <InputDiv></InputDiv>
+        <InputDiv></InputDiv>
+        <button>+Add skill</button>
+      </div>
+      <div className={style.bottomDiv}>
+        <button>
+          <img alt="close icon" src={closeIcon}></img>
+        </button>
+      </div>
     </div>
   );
+}
+
+function InputDiv(){
+  return(
+    <div className={style.inputDiv}>
+      <label htmlFor="skills"></label> 
+      <input name="skills" type="text" placeholder="Enter skill"></input>
+      <button>
+        <img alt="delete icon" src={deleteIcon}></img>
+      </button>
+    </div>
+  )
 }
 
 export default SkillDetails;
