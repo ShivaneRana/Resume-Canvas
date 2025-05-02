@@ -20,6 +20,7 @@ function SkillDetails() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
+  const [currentTarget,setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
@@ -43,6 +44,10 @@ function SkillDetails() {
     setExpanded(!expanded);
   }
 
+  function changeCurrentTarget(id){
+    setCurrentTarget(id);
+  }
+
   // exapand content when toggleing dialogBox state
   // without it may open but the content is shrunk,
   // making it look as if the function is not working.
@@ -58,8 +63,10 @@ function SkillDetails() {
       value={{
         expanded,
         dialogBoxState,
+        currentTarget,
         toggleExpanded,
         toggleDialogBoxState,
+        changeCurrentTarget,
       }}
     >
       <div className={style.mainContainer}>
@@ -151,12 +158,17 @@ function ShowArea() {
         }}
         key={element.id}
         className={style.tray}>
+          <div>
           <h4>{element.skillGroup+":  "}</h4>
           {
             element.skillList.map((item,index) => {
               return <p key={element.id+"$$$"+index+item}>{(index+1)+"."+item}</p>
             })
           }
+          </div>
+          <button title="Delete skill set">
+            <img src={deleteIcon} alt="delete skill set icon"></img>
+          </button>
         </div>
         )
       })
