@@ -159,11 +159,11 @@ function Content() {
     });
   }
 
-  function removeSkillSet(id,UUID){
+  function removeSkillSet(id, UUID) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
-      const index = resume.skill.findIndex(element => element.id === UUID);
-      resume.skill.splice(index,1)
+      const index = resume.skill.findIndex((element) => element.id === UUID);
+      resume.skill.splice(index, 1);
     });
   }
 
@@ -177,7 +177,7 @@ function Content() {
     });
   }
 
-  function changeSkillGroup(id,uuid,value){
+  function changeSkillGroup(id, uuid, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
       const index = resume.skill.findIndex((element) => element.id === uuid);
@@ -187,38 +187,48 @@ function Content() {
     });
   }
 
-  function changeSkillListItem(resumeId,skillUuid,valueUuid,value){
+  function changeSkillListItem(resumeId, skillUuid, valueUuid, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
-      const index = resume.skill.findIndex((element) => element.id === skillUuid);
+      const index = resume.skill.findIndex(
+        (element) => element.id === skillUuid,
+      );
       if (index !== -1) {
-        const targetSkill = resume.skill[index].skillList.find(skill => skill.id === valueUuid);
+        const targetSkill = resume.skill[index].skillList.find(
+          (skill) => skill.id === valueUuid,
+        );
         targetSkill.content = value;
       }
     });
   }
 
-  function deleteSkillListItem(resumeId,skillUuid,valueUuid){
+  function deleteSkillListItem(resumeId, skillUuid, valueUuid) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       //index of the targeted skillSet
-      const index = resume.skill.findIndex(element => element.id === skillUuid);
-      const targetSkillItemIndex = resume.skill[index].skillList.findIndex(skill => skill.id === valueUuid);
+      const index = resume.skill.findIndex(
+        (element) => element.id === skillUuid,
+      );
+      const targetSkillItemIndex = resume.skill[index].skillList.findIndex(
+        (skill) => skill.id === valueUuid,
+      );
       console.log(targetSkillItemIndex);
-      resume.skill[index].skillList.splice(targetSkillItemIndex,1);
+      resume.skill[index].skillList.splice(targetSkillItemIndex, 1);
     });
   }
 
-  function addNewSkillListItem(resumeId,skillUuid,value){
+  function addNewSkillListItem(resumeId, skillUuid, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
-      const index = resume.skill.findIndex((element) => element.id === skillUuid);
+      const index = resume.skill.findIndex(
+        (element) => element.id === skillUuid,
+      );
       if (index !== -1) {
         resume.skill[index].skillList.push(value);
       }
     });
   }
-  
+
   return (
     <resumeContext.Provider
       value={{

@@ -179,10 +179,11 @@ function ShowArea() {
               })}
             </div>
             <button
-            onClick={() => {
-              context.removeSkillSet(context.activeResumeId,element.id);
-            }}
-            title="Delete skill set">
+              onClick={() => {
+                context.removeSkillSet(context.activeResumeId, element.id);
+              }}
+              title="Delete skill set"
+            >
               <img src={deleteIcon} alt="delete skill set icon"></img>
             </button>
           </div>
@@ -216,7 +217,7 @@ function DialogBox() {
             context.changeSkillGroup(
               context.activeResumeId,
               currentSkill.id,
-              e.target.value
+              e.target.value,
             );
           }}
           type="text"
@@ -226,25 +227,41 @@ function DialogBox() {
       <div className={style.middleDiv}>
         <h3>Skills: </h3>
         {currentSkill.skillList.map((item) => {
-          return <InputDiv key={item.id} value={item.content} id={context.activeResumeId} valueUuid={item.id} uuid={currentSkill.id}></InputDiv>;
+          return (
+            <InputDiv
+              key={item.id}
+              value={item.content}
+              id={context.activeResumeId}
+              valueUuid={item.id}
+              uuid={currentSkill.id}
+            ></InputDiv>
+          );
         })}
         <button
-        onClick={() => {
-          const newSkill = {
-            id:uuidv4(),
-            content:"",
-          }
-          context.addNewSkillListItem(context.activeResumeId,currentSkill.id,newSkill);
-        }}
-        title="Add new skill">+Add skill</button>
+          onClick={() => {
+            const newSkill = {
+              id: uuidv4(),
+              content: "",
+            };
+            context.addNewSkillListItem(
+              context.activeResumeId,
+              currentSkill.id,
+              newSkill,
+            );
+          }}
+          title="Add new skill"
+        >
+          +Add skill
+        </button>
       </div>
       <div className={style.bottomDiv}>
         <button
-         onClick={() => {
+          onClick={() => {
             internal_context.toggleDialogBoxState();
             internal_context.changeCurrentTarget(null);
-         }}
-         title="Close">
+          }}
+          title="Close"
+        >
           <img alt="close icon" src={closeIcon}></img>
         </button>
       </div>
@@ -252,7 +269,7 @@ function DialogBox() {
   );
 }
 
-function InputDiv({id,uuid,valueUuid,value}) {
+function InputDiv({ id, uuid, valueUuid, value }) {
   const context = useContext(resumeContext);
   const internal_context = useContext(internalContext);
 
@@ -260,14 +277,20 @@ function InputDiv({id,uuid,valueUuid,value}) {
     <div className={style.inputDiv}>
       <label htmlFor="skills"></label>
       <input
-       value={value}
-       onChange={(e) => context.changeSkillListItem(id,uuid,valueUuid,e.target.value)}
-       name="skills" type="text" placeholder="Enter skill"></input>
+        value={value}
+        onChange={(e) =>
+          context.changeSkillListItem(id, uuid, valueUuid, e.target.value)
+        }
+        name="skills"
+        type="text"
+        placeholder="Enter skill"
+      ></input>
       <button
-       onClick={() => {
-        context.deleteSkillListItem(id,uuid,valueUuid);
-       }}
-       title="Delete skill">
+        onClick={() => {
+          context.deleteSkillListItem(id, uuid, valueUuid);
+        }}
+        title="Delete skill"
+      >
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
     </div>
