@@ -163,9 +163,10 @@ function ShowArea() {
         return (
           <div
             key={element.id}
-            className={internal_context.currentTarget === element.id ? `${style.tray} ${style.selected}` : style.tray}
+            className={style.tray}
           >
             <div
+            className={internal_context.currentTarget === element.id ? style.selected: ""}
             onClick={() => {
               internal_context.changeCurrentTarget(element.id);
             }}
