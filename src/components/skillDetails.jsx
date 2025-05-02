@@ -226,7 +226,11 @@ function DialogBox() {
         <button title="Add new skill">+Add skill</button>
       </div>
       <div className={style.bottomDiv}>
-        <button title="Close">
+        <button
+         onClick={() => {
+            internal_context.toggleDialogBoxState();
+         }}
+         title="Close">
           <img alt="close icon" src={closeIcon}></img>
         </button>
       </div>
