@@ -210,33 +210,10 @@ function DialogBox() {
           <input
             value={currentProject.projectTitle}
             onChange={(e) => {
-              context.changeProjectDetail(
-                context.activeResumeId,
-                currentProject.id,
-                "projectTitle",
-                e.target.value,
-              );
+              context.changeProjectDetail(context.activeResumeId,currentProject.id,"projectTitle",e.target.value);
             }}
             name="projectName"
             placeholder="Enter project name"
-          ></input>
-        </div>
-        {/* project summary */}
-        <div>
-          <label htmlFor="summary"></label>
-          <h4>Project summary: </h4>
-          <input
-            value={currentProject.summary}
-            onChange={(e) => {
-              context.changeProjectDetail(
-                context.activeResumeId,
-                currentProject.id,
-                "summary",
-                e.target.value,
-              );
-            }}
-            name="summary"
-            placeholder="Enter project summary date"
           ></input>
         </div>
         {/* project completion date */}
@@ -246,12 +223,7 @@ function DialogBox() {
           <input
             value={currentProject.doc}
             onChange={(e) => {
-              context.changeProjectDetail(
-                context.activeResumeId,
-                currentProject.id,
-                "doc",
-                e.target.value,
-              );
+              context.changeProjectDetail(context.activeResumeId,currentProject.id,"doc",e.target.value);
             }}
             name="completionDate"
             placeholder="Enter project completion date"
@@ -264,12 +236,7 @@ function DialogBox() {
           <input
             value={currentProject.link}
             onChange={(e) => {
-              context.changeProjectDetail(
-                context.activeResumeId,
-                currentProject.id,
-                "link",
-                e.target.value,
-              );
+              context.changeProjectDetail(context.activeResumeId,currentProject.id,"link",e.target.value);
             }}
             name="link"
             placeholder="Enter project link"
