@@ -471,8 +471,59 @@ const exampleTemplate = {
       },
     ],
   },
-]
-
+  ],
+  additional: [
+  {
+    id: uuidv4(),
+    category: "Certifications",
+    itemList: [
+      {
+        id: uuidv4(),
+        content: "AWS Certified Solutions Architect – Associate (2023)",
+      },
+      {
+        id: uuidv4(),
+        content: "Certified Kubernetes Administrator (CKA) – 2022",
+      },
+      {
+        id: uuidv4(),
+        content: "Scrum Alliance Certified ScrumMaster® (CSM) – 2021",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    category: "Languages",
+    itemList: [
+      {
+        id: uuidv4(),
+        content: "Fluent in English  ",
+      },
+      {
+        id: uuidv4(),
+        content: "Fluent in Spanish",
+      },
+    ],
+  },
+  ],
+  education: [
+  {
+    id: uuidv4(),
+    name: "University of California, Berkeley",
+    gpa: "3.85",
+    startDate: "August 2014",
+    endDate: "May 2018",
+    course: "B.Sc. in Computer Science",
+  },
+  {
+    id: uuidv4(),
+    name: "Stanford University",
+    gpa: "3.92",
+    startDate: "September 2019",
+    endDate: "June 2021",
+    course: "M.Sc. in Software Engineering",
+  }
+  ],
 };
 
 const baseTemplate = {
@@ -489,6 +540,8 @@ const baseTemplate = {
   skill: [],
   project: [],
   work:[],
+  additional:[],
+  education:[],
 };
 
 export default App;
