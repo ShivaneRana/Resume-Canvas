@@ -255,6 +255,17 @@ function Content() {
     });
   }
 
+  function changeProjectFeature(resumeId,uuid,valueUUID,value){
+    updateResumeList(draft => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if(resume){
+        const index = resume.project.findIndex(element => element.id === uuid);
+        const targetFeatureIndex = resume.project[index].featureList.findIndex(feature => feature.id === valueUUID);
+        resume.project[index].featureList[targetFeatureIndex].content = value;
+      }
+    })
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -278,6 +289,7 @@ function Content() {
         addNewSkillListItem,
         deleteProject,
         addProject,
+        changeProjectFeature,
         resumeList,
         activeResumeId,
       }}
