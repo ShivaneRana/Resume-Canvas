@@ -250,7 +250,18 @@ function DialogBox() {
     </div>
     <div className={style.middleDiv}>
       <h4>Features: </h4>
-      <InputDiv></InputDiv>
+       {
+        currentProject.featureList.map(element => {
+          return <InputDiv
+          key={element.id}
+          value={element.content}
+          id={context.activeResumeId}
+          uuid={currentProject.id}
+          valueUUID={element.id}
+          >
+          </InputDiv>
+        }) 
+       }
       <button title="Add new features">
         +Add new feature
       </button>
@@ -268,16 +279,20 @@ function DialogBox() {
   </div>;
 }
 
-function InputDiv(){
-  const internal_context = useContext(internalContext);
+function InputDiv({id,uuid,valueUUID,value}){
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
-  const resume = context.resumeList[index];
 
   return(
     <div className={style.inputDiv}>
       <label htmlFor="projectFeature"></label>
-      <input placeholder="Enter features" name="projectFeatures"></input>
+      <input
+      value={value}
+      onChange={(e) => {
+        context.changeProjectFeature(id,uuid,valueUUID,e.target.value);
+      }}
+      placeholder="Enter features"
+      name="projectFeatures"></input>
       <button>
         <img alt="delete feature" src={deleteIcon}></img>
       </button>
