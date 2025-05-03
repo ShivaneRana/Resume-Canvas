@@ -152,7 +152,7 @@ function ShowArea() {
       resume.project.map(item => {
           return <div className={style.tray} key={item.id}>
             <div onClick={() => {
-              console.log(item.id) 
+              internal_context.changeCurrentTarget(item.id);
             }}>
               <h4>{item.projectTitle}</h4>
             </div>
@@ -173,11 +173,34 @@ function ShowArea() {
 }
 
 function DialogBox() {
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.dialogBox}></div>;
+  const currentProject = resume.project.filter(item => item.id === internal_context.currentTarget)[0];
+  if(!currentProject) return null;
+
+  return <div className={style.dialogBox}>
+
+  </div>;
+}
+
+function InputDiv(){
+  const internal_context = useContext(internalContext);
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
+  return(
+    <div className={style.inputDiv}>
+      <label htmlFor="projectFeatures"></label>
+      <input name="projectFeatures"></input>
+      <button>
+        <img alt="delete feature" src={deleteIcon}></img>
+      </button>
+    </div>
+  )
 }
 
 export default Project;
