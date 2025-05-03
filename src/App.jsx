@@ -277,6 +277,20 @@ function Content() {
     })
   }
 
+  function addNewFeature(resumeId,uuid){
+    const tempid = uuidv4();
+    updateResumeList(draft => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if(resume){
+        const index = resume.project.findIndex(element => element.id === uuid);
+        resume.project[index].featureList.push({
+          id:tempId,
+          content:""
+        });
+      }
+    })
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -302,6 +316,7 @@ function Content() {
         addProject,
         changeProjectFeature,
         deleteProjectFeature,
+        addNewFeature,
         resumeList,
         activeResumeId,
       }}
