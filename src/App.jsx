@@ -266,6 +266,17 @@ function Content() {
     })
   }
 
+  function deleteProjectFeature(resumeId,uuid,valueUUID){
+    updateResumeList(draft => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if(resume){
+        const index = resume.project.findIndex(element => element.id === uuid);
+        const targetFeatureIndex = resume.project[index].featureList.findIndex(feature => feature.id === valueUUID);
+        resume.project[index].featureList.splice(targetFeatureIndex,1);
+      }
+    })
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -290,6 +301,7 @@ function Content() {
         deleteProject,
         addProject,
         changeProjectFeature,
+        deleteProjectFeature,
         resumeList,
         activeResumeId,
       }}
