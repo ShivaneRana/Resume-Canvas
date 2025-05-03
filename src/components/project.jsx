@@ -12,6 +12,7 @@ import deleteIcon from "../assets/images/delete.svg";
 
 //components
 import { useState, useEffect, createContext, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { resumeContext } from "../App.jsx";
 
 const internalContext = createContext();
@@ -117,6 +118,10 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
+          const UUID = uuidv4();
+          context.addProject(context.activeResumeId, UUID);
+          internal_context.changeCurrentTarget(UUID);
+
           if (internal_context.expanded === false) {
             internal_context.toggleExpanded();
           }
@@ -151,10 +156,25 @@ function ShowArea() {
     {
       resume.project.map(item => {
           return <div className={style.tray} key={item.id}>
-            <div onClick={() => {
+            <div
+             className={
+                internal_context.currentTarget === item.id
+                  ? style.selected
+                  : ""
+             }
+            onClick={() => {
               internal_context.changeCurrentTarget(item.id);
+
+              if(internal_context.expanded === false){
+                internal_context.toggleExpanded();
+              }
+              
+              if(internal_context.dialogBoxState === false){
+                internal_context.toggleDialogBoxState();
+              }
+
             }}>
-              <h4>{item.projectTitle}</h4>
+              <h4>{item.projectTitle+": "}</h4>
             </div>
             <button
             onClick={() => {
