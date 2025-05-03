@@ -12,21 +12,20 @@ import closeIcon from "../assets/images/close.svg";
 //components
 import { useState, useEffect, createContext, useContext } from "react";
 import { resumeContext } from "../App.jsx";
-
+import { v4 as uuidv4 } from "uuid";
 const internalContext = createContext();
 
 function Work() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false); // false is default value true is temp
+  const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
+  const [currentTarget,setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
-    // ensure that the work section is not expanded while switching resume
-    //temp
-    if (expanded === true) {
-      toggleExpanded();
-    }
+    // reset state variable
+    setDialogBoxState(false);
+    setCurrentTarget(null);
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.work === false) {
@@ -34,22 +33,16 @@ function Work() {
     }
   }, [context.activeResumeId]);
 
-  // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
-    if (dialogBoxState === true) {
-      toggleDialogBoxState();
-    }
     setExpanded(!expanded);
   }
 
-  // exapand content when toggleing dialogBox state
-  // without it may open but the content is shrunk,
-  // making it look as if the function is not working.
   function toggleDialogBoxState() {
-    if (expanded === false) {
-      toggleExpanded();
-    }
     setDialogBoxState(!dialogBoxState);
+  }
+
+  function changeCurrentTarget(id){
+    setCurrentTarget(id);
   }
 
   return (
@@ -57,6 +50,8 @@ function Work() {
       value={{
         expanded,
         dialogBoxState,
+        currentTarget,
+        changeCurrentTarget,
         toggleExpanded,
         toggleDialogBoxState,
       }}
@@ -99,7 +94,7 @@ function Content() {
 }
 
 function DisplayButton() {
-  const dialogBoxContext = useContext(internalContext);
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const [icon, setIcon] = useState(
     context.hiddenComponent.work ? hideIcon : showIcon,
@@ -114,7 +109,16 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
-          dialogBoxContext.toggleDialogBoxState();
+          const UUID = uuidv4();
+          internal_context.changeCurrentTarget(UUID);
+          console.log("new uuid"+UUID)
+          if(internal_context.expanded === false){
+            internal_context.toggleExpanded();
+          }
+
+          if(internal_context.dialogBoxState === false){
+            internal_context.toggleDialogBoxState();
+          }
         }}
       >
         <img alt="add icon" src={addIcon} title="Add work experience"></img>
