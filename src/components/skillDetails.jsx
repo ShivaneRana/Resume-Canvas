@@ -154,7 +154,7 @@ function ShowArea() {
 
   return (
     <div className={style.showArea}>
-      {resume.skill.map((element) => {
+      {resume.skill.map((element,index) => {
         return (
           <div key={element.id} className={style.tray}>
             <div
@@ -173,7 +173,7 @@ function ShowArea() {
                 }
               }}
             >
-              <h4>{element.skillGroup + ":  "}</h4>
+              <h4>{(index+1)+"."+element.skillGroup+":  "}</h4>
               {element.skillList.map((item, index) => {
                 return <p key={item.id}>{` •` + item.content}</p>;
               })}
