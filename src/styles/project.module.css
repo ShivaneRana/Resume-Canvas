@@ -84,3 +84,33 @@
   height: 30px;
   width: 30px;
 }
+
+.inputDiv {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputDiv > input {
+  width: 95%;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.inputDiv > button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.inputDiv > button > img {
+  height: 30px;
+  width: 30px;
+}
