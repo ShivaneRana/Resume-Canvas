@@ -445,6 +445,34 @@ const exampleTemplate = {
       ],
     },
   ],
+  work: [
+  {
+    id: uuidv4(),
+    company: "TechSphere Inc.",
+    position: "Senior Full-Stack Developer",
+    startDate: "March 2021",
+    endDate: "Present",
+    address: "San Francisco, CA, USA",
+    highlightList: [
+      {
+        id: uuidv4(),
+        content:
+          "Led the development of a scalable internal tool using React, Node.js, and PostgreSQL, reducing operational workload by 30%.",
+      },
+      {
+        id: uuidv4(),
+        content:
+          "Introduced automated testing (Jest, Cypress), increasing test coverage from 40% to 85% and improving release reliability.",
+      },
+      {
+        id: uuidv4(),
+        content:
+          "Collaborated cross-functionally with design, product, and DevOps teams to implement CI/CD pipelines and optimize deployment workflows.",
+      },
+    ],
+  },
+]
+
 };
 
 const baseTemplate = {
@@ -460,6 +488,7 @@ const baseTemplate = {
   aboutMe: "",
   skill: [],
   project: [],
+  work:[],
 };
 
 export default App;
