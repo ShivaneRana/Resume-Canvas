@@ -79,15 +79,17 @@ function Skill() {
       <hr className={style.line}></hr>
       <div className={style.tray}>
         {resume.skill.map((item) => {
+          if(item.skillGroup !== ""){
           return (
             <div key={item.id}>
               <h4>{item.skillGroup + ": "}</h4>
               {item.skillList.map((skill) => {
+                if(skill.content !== ""){
                 return <p key={skill.id}>{` •` + skill.content}</p>;
-              })}
+              }})}
             </div>
           );
-        })}
+        }})}
       </div>
     </div>
   );
@@ -118,9 +120,7 @@ function Project() {
       <div className={style.projectTray}>
         {
           resume.project.map(item => {
-            if(item.projectTitle === ""){
-            }
-            else{
+            if(item.projectTitle !== ""){
             return(<div
             key={item.id}
             >
@@ -137,10 +137,11 @@ function Project() {
                 <ul>
                   {
                     item.featureList.map(element => {
+                      if(element.content !== ""){
                       return <li>
-                        {element.content};
+                        {element.content}
                       </li>
-                    })
+                    }})
                   }
                 </ul>
               </div>
