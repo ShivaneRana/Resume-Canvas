@@ -182,7 +182,22 @@ function DialogBox() {
   if(!currentProject) return null;
 
   return <div className={style.dialogBox}>
+    <div className={style.topDiv}>
 
+    </div>
+    <div className={style.middle}>
+
+    </div>
+    <div className={style.bottomDiv}>
+      <button title="Close"
+        onClick={() => {
+          internal_context.changeCurrentTarget(null)
+          internal_context.toggleDialogBoxState();
+        }}
+      >
+        <img alt="close icon" src={closeIcon}></img>
+      </button>
+    </div>
   </div>;
 }
 
