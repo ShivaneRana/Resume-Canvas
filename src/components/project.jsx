@@ -17,28 +17,26 @@ const internalContext = createContext();
 
 function Project() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false); // false is default value true is temp
+  const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
+  const [currentTarget,setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
-    // ensure that the work section is not expanded while switching resume
-    //temp
-    if (expanded === true) {
-      toggleExpanded();
-    }
+
+    // set these values to default
+    setDialogBoxState(false);
+    setCurrentTarget(null);
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.project === false) {
       context.changeHiddenComponent("project");
     }
+
   }, [context.activeResumeId]);
 
   // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
-    if (dialogBoxState === true) {
-      toggleDialogBoxState();
-    }
     setExpanded(!expanded);
   }
 
@@ -46,10 +44,11 @@ function Project() {
   // without it may open but the content is shrunk,
   // making it look as if the function is not working.
   function toggleDialogBoxState() {
-    if (expanded === false) {
-      toggleExpanded();
-    }
     setDialogBoxState(!dialogBoxState);
+  }
+
+  function changeCurrentTarget(id){
+    setCurrentTarget(id);
   }
 
   return (
@@ -57,8 +56,10 @@ function Project() {
       value={{
         expanded,
         dialogBoxState,
+        currentTarget,
         toggleExpanded,
         toggleDialogBoxState,
+        changeCurrentTarget,
       }}
     >
       <div className={style.mainContainer}>
@@ -77,10 +78,10 @@ function Header() {
   return (
     <div className={style.header}>
       <div>
-        <button onClick={interanal_context.toggleExpanded}>
+        <button onClick={() => interanal_context.toggleExpanded()}>
           <img alt="expand/collapse icon" src={icon} title={title}></img>
         </button>
-        <h2 onClick={interanal_context.toggleExpanded}>Project: </h2>
+        <h2 onClick={() => interanal_context.toggleExpanded()}>Project: </h2>
       </div>
       <DisplayButton></DisplayButton>
     </div>
@@ -93,13 +94,14 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
+      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
+      <DialogBox></DialogBox>
     </div>
   );
 }
 
 function DisplayButton() {
-  const dialogBoxContext = useContext(internalContext);
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const [icon, setIcon] = useState(
     context.hiddenComponent.project ? hideIcon : showIcon,
@@ -116,10 +118,16 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
-          dialogBoxContext.toggleDialogBoxState();
+          if(internal_context.expanded === false){
+            internal_context.toggleExpanded();
+          }
+
+          if(internal_context.dialogBoxState === false){
+            internal_context.toggleDialogBoxState();
+          }
         }}
       >
-        <img alt="add icon" src={addIcon} title="Add work group"></img>
+        <img alt="add icon" src={addIcon} title="Add project"></img>
       </button>
       <button
         onClick={() => {
