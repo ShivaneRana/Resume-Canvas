@@ -19,7 +19,7 @@ const internalContext = createContext();
 
 function Project() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(true); // false is default value true is temp
+  const [expanded, setExpanded] = useState(false); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
@@ -94,8 +94,7 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
-      <DialogBox></DialogBox>
+      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
   );
 }
