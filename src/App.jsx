@@ -247,6 +247,7 @@ function Content() {
           id: newUUID,
           projectTitle: "",
           doc: "",
+          summary:"",
           link: "",
           featureList: []
         });
@@ -340,7 +341,8 @@ const exampleTemplate = {
     {
       id: uuidv4(),
       projectTitle: "DevConnect – Developer Social Network",
-      doc: "A full-stack social platform for developers to create profiles, share projects, and connect with others.",
+      summary: "A full-stack social platform for developers to create profiles, share projects, and connect with others.",
+      doc:"12th April 2023",
       link: "https://devconnect.app",
       featureList: [
         {
@@ -360,7 +362,8 @@ const exampleTemplate = {
     {
       id: uuidv4(),
       projectTitle: "EcoTrack – Sustainable Living Dashboard",
-      doc: "A web app that helps users track and reduce their environmental impact with actionable insights.",
+      summary: "A web app that helps users track and reduce their environmental impact with actionable insights.",
+      doc:"1st september 2020",
       link: "https://ecotrack.io",
       featureList: [
         {
