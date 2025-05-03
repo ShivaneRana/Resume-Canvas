@@ -239,6 +239,21 @@ function Content() {
     })
   }
 
+  function addProject(resumeId,newUUID){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        resume.project.push({
+          id: newUUID,
+          projectTitle: "",
+          doc: "",
+          link: "",
+          featureList: []
+        });
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -261,6 +276,7 @@ function Content() {
         removeSkillSet,
         addNewSkillListItem,
         deleteProject,
+        addProject,
         resumeList,
         activeResumeId,
       }}
