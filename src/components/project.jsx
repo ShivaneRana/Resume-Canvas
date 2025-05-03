@@ -208,7 +208,9 @@ function DialogBox() {
           <h4>Project name: </h4>
           <input
             value={currentProject.projectTitle}
-            onChange={(e) => {}}
+            onChange={(e) => {
+              context.changeProjectDetail(context.activeResumeId,currentProject.id,"projectTitle",e.target.value);
+            }}
             name="projectName"
             placeholder="Enter project name"
           ></input>
@@ -219,7 +221,9 @@ function DialogBox() {
           <h4>Project summary: </h4>
           <input
             value={currentProject.summary}
-            onChange={(e) => {}}
+            onChange={(e) => {
+              context.changeProjectDetail(context.activeResumeId,currentProject.id,"summary",e.target.value);
+            }}
             name="summary"
             placeholder="Enter project summary date"
           ></input>
@@ -230,7 +234,9 @@ function DialogBox() {
           <h4>Completion date: </h4>
           <input
             value={currentProject.doc}
-            onChange={(e) => []}
+            onChange={(e) => {
+              context.changeProjectDetail(context.activeResumeId,currentProject.id,"doc",e.target.value);
+            }}
             name="completionDate"
             placeholder="Enter project completion date"
           ></input>
@@ -241,7 +247,9 @@ function DialogBox() {
           <h4>Project link: </h4>
           <input
             value={currentProject.link}
-            onChange={(e) => {}}
+            onChange={(e) => {
+              context.changeProjectDetail(context.activeResumeId,currentProject.id,"link",e.target.value);
+            }}
             name="link"
             placeholder="Enter project link"
           ></input>
