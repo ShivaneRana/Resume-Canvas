@@ -134,7 +134,16 @@
   gap: 5px;
 }
 
-.topDiv > input {
+.topDiv > div{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.topDiv > div > input {
   min-width: 100%;
   cursor: pointer;
   font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
