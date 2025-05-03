@@ -303,6 +303,19 @@ function Content() {
     });
   }
 
+  function changeProjectDetail(resumeId,uuid,targetKey,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.project.findIndex(
+          (element) => element.id === uuid,
+        );
+        const targetProject = resume.project[index];
+        targetProject[targetKey] = value;
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -329,6 +342,7 @@ function Content() {
         changeProjectFeature,
         deleteProjectFeature,
         addNewFeature,
+        changeProjectDetail,
         resumeList,
         activeResumeId,
       }}
