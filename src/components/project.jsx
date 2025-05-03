@@ -203,10 +203,57 @@ function DialogBox() {
 
   return <div className={style.dialogBox}>
     <div className={style.topDiv}>
-
+      {/* project name */}
+      <div>
+        <label htmlFor="projectName"></label>
+        <h4>Project name: </h4>
+        <input 
+        value={currentProject.projectTitle}
+        onChange={(e) => {
+        }}
+        name="projectName"
+        placeholder="Enter project name"></input>
+      </div>
+      {/* project summary */}
+      <div>
+        <label htmlFor="summary"></label>
+        <h4>Project summary: </h4>
+        <input
+        value={currentProject.summary}
+        onChange={(e) => {
+        }}
+        name="summary"
+        placeholder="Enter project summary date"></input>
+      </div>
+      {/* project completion date */}
+      <div>
+        <label htmlFor="completionDate"></label>
+        <h4>Completion date: </h4>
+        <input
+        value={currentProject.doc}
+        onChange={(e) => [
+        ]}
+        name="completionDate"
+        placeholder="Enter project completion date"></input>
+      </div>
+      {/* project link */}
+      <div>
+        <label htmlFor="link"></label>
+        <h4>Project link: </h4>
+        <input
+        value={currentProject.link}
+        onChange={(e) => {
+        }}
+        name="link"
+        placeholder="Enter project link"></input>
+      </div>
     </div>
-    <div className={style.middle}>
-
+    <div className={style.middleDiv}>
+      <h4>Features: </h4>
+      <InputDiv></InputDiv>
+      <button title="Add new features">
+        +Add new feature
+      </button>
     </div>
     <div className={style.bottomDiv}>
       <button title="Close"
@@ -229,8 +276,8 @@ function InputDiv(){
 
   return(
     <div className={style.inputDiv}>
-      <label htmlFor="projectFeatures"></label>
-      <input name="projectFeatures"></input>
+      <label htmlFor="projectFeature"></label>
+      <input placeholder="Enter features" name="projectFeatures"></input>
       <button>
         <img alt="delete feature" src={deleteIcon}></img>
       </button>
