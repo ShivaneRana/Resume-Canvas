@@ -309,7 +309,7 @@ const exampleTemplate = {
       ],
     },
   ],
-  projects: [
+  project: [
     {
       id: uuidv4(),
       projectTitle: "DevConnect – Developer Social Network",
