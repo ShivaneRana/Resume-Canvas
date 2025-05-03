@@ -281,7 +281,6 @@ function DialogBox() {
 
 function InputDiv({id,uuid,valueUUID,value}){
   const context = useContext(resumeContext);
-  const index = context.findIndex(context.activeResumeId);
 
   return(
     <div className={style.inputDiv}>
@@ -293,7 +292,11 @@ function InputDiv({id,uuid,valueUUID,value}){
       }}
       placeholder="Enter features"
       name="projectFeatures"></input>
-      <button>
+      <button
+        onClick={() => {
+          context.deleteProjectFeature(id,uuid,valueUUID);
+        }}
+      >
         <img alt="delete feature" src={deleteIcon}></img>
       </button>
     </div>
