@@ -156,8 +156,14 @@ function ShowArea() {
             }}>
               <h4>{item.projectTitle}</h4>
             </div>
-            <button>
-              <img src={deleteIcon}></img>
+            <button
+            onClick={() => {
+              context.deleteProject(context.activeResumeId,item.id);
+            }}
+            >
+              <img
+              alt="delete icon"
+              src={deleteIcon}></img>
             </button> 
           </div>
        })
