@@ -303,7 +303,7 @@ function Content() {
     });
   }
 
-  function changeProjectDetail(resumeId,uuid,targetKey,value){
+  function changeProjectDetail(resumeId, uuid, targetKey, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
