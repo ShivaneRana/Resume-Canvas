@@ -296,7 +296,7 @@ function Content() {
           (element) => element.id === uuid,
         );
         resume.project[index].featureList.push({
-          id: tempId,
+          id: tempid,
           content: "",
         });
       }
