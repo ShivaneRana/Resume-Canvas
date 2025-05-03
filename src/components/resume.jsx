@@ -79,17 +79,19 @@ function Skill() {
       <hr className={style.line}></hr>
       <div className={style.tray}>
         {resume.skill.map((item) => {
-          if(item.skillGroup !== ""){
-          return (
-            <div key={item.id}>
-              <h4>{item.skillGroup + ": "}</h4>
-              {item.skillList.map((skill) => {
-                if(skill.content !== ""){
-                return <p key={skill.id}>{` •` + skill.content}</p>;
-              }})}
-            </div>
-          );
-        }})}
+          if (item.skillGroup !== "") {
+            return (
+              <div key={item.id}>
+                <h4>{item.skillGroup + ": "}</h4>
+                {item.skillList.map((skill) => {
+                  if (skill.content !== "") {
+                    return <p key={skill.id}>{` •` + skill.content}</p>;
+                  }
+                })}
+              </div>
+            );
+          }
+        })}
       </div>
     </div>
   );
@@ -118,36 +120,32 @@ function Project() {
       <h2>Project</h2>
       <hr className={style.line}></hr>
       <div className={style.projectTray}>
-        {
-          resume.project.map(item => {
-            if(item.projectTitle !== ""){
-            return(<div
-            key={item.id}
-            >
-              <div className={style.topDiv}>
-                <h4>{item.projectTitle}</h4>
-                <div>
-                  <a
-                   title="Open in new tab"
-                   href={item.link} target="_blank"><p>{item.link}</p></a>
-                  <p>{item.doc}</p>
+        {resume.project.map((item) => {
+          if (item.projectTitle !== "") {
+            return (
+              <div key={item.id}>
+                <div className={style.topDiv}>
+                  <h4>{item.projectTitle}</h4>
+                  <div>
+                    <a title="Open in new tab" href={item.link} target="_blank">
+                      <p>{item.link}</p>
+                    </a>
+                    <p>{item.doc}</p>
+                  </div>
+                </div>
+                <div className={style.bottomDiv}>
+                  <ul>
+                    {item.featureList.map((element) => {
+                      if (element.content !== "") {
+                        return <li>{element.content}</li>;
+                      }
+                    })}
+                  </ul>
                 </div>
               </div>
-              <div className={style.bottomDiv}>
-                <ul>
-                  {
-                    item.featureList.map(element => {
-                      if(element.content !== ""){
-                      return <li>
-                        {element.content}
-                      </li>
-                    }})
-                  }
-                </ul>
-              </div>
-            </div>)
-          }})
-        }
+            );
+          }
+        })}
       </div>
     </div>
   );
@@ -187,8 +185,10 @@ function Email() {
     <p>
       <img src={emailIcon} alt="email icon"></img>
       <a
-       title="Open in new tab"
-      href={resume.personalDetail.email} target="_blank">
+        title="Open in new tab"
+        href={resume.personalDetail.email}
+        target="_blank"
+      >
         {resume.personalDetail.email}
       </a>
     </p>
@@ -203,8 +203,10 @@ function Address() {
     <p>
       <img src={addressIcon} alt="address icon"></img>
       <a
-       title="Open in new tab"
-      href={resume.personalDetail.address} target="_blank">
+        title="Open in new tab"
+        href={resume.personalDetail.address}
+        target="_blank"
+      >
         {resume.personalDetail.address}
       </a>
     </p>
@@ -219,8 +221,10 @@ function PhoneNumber() {
     <p>
       <img src={phoneIcon} alt="phone icon"></img>
       <a
-       title="Open in new tab"
-      href={resume.personalDetail.phoneNumber} target="_blank">
+        title="Open in new tab"
+        href={resume.personalDetail.phoneNumber}
+        target="_blank"
+      >
         {resume.personalDetail.phoneNumber}
       </a>
     </p>
@@ -235,8 +239,10 @@ function LinkedIn() {
     <p>
       <img src={linkedinIcon} alt="linkedin icon"></img>
       <a
-       title="Open in new tab"
-      href={resume.personalDetail.linkedIn} target="_blank">
+        title="Open in new tab"
+        href={resume.personalDetail.linkedIn}
+        target="_blank"
+      >
         {resume.personalDetail.linkedIn}
       </a>
     </p>
@@ -250,10 +256,11 @@ function Link() {
   return (
     <p>
       <img src={linkIcon} alt="link icon"></img>
-      <a 
-
-      title="Open in new tab"
-      href={resume.personalDetail.personalWebsite} target="_blank">
+      <a
+        title="Open in new tab"
+        href={resume.personalDetail.personalWebsite}
+        target="_blank"
+      >
         {resume.personalDetail.personalWebsite}
       </a>
     </p>
@@ -268,8 +275,10 @@ function Github() {
     <p>
       <img src={githubIcon} alt="github icon"></img>
       <a
-       title="Open in new tab"
-       href={resume.personalDetail.github} target="_blank">
+        title="Open in new tab"
+        href={resume.personalDetail.github}
+        target="_blank"
+      >
         {resume.personalDetail.github}
       </a>
     </p>
