@@ -94,6 +94,10 @@ function Skill() {
 }
 
 function Education() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.educationDiv}>
       <h2>Education</h2>
@@ -103,15 +107,56 @@ function Education() {
 }
 
 function Project() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.projectDiv}>
       <h2>Project</h2>
       <hr className={style.line}></hr>
+      <div className={style.projectTray}>
+        {
+          resume.project.map(item => {
+            if(item.projectTitle === ""){
+            }
+            else{
+            return(<div
+            key={item.id}
+            >
+              <div className={style.topDiv}>
+                <h4>{item.projectTitle}</h4>
+                <div>
+                  <a
+                   title="Open in new tab"
+                   href={item.link} target="_blank"><p>{item.link}</p></a>
+                  <p>{item.doc}</p>
+                </div>
+              </div>
+              <div className={style.bottomDiv}>
+                <ul>
+                  {
+                    item.featureList.map(element => {
+                      return <li>
+                        {element.content};
+                      </li>
+                    })
+                  }
+                </ul>
+              </div>
+            </div>)
+          }})
+        }
+      </div>
     </div>
   );
 }
 
 function Work() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.workExperienceDiv}>
       <h2>Work Experience</h2>
@@ -121,6 +166,10 @@ function Work() {
 }
 
 function Additional() {
+  const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
   return (
     <div className={style.additionalDiv}>
       <h2>Additional</h2>
@@ -136,7 +185,9 @@ function Email() {
   return (
     <p>
       <img src={emailIcon} alt="email icon"></img>
-      <a href={resume.personalDetail.email} target="_blank">
+      <a
+       title="Open in new tab"
+      href={resume.personalDetail.email} target="_blank">
         {resume.personalDetail.email}
       </a>
     </p>
@@ -150,7 +201,9 @@ function Address() {
   return (
     <p>
       <img src={addressIcon} alt="address icon"></img>
-      <a href={resume.personalDetail.address} target="_blank">
+      <a
+       title="Open in new tab"
+      href={resume.personalDetail.address} target="_blank">
         {resume.personalDetail.address}
       </a>
     </p>
@@ -164,7 +217,9 @@ function PhoneNumber() {
   return (
     <p>
       <img src={phoneIcon} alt="phone icon"></img>
-      <a href={resume.personalDetail.phoneNumber} target="_blank">
+      <a
+       title="Open in new tab"
+      href={resume.personalDetail.phoneNumber} target="_blank">
         {resume.personalDetail.phoneNumber}
       </a>
     </p>
@@ -178,7 +233,9 @@ function LinkedIn() {
   return (
     <p>
       <img src={linkedinIcon} alt="linkedin icon"></img>
-      <a href={resume.personalDetail.linkedIn} target="_blank">
+      <a
+       title="Open in new tab"
+      href={resume.personalDetail.linkedIn} target="_blank">
         {resume.personalDetail.linkedIn}
       </a>
     </p>
@@ -192,7 +249,10 @@ function Link() {
   return (
     <p>
       <img src={linkIcon} alt="link icon"></img>
-      <a href={resume.personalDetail.personalWebsite} target="_blank">
+      <a 
+
+      title="Open in new tab"
+      href={resume.personalDetail.personalWebsite} target="_blank">
         {resume.personalDetail.personalWebsite}
       </a>
     </p>
@@ -206,7 +266,9 @@ function Github() {
   return (
     <p>
       <img src={githubIcon} alt="github icon"></img>
-      <a href={resume.personalDetail.github} target="_blank">
+      <a
+       title="Open in new tab"
+       href={resume.personalDetail.github} target="_blank">
         {resume.personalDetail.github}
       </a>
     </p>
