@@ -209,7 +209,7 @@ function DialogBox() {
   return (
     <div className={style.dialogBox}>
       <div className={style.topDiv}>
-        <h3>Skill group: </h3>
+        <h4>Skill group: </h4>
         <label htmlFor="skill group"></label>
         <input
           value={currentSkill.skillGroup}
@@ -225,7 +225,7 @@ function DialogBox() {
         ></input>
       </div>
       <div className={style.middleDiv}>
-        <h3>Skills: </h3>
+        <h4>Skills: </h4>
         {currentSkill.skillList.map((item) => {
           return (
             <InputDiv
