@@ -262,7 +262,9 @@ function DialogBox() {
           </InputDiv>
         }) 
        }
-      <button title="Add new features">
+      <button
+      onClick={() => context.addNewFeature(context.activeResumeId,currentProject.id)}
+      title="Add new features">
         +Add new feature
       </button>
     </div>
