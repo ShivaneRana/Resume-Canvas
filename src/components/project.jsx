@@ -152,7 +152,7 @@ function ShowArea() {
 
   return (
     <div className={style.showArea}>
-      {resume.project.map((item,index) => {
+      {resume.project.map((item, index) => {
         return (
           <div className={style.tray} key={item.id}>
             <div
@@ -171,7 +171,7 @@ function ShowArea() {
                 }
               }}
             >
-              <h4>{(index+1)+"."+item.projectTitle}</h4>
+              <h4>{index + 1 + "." + item.projectTitle}</h4>
             </div>
             <button
               title="Delete project"
