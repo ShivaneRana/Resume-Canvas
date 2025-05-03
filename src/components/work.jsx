@@ -111,7 +111,6 @@ function DisplayButton() {
         onClick={() => {
           const UUID = uuidv4();
           internal_context.changeCurrentTarget(UUID);
-          console.log("new uuid"+UUID)
           if(internal_context.expanded === false){
             internal_context.toggleExpanded();
           }
