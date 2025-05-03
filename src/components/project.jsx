@@ -8,6 +8,7 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 import addIcon from "../assets/images/add.svg";
 import closeIcon from "../assets/images/close.svg";
+import deleteIcon from "../assets/images/delete.svg";
 
 //components
 import { useState, useEffect, createContext, useContext } from "react";
@@ -141,10 +142,28 @@ function DisplayButton() {
 
 function ShowArea() {
   const context = useContext(resumeContext);
+  const internal_context = useContext(internalContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}></div>;
+  return(
+  <div className={style.showArea}>
+    {
+      resume.project.map(item => {
+          return <div className={style.tray} key={item.id}>
+            <div onClick={() => {
+              console.log(item.id) 
+            }}>
+              <h4>{item.projectTitle}</h4>
+            </div>
+            <button>
+              <img src={deleteIcon}></img>
+            </button> 
+          </div>
+       })
+    }
+  </div>
+  );
 }
 
 function DialogBox() {
