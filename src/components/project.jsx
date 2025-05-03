@@ -151,44 +151,40 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return(
-  <div className={style.showArea}>
-    {
-      resume.project.map(item => {
-          return <div className={style.tray} key={item.id}>
+  return (
+    <div className={style.showArea}>
+      {resume.project.map((item) => {
+        return (
+          <div className={style.tray} key={item.id}>
             <div
-             className={
-                internal_context.currentTarget === item.id
-                  ? style.selected
-                  : ""
-             }
-            onClick={() => {
-              internal_context.changeCurrentTarget(item.id);
-
-              if(internal_context.expanded === false){
-                internal_context.toggleExpanded();
+              className={
+                internal_context.currentTarget === item.id ? style.selected : ""
               }
-              
-              if(internal_context.dialogBoxState === false){
-                internal_context.toggleDialogBoxState();
-              }
+              onClick={() => {
+                internal_context.changeCurrentTarget(item.id);
 
-            }}>
-              <h4>{item.projectTitle+": "}</h4>
+                if (internal_context.expanded === false) {
+                  internal_context.toggleExpanded();
+                }
+
+                if (internal_context.dialogBoxState === false) {
+                  internal_context.toggleDialogBoxState();
+                }
+              }}
+            >
+              <h4>{item.projectTitle + ": "}</h4>
             </div>
             <button
-            onClick={() => {
-              context.deleteProject(context.activeResumeId,item.id);
-            }}
+              onClick={() => {
+                context.deleteProject(context.activeResumeId, item.id);
+              }}
             >
-              <img
-              alt="delete icon"
-              src={deleteIcon}></img>
-            </button> 
+              <img alt="delete icon" src={deleteIcon}></img>
+            </button>
           </div>
-       })
-    }
-  </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -198,111 +194,119 @@ function DialogBox() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  const currentProject = resume.project.filter(item => item.id === internal_context.currentTarget)[0];
-  if(!currentProject) return null;
+  const currentProject = resume.project.filter(
+    (item) => item.id === internal_context.currentTarget,
+  )[0];
+  if (!currentProject) return null;
 
-  return <div className={style.dialogBox}>
-    <div className={style.topDiv}>
-      {/* project name */}
-      <div>
-        <label htmlFor="projectName"></label>
-        <h4>Project name: </h4>
-        <input 
-        value={currentProject.projectTitle}
-        onChange={(e) => {
-        }}
-        name="projectName"
-        placeholder="Enter project name"></input>
+  return (
+    <div className={style.dialogBox}>
+      <div className={style.topDiv}>
+        {/* project name */}
+        <div>
+          <label htmlFor="projectName"></label>
+          <h4>Project name: </h4>
+          <input
+            value={currentProject.projectTitle}
+            onChange={(e) => {}}
+            name="projectName"
+            placeholder="Enter project name"
+          ></input>
+        </div>
+        {/* project summary */}
+        <div>
+          <label htmlFor="summary"></label>
+          <h4>Project summary: </h4>
+          <input
+            value={currentProject.summary}
+            onChange={(e) => {}}
+            name="summary"
+            placeholder="Enter project summary date"
+          ></input>
+        </div>
+        {/* project completion date */}
+        <div>
+          <label htmlFor="completionDate"></label>
+          <h4>Completion date: </h4>
+          <input
+            value={currentProject.doc}
+            onChange={(e) => []}
+            name="completionDate"
+            placeholder="Enter project completion date"
+          ></input>
+        </div>
+        {/* project link */}
+        <div>
+          <label htmlFor="link"></label>
+          <h4>Project link: </h4>
+          <input
+            value={currentProject.link}
+            onChange={(e) => {}}
+            name="link"
+            placeholder="Enter project link"
+          ></input>
+        </div>
       </div>
-      {/* project summary */}
-      <div>
-        <label htmlFor="summary"></label>
-        <h4>Project summary: </h4>
-        <input
-        value={currentProject.summary}
-        onChange={(e) => {
-        }}
-        name="summary"
-        placeholder="Enter project summary date"></input>
+      <div className={style.middleDiv}>
+        <h4>Features: </h4>
+        {currentProject.featureList.map((element) => {
+          return (
+            <InputDiv
+              key={element.id}
+              value={element.content}
+              id={context.activeResumeId}
+              uuid={currentProject.id}
+              valueUUID={element.id}
+            ></InputDiv>
+          );
+        })}
+        <button
+          onClick={() =>
+            context.addNewFeature(context.activeResumeId, currentProject.id)
+          }
+          title="Add new features"
+        >
+          +Add new feature
+        </button>
       </div>
-      {/* project completion date */}
-      <div>
-        <label htmlFor="completionDate"></label>
-        <h4>Completion date: </h4>
-        <input
-        value={currentProject.doc}
-        onChange={(e) => [
-        ]}
-        name="completionDate"
-        placeholder="Enter project completion date"></input>
-      </div>
-      {/* project link */}
-      <div>
-        <label htmlFor="link"></label>
-        <h4>Project link: </h4>
-        <input
-        value={currentProject.link}
-        onChange={(e) => {
-        }}
-        name="link"
-        placeholder="Enter project link"></input>
+      <div className={style.bottomDiv}>
+        <button
+          title="Close"
+          onClick={() => {
+            internal_context.changeCurrentTarget(null);
+            internal_context.toggleDialogBoxState();
+          }}
+        >
+          <img alt="close icon" src={closeIcon}></img>
+        </button>
       </div>
     </div>
-    <div className={style.middleDiv}>
-      <h4>Features: </h4>
-       {
-        currentProject.featureList.map(element => {
-          return <InputDiv
-          key={element.id}
-          value={element.content}
-          id={context.activeResumeId}
-          uuid={currentProject.id}
-          valueUUID={element.id}
-          >
-          </InputDiv>
-        }) 
-       }
-      <button
-      onClick={() => context.addNewFeature(context.activeResumeId,currentProject.id)}
-      title="Add new features">
-        +Add new feature
-      </button>
-    </div>
-    <div className={style.bottomDiv}>
-      <button title="Close"
-        onClick={() => {
-          internal_context.changeCurrentTarget(null)
-          internal_context.toggleDialogBoxState();
-        }}
-      >
-        <img alt="close icon" src={closeIcon}></img>
-      </button>
-    </div>
-  </div>;
+  );
 }
 
-function InputDiv({id,uuid,valueUUID,value}){
+function InputDiv({ id, uuid, valueUUID, value }) {
   const context = useContext(resumeContext);
 
-  return(
+  return (
     <div className={style.inputDiv}>
       <label htmlFor="projectFeature"></label>
       <input
-      value={value}
-      onChange={(e) => {
-        context.changeProjectFeature(id,uuid,valueUUID,e.target.value);
-      }}
-      placeholder="Enter features"
-      name="projectFeatures"></input>
+        value={value}
+        onChange={(e) => {
+          context.changeProjectFeature(id, uuid, valueUUID, e.target.value);
+        }}
+        placeholder="Enter features"
+        name="projectFeatures"
+      ></input>
       <button
         onClick={() => {
-          context.deleteProjectFeature(id,uuid,valueUUID);
+          context.deleteProjectFeature(id, uuid, valueUUID);
         }}
       >
         <img alt="delete feature" src={deleteIcon}></img>
       </button>
     </div>
-  )
+  );
 }
 
 export default Project;

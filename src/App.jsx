@@ -229,17 +229,19 @@ function Content() {
     });
   }
 
-  function deleteProject(resumeId,projectId){
-    updateResumeList(draft => {
+  function deleteProject(resumeId, projectId) {
+    updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
-      const index = resume.project.findIndex(element => element.id === projectId);
-      if(index !== -1){
-        resume.project.splice(index,1);
+      const index = resume.project.findIndex(
+        (element) => element.id === projectId,
+      );
+      if (index !== -1) {
+        resume.project.splice(index, 1);
       }
-    })
+    });
   }
 
-  function addProject(resumeId,newUUID){
+  function addProject(resumeId, newUUID) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
@@ -247,48 +249,58 @@ function Content() {
           id: newUUID,
           projectTitle: "",
           doc: "",
-          summary:"",
+          summary: "",
           link: "",
-          featureList: []
+          featureList: [],
         });
       }
     });
   }
 
-  function changeProjectFeature(resumeId,uuid,valueUUID,value){
-    updateResumeList(draft => {
+  function changeProjectFeature(resumeId, uuid, valueUUID, value) {
+    updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
-      if(resume){
-        const index = resume.project.findIndex(element => element.id === uuid);
-        const targetFeatureIndex = resume.project[index].featureList.findIndex(feature => feature.id === valueUUID);
+      if (resume) {
+        const index = resume.project.findIndex(
+          (element) => element.id === uuid,
+        );
+        const targetFeatureIndex = resume.project[index].featureList.findIndex(
+          (feature) => feature.id === valueUUID,
+        );
         resume.project[index].featureList[targetFeatureIndex].content = value;
       }
-    })
+    });
   }
 
-  function deleteProjectFeature(resumeId,uuid,valueUUID){
-    updateResumeList(draft => {
+  function deleteProjectFeature(resumeId, uuid, valueUUID) {
+    updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
-      if(resume){
-        const index = resume.project.findIndex(element => element.id === uuid);
-        const targetFeatureIndex = resume.project[index].featureList.findIndex(feature => feature.id === valueUUID);
-        resume.project[index].featureList.splice(targetFeatureIndex,1);
+      if (resume) {
+        const index = resume.project.findIndex(
+          (element) => element.id === uuid,
+        );
+        const targetFeatureIndex = resume.project[index].featureList.findIndex(
+          (feature) => feature.id === valueUUID,
+        );
+        resume.project[index].featureList.splice(targetFeatureIndex, 1);
       }
-    })
+    });
   }
 
-  function addNewFeature(resumeId,uuid){
+  function addNewFeature(resumeId, uuid) {
     const tempid = uuidv4();
-    updateResumeList(draft => {
+    updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
-      if(resume){
-        const index = resume.project.findIndex(element => element.id === uuid);
+      if (resume) {
+        const index = resume.project.findIndex(
+          (element) => element.id === uuid,
+        );
         resume.project[index].featureList.push({
-          id:tempId,
-          content:""
+          id: tempId,
+          content: "",
         });
       }
-    })
+    });
   }
 
   return (
@@ -380,8 +392,9 @@ const exampleTemplate = {
     {
       id: uuidv4(),
       projectTitle: "DevConnect – Developer Social Network",
-      summary: "A full-stack social platform for developers to create profiles, share projects, and connect with others.",
-      doc:"12th April 2023",
+      summary:
+        "A full-stack social platform for developers to create profiles, share projects, and connect with others.",
+      doc: "12th April 2023",
       link: "https://devconnect.app",
       featureList: [
         {
@@ -401,8 +414,9 @@ const exampleTemplate = {
     {
       id: uuidv4(),
       projectTitle: "EcoTrack – Sustainable Living Dashboard",
-      summary: "A web app that helps users track and reduce their environmental impact with actionable insights.",
-      doc:"1st september 2020",
+      summary:
+        "A web app that helps users track and reduce their environmental impact with actionable insights.",
+      doc: "1st september 2020",
       link: "https://ecotrack.io",
       featureList: [
         {
