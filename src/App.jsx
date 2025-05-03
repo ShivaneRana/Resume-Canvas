@@ -446,83 +446,83 @@ const exampleTemplate = {
     },
   ],
   work: [
-  {
-    id: uuidv4(),
-    company: "TechSphere Inc.",
-    position: "Senior Full-Stack Developer",
-    startDate: "March 2021",
-    endDate: "Present",
-    address: "San Francisco, CA, USA",
-    highlightList: [
-      {
-        id: uuidv4(),
-        content:
-          "Led the development of a scalable internal tool using React, Node.js, and PostgreSQL, reducing operational workload by 30%.",
-      },
-      {
-        id: uuidv4(),
-        content:
-          "Introduced automated testing (Jest, Cypress), increasing test coverage from 40% to 85% and improving release reliability.",
-      },
-      {
-        id: uuidv4(),
-        content:
-          "Collaborated cross-functionally with design, product, and DevOps teams to implement CI/CD pipelines and optimize deployment workflows.",
-      },
-    ],
-  },
+    {
+      id: uuidv4(),
+      company: "TechSphere Inc.",
+      position: "Senior Full-Stack Developer",
+      startDate: "March 2021",
+      endDate: "Present",
+      address: "San Francisco, CA, USA",
+      highlightList: [
+        {
+          id: uuidv4(),
+          content:
+            "Led the development of a scalable internal tool using React, Node.js, and PostgreSQL, reducing operational workload by 30%.",
+        },
+        {
+          id: uuidv4(),
+          content:
+            "Introduced automated testing (Jest, Cypress), increasing test coverage from 40% to 85% and improving release reliability.",
+        },
+        {
+          id: uuidv4(),
+          content:
+            "Collaborated cross-functionally with design, product, and DevOps teams to implement CI/CD pipelines and optimize deployment workflows.",
+        },
+      ],
+    },
   ],
   additional: [
-  {
-    id: uuidv4(),
-    category: "Certifications",
-    itemList: [
-      {
-        id: uuidv4(),
-        content: "AWS Certified Solutions Architect – Associate (2023)",
-      },
-      {
-        id: uuidv4(),
-        content: "Certified Kubernetes Administrator (CKA) – 2022",
-      },
-      {
-        id: uuidv4(),
-        content: "Scrum Alliance Certified ScrumMaster® (CSM) – 2021",
-      },
-    ],
-  },
-  {
-    id: uuidv4(),
-    category: "Languages",
-    itemList: [
-      {
-        id: uuidv4(),
-        content: "Fluent in English  ",
-      },
-      {
-        id: uuidv4(),
-        content: "Fluent in Spanish",
-      },
-    ],
-  },
+    {
+      id: uuidv4(),
+      category: "Certifications",
+      itemList: [
+        {
+          id: uuidv4(),
+          content: "AWS Certified Solutions Architect – Associate (2023)",
+        },
+        {
+          id: uuidv4(),
+          content: "Certified Kubernetes Administrator (CKA) – 2022",
+        },
+        {
+          id: uuidv4(),
+          content: "Scrum Alliance Certified ScrumMaster® (CSM) – 2021",
+        },
+      ],
+    },
+    {
+      id: uuidv4(),
+      category: "Languages",
+      itemList: [
+        {
+          id: uuidv4(),
+          content: "Fluent in English  ",
+        },
+        {
+          id: uuidv4(),
+          content: "Fluent in Spanish",
+        },
+      ],
+    },
   ],
   education: [
-  {
-    id: uuidv4(),
-    name: "University of California, Berkeley",
-    gpa: "3.85",
-    startDate: "August 2014",
-    endDate: "May 2018",
-    course: "B.Sc. in Computer Science",
-  },
-  {
-    id: uuidv4(),
-    name: "Stanford University",
-    gpa: "3.92",
-    startDate: "September 2019",
-    endDate: "June 2021",
-    course: "M.Sc. in Software Engineering",
-  }
+    {
+      id: uuidv4(),
+      name: "University of California, Berkeley",
+      gpa: "3.85",
+      startDate: "August 2014",
+      endDate: "May 2018",
+      course: "B.Sc. in Computer Science",
+    },
+    {
+      id: uuidv4(),
+      name: "Stanford University",
+      gpa: "3.92",
+      startDate: "September 2019",
+      endDate: "June 2021",
+      course: "M.Sc. in Software Engineering",
+    },
   ],
 };
 
@@ -539,9 +539,9 @@ const baseTemplate = {
   aboutMe: "",
   skill: [],
   project: [],
-  work:[],
-  additional:[],
-  education:[],
+  work: [],
+  additional: [],
+  education: [],
 };
 
 export default App;

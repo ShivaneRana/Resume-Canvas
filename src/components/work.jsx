@@ -19,7 +19,7 @@ function Work() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
-  const [currentTarget,setCurrentTarget] = useState(null);
+  const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function Work() {
     setDialogBoxState(!dialogBoxState);
   }
 
-  function changeCurrentTarget(id){
+  function changeCurrentTarget(id) {
     setCurrentTarget(id);
   }
 
@@ -111,11 +111,11 @@ function DisplayButton() {
         onClick={() => {
           const UUID = uuidv4();
           internal_context.changeCurrentTarget(UUID);
-          if(internal_context.expanded === false){
+          if (internal_context.expanded === false) {
             internal_context.toggleExpanded();
           }
 
-          if(internal_context.dialogBoxState === false){
+          if (internal_context.dialogBoxState === false) {
             internal_context.toggleDialogBoxState();
           }
         }}

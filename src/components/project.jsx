@@ -152,7 +152,7 @@ function ShowArea() {
 
   return (
     <div className={style.showArea}>
-      {resume.project.map((item,itemIndex) => {
+      {resume.project.map((item, itemIndex) => {
         return (
           <div className={style.tray} key={item.id}>
             <div
@@ -171,7 +171,7 @@ function ShowArea() {
                 }
               }}
             >
-              <h4>{(itemIndex+1)+"."+item.projectTitle}</h4>
+              <h4>{itemIndex + 1 + "." + item.projectTitle}</h4>
             </div>
             <button
               title="Delete project"
@@ -260,7 +260,7 @@ function DialogBox() {
       <div className={style.middleDiv}>
         <h4>Features: </h4>
         {currentProject.featureList.map((element) => {
-          console.log(element.id)
+          console.log(element.id);
           return (
             <InputDiv
               key={element.id}
