@@ -229,6 +229,16 @@ function Content() {
     });
   }
 
+  function deleteProject(resumeId,projectId){
+    updateResumeList(draft => {
+      const resume = draft.find((item) => item.id === resumeId);
+      const index = resume.project.findIndex(element => element.id === projectId);
+      if(index !== -1){
+        resume.project.splice(index,1);
+      }
+    })
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -250,6 +260,7 @@ function Content() {
         deleteSkillListItem,
         removeSkillSet,
         addNewSkillListItem,
+        deleteProject,
         resumeList,
         activeResumeId,
       }}
