@@ -405,7 +405,7 @@ const exampleTemplate = {
   project: [
     {
       id: uuidv4(),
-      projectTitle: "DevConnect – Developer Social Network",
+      projectTitle: "DevConnect",
       summary:
         "A full-stack social platform for developers to create profiles, share projects, and connect with others.",
       doc: "12th April 2023",
@@ -427,7 +427,7 @@ const exampleTemplate = {
     },
     {
       id: uuidv4(),
-      projectTitle: "EcoTrack – Sustainable Living Dashboard",
+      projectTitle: "EcoTrack",
       summary:
         "A web app that helps users track and reduce their environmental impact with actionable insights.",
       doc: "1st september 2020",
