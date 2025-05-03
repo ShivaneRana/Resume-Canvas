@@ -78,11 +78,11 @@ function Skill() {
       <h2>Skill</h2>
       <hr className={style.line}></hr>
       <div className={style.tray}>
-        {resume.skill.map((item) => {
+        {resume.skill.map((item,index) => {
           if (item.skillGroup !== "") {
             return (
               <div key={item.id}>
-                <h4>{item.skillGroup + ": "}</h4>
+                <h4>{(index+1)+"."+item.skillGroup + ": "}</h4>
                 {item.skillList.map((skill) => {
                   if (skill.content !== "") {
                     return <p key={skill.id}>{` •` + skill.content}</p>;
@@ -120,12 +120,12 @@ function Project() {
       <h2>Project</h2>
       <hr className={style.line}></hr>
       <div className={style.projectTray}>
-        {resume.project.map((item) => {
+        {resume.project.map((item,itemIndex) => {
           if (item.projectTitle !== "") {
             return (
               <div key={item.id}>
                 <div className={style.topDiv}>
-                  <h4>{item.projectTitle}</h4>
+                  <h4>{(itemIndex+1)+"."+item.projectTitle}</h4>
                   <div>
                     <a title="Open in new tab" href={item.link} target="_blank">
                       <p>{item.link}</p>
@@ -137,7 +137,7 @@ function Project() {
                   <ul>
                     {item.featureList.map((element) => {
                       if (element.content !== "") {
-                        return <li>{element.content}</li>;
+                        return <li key={element.id}>{element.content}</li>;
                       }
                     })}
                   </ul>
