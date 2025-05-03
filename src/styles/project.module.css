@@ -55,3 +55,32 @@
   height: 300px;
   background-color: red;
 }
+
+.tray {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tray > div {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.tray > button {
+  width: 5%;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border: none;
+  cursor: pointer;
+}
+
+.tray > button > img {
+  height: 30px;
+  width: 30px;
+}
