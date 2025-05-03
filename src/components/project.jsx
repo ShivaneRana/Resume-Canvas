@@ -19,11 +19,10 @@ function Project() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
-  const [currentTarget,setCurrentTarget] = useState(null);
+  const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
-
     // set these values to default
     setDialogBoxState(false);
     setCurrentTarget(null);
@@ -32,7 +31,6 @@ function Project() {
     if (context.hiddenComponent.project === false) {
       context.changeHiddenComponent("project");
     }
-
   }, [context.activeResumeId]);
 
   // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
@@ -47,7 +45,7 @@ function Project() {
     setDialogBoxState(!dialogBoxState);
   }
 
-  function changeCurrentTarget(id){
+  function changeCurrentTarget(id) {
     setCurrentTarget(id);
   }
 
@@ -118,11 +116,11 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
-          if(internal_context.expanded === false){
+          if (internal_context.expanded === false) {
             internal_context.toggleExpanded();
           }
 
-          if(internal_context.dialogBoxState === false){
+          if (internal_context.dialogBoxState === false) {
             internal_context.toggleDialogBoxState();
           }
         }}

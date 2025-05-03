@@ -309,50 +309,49 @@ const exampleTemplate = {
       ],
     },
   ],
- projects:[
-  {
-    id: uuidv4(),
-    projectTitle: "DevConnect – Developer Social Network",
-    doc: "A full-stack social platform for developers to create profiles, share projects, and connect with others.",
-    link: "https://devconnect.app",
-    featureList: [
-      {
-        id: uuidv4(),
-        content: "Built with React, Node.js, Express, and MongoDB.",
-      },
-      {
-        id: uuidv4(),
-        content: "Implemented authentication with JWT and OAuth.",
-      },
-      {
-        id: uuidv4(),
-        content: "Designed responsive UI with accessibility best practices.",
-      },
-    ],
-  },
-  {
-    id: uuidv4(),
-    projectTitle: "EcoTrack – Sustainable Living Dashboard",
-    doc: "A web app that helps users track and reduce their environmental impact with actionable insights.",
-    link: "https://ecotrack.io",
-    featureList: [
-      {
-        id: uuidv4(),
-        content: "Created interactive charts using D3.js and Chart.js.",
-      },
-      {
-        id: uuidv4(),
-        content: "Developed RESTful APIs with Express and PostgreSQL.",
-      },
-      {
-        id: uuidv4(),
-        content: "Integrated Google Maps API to visualize user footprint data.",
-      },
-    ],
-  },
-]
-
-
+  projects: [
+    {
+      id: uuidv4(),
+      projectTitle: "DevConnect – Developer Social Network",
+      doc: "A full-stack social platform for developers to create profiles, share projects, and connect with others.",
+      link: "https://devconnect.app",
+      featureList: [
+        {
+          id: uuidv4(),
+          content: "Built with React, Node.js, Express, and MongoDB.",
+        },
+        {
+          id: uuidv4(),
+          content: "Implemented authentication with JWT and OAuth.",
+        },
+        {
+          id: uuidv4(),
+          content: "Designed responsive UI with accessibility best practices.",
+        },
+      ],
+    },
+    {
+      id: uuidv4(),
+      projectTitle: "EcoTrack – Sustainable Living Dashboard",
+      doc: "A web app that helps users track and reduce their environmental impact with actionable insights.",
+      link: "https://ecotrack.io",
+      featureList: [
+        {
+          id: uuidv4(),
+          content: "Created interactive charts using D3.js and Chart.js.",
+        },
+        {
+          id: uuidv4(),
+          content: "Developed RESTful APIs with Express and PostgreSQL.",
+        },
+        {
+          id: uuidv4(),
+          content:
+            "Integrated Google Maps API to visualize user footprint data.",
+        },
+      ],
+    },
+  ],
 };
 
 const baseTemplate = {
@@ -367,7 +366,7 @@ const baseTemplate = {
   },
   aboutMe: "",
   skill: [],
-  project:[],
+  project: [],
 };
 
 export default App;
