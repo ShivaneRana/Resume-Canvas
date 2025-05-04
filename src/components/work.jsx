@@ -135,11 +135,38 @@ function DisplayButton() {
 }
 
 function ShowArea() {
+  const internal_context = useContext(internalContext)
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}></div>;
+  return <div className={style.showArea}>
+  {
+    resume.work.map((item,itemIndex) => {
+      return <div className={style.tray}>
+        <div
+        className={internal_context.currentTarget === item.id ? style.selected : ""}
+
+        onClick={() => {
+          internal_context.changeCurrentTarget(item.id);
+          if(internal_context.expanded === false){
+            internal_context.toggleExpanded();
+          }
+
+          if(internal_context.dialogBoxState === false){
+            internal_context.toggleDialogBoxState();
+          }
+        }}
+        >
+        <h4>{item.company}</h4>
+        </div>
+        <button title="Delete experience">
+          <img src={closeIcon}></img>
+        </button>
+      </div>
+    })
+  }
+  </div>;
 }
 
 function DialogBox() {
