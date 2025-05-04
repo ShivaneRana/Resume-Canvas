@@ -199,13 +199,14 @@
   justify-content: space-between;
 }
 
-.inputDiv > input {
+.inputDiv > textarea {
   width: 95%;
   font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   cursor: pointer;
   padding: 5px;
   cursor: pointer;
+  resize: vertical;
 }
 
 .inputDiv > button {
