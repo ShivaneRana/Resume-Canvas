@@ -111,15 +111,15 @@ function DisplayButton() {
   return (
     <div className={style.displayButtonDiv}>
       <button
-        onClick={() => {
-          if(internal_context.expanded === false){
-            internal_context.toggleExpanded();
-          }
+      onClick={() => {
+        if(internal_context.expanded === false){
+          internal_context.toggleExpanded();
+        }
 
-          if(internal_context.dialogBoxState === false){
-            internal_context.toggleDialogBoxState();
-          }
-        }}
+        if(internal_context.dialogBoxState === false){
+          internal_context.toggleDialogBoxState();
+        }
+      }}
       >
         <img alt="add icon" src={addIcon} title="Add Education"></img>
       </button>
@@ -141,17 +141,70 @@ function ShowArea() {
   const resume = context.resumeList[index];
 
   return <div className={style.showArea}>
-
+    
   </div>;
 }
 
 function DialogBox() {
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
   return <div className={style.dialogBox}>
-
+    <div className={style.topDiv}>
+     <div>
+          <h4>Institution: </h4>
+          <label htmlFor="institution"></label>
+          <input
+            name="institution"
+            placeholder="Enter institution"
+          ></input>
+    </div>
+    <div>
+          <h4>Course: </h4>
+          <label htmlFor="course"></label>
+          <input
+            name="course"
+            placeholder="Enter course"
+          ></input>
+    </div>
+    <div>
+          <h4>Major: </h4>
+          <label htmlFor="major"></label>
+          <input
+            name="major"
+            placeholder="Enter major"
+          ></input>
+    </div>
+    {/* holds entire start and end date */}
+    <div className={style.dateDiv}>
+      <div>
+          <h4>Start date: </h4>
+          <label htmlFor="startDate"></label>
+          <input
+            name="startDate"
+            placeholder="Enter start date"
+          ></input>
+      </div>
+      <div>
+          <h4>End date: </h4>
+          <label htmlFor="endDate"></label>
+          <input
+            name="endDate"
+            placeholder="Enter end date"
+          ></input>
+      </div>
+    </div>
+      <div>
+          <h4>GPA: </h4>
+          <label htmlFor="gpa"></label>
+          <input
+            name="gpa"
+            placeholder="Enter gpa"
+          ></input>
+      </div>
+    </div>
   </div>;
 }
 
