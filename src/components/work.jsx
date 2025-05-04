@@ -282,8 +282,23 @@ function DialogBox() {
       </div>
       <div className={style.middleDiv}>
         <h4>Accomplishments: </h4>
-        <InputDiv></InputDiv>
-        <button>+Add accomplishment</button>
+        {
+          currentWork.list.map((element,elementIndex) => {
+            return <InputDiv 
+              key={element.id}
+              id={context.activeResumeId}
+              uuid={currentWork.id}
+              value={element.content}
+              valueUUID={element.id}
+            ></InputDiv>
+          })
+        }
+        <button
+          title="Add new accomplishment"
+          onClick={() => {
+            context.addNewAccomplishment(context.activeResumeId,currentWork.id);
+          }}
+        >+Add accomplishment</button>
       </div>
       <div className={style.bottomDiv}>
         <button title="Close">
@@ -295,12 +310,24 @@ function DialogBox() {
 }
 
 function InputDiv({ id, uuid, valueUUID, value }) {
+  const internal_context = useContext(internalContext)
   const context = useContext(resumeContext);
+  const index = context.findIndex(context.activeResumeId);
+  const resume = context.resumeList[index];
+
+  const currentWork = resume.work.filter(
+    (item) => item.id === internal_context.currentTarget,
+  )[0];
 
   return (
     <div className={style.inputDiv}>
       <label htmlFor="accomplishment"></label>
-      <input name="accomplishment" placeholder="Enter accomplishment"></input>
+      <textarea 
+      value={value}
+      onChange={(e) => {
+        context.changeAccomplishment(id,uuid,valueUUID,e.target.value) 
+      }}
+      name="accomplishment" placeholder="Enter accomplishment"></textarea>
       <button title="Delete accomplishement">
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
