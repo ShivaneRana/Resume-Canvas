@@ -71,14 +71,6 @@ function Content() {
     });
   }
 
-  // printing entire resumeList
-  function print() {
-    console.log("printing.......");
-    resumeList.map((resume) => {
-      console.log(resume);
-    });
-  }
-
   // copying active resume and append to list
   function copyResume() {
     const currentIndex = findIndex(activeResumeId);
@@ -166,6 +158,7 @@ function Content() {
       resume.skill.splice(index, 1);
     });
   }
+
 
   function changeSkillGroup(id, uuid, value) {
     updateResumeList((draft) => {
@@ -477,7 +470,7 @@ function Content() {
     });
   }
 
-  function deleteItem(resumeId, uuid, valueUUID) {
+  function deleteItem(resumeId,uuid,valueUUID){
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
@@ -487,12 +480,12 @@ function Content() {
         const itemIndex = resume.additional[index].itemList.findIndex(
           (cat) => cat.id === valueUUID,
         );
-        resume.additional[index].itemList.splice(itemIndex, 1);
+        resume.additional[index].itemList.splice(itemIndex,1);
       }
     });
   }
 
-  function addItem(resumeId, uuid, value) {
+  function addItem(resumeId,uuid,value){
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
@@ -513,7 +506,6 @@ function Content() {
         addExampleResume,
         addBaseResume,
         copyResume,
-        print,
         changeActiveResumeId,
         removeResume,
         clearActiveResume,
