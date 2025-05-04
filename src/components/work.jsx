@@ -111,6 +111,7 @@ function DisplayButton() {
       <button
         onClick={() => {
           const UUID = uuidv4();
+          context.addWork(context.activeResumeId,UUID);
           internal_context.changeCurrentTarget(UUID);
           if (internal_context.expanded === false) {
             internal_context.toggleExpanded();
@@ -163,7 +164,11 @@ function ShowArea() {
             >
               <h4>{itemIndex + 1 + "." + item.company}</h4>
             </div>
-            <button title="Delete experience">
+            <button
+            onClick={() => {
+              context.deleteWork(context.activeResumeId,item.id);
+            }}
+            title="Delete experience">
               <img alt="delete icon" src={deleteIcon}></img>
             </button>
           </div>
@@ -301,7 +306,12 @@ function DialogBox() {
         >+Add accomplishment</button>
       </div>
       <div className={style.bottomDiv}>
-        <button title="Close">
+        <button title="Close"
+          onClick={() => {
+            internal_context.changeCurrentTarget(null);
+            internal_context.toggleDialogBoxState();
+          }}
+        >
           <img alt="close icon" src={closeIcon}></img>
         </button>
       </div>
@@ -310,15 +320,8 @@ function DialogBox() {
 }
 
 function InputDiv({ id, uuid, valueUUID, value }) {
-  const internal_context = useContext(internalContext)
   const context = useContext(resumeContext);
-  const index = context.findIndex(context.activeResumeId);
-  const resume = context.resumeList[index];
-
-  const currentWork = resume.work.filter(
-    (item) => item.id === internal_context.currentTarget,
-  )[0];
-
+ 
   return (
     <div className={style.inputDiv}>
       <label htmlFor="accomplishment"></label>
@@ -328,7 +331,11 @@ function InputDiv({ id, uuid, valueUUID, value }) {
         context.changeAccomplishment(id,uuid,valueUUID,e.target.value) 
       }}
       name="accomplishment" placeholder="Enter accomplishment"></textarea>
-      <button title="Delete accomplishement">
+      <button
+      onClick={() => {
+        context.deleteAccomplishment(id,uuid,valueUUID);
+      }}
+      title="Delete accomplishement">
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
     </div>
