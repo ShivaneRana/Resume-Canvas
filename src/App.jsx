@@ -434,7 +434,7 @@ function Content() {
     });
   }
 
-  function deleteCategory(resumeId,uuid){
+  function deleteCategory(resumeId, uuid) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
@@ -446,20 +446,20 @@ function Content() {
     });
   }
 
-  function addCategory(resumeId,uuid){
+  function addCategory(resumeId, uuid) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
         resume.additional.push({
-          id:uuid,
-          category:"",
-          itemList:[],
-        })
+          id: uuid,
+          category: "",
+          itemList: [],
+        });
       }
     });
   }
 
-  function changeCategoryName(resumeId,uuid,value){
+  function changeCategoryName(resumeId, uuid, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
@@ -471,14 +471,16 @@ function Content() {
     });
   }
 
-  function changeItem(resumeId,uuid,valueUUID,value){
+  function changeItem(resumeId, uuid, valueUUID, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
         const index = resume.additional.findIndex(
           (element) => element.id === uuid,
         );
-        const itemIndex = resume.additional[index].itemList.findIndex(cat => cat.id === valueUUID);
+        const itemIndex = resume.additional[index].itemList.findIndex(
+          (cat) => cat.id === valueUUID,
+        );
         resume.additional[index].itemList[itemIndex] = value;
       }
     });
