@@ -18,7 +18,7 @@ const internalContext = createContext();
 
 function Work() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(true); // false is default value true is temp
+  const [expanded, setExpanded] = useState(false); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const [currentTarget, setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
