@@ -260,7 +260,6 @@ function DialogBox() {
       <div className={style.middleDiv}>
         <h4>Features: </h4>
         {currentProject.featureList.map((element) => {
-          console.log(element.id);
           return (
             <InputDiv
               key={element.id}
