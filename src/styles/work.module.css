@@ -94,7 +94,131 @@
   width: 30px;
 }
 
+.topDiv,
+.middleDiv {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.topDiv > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.topDiv > div > input {
+  min-width: 100%;
+  cursor: pointer;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.dialogBox > .topDiv > .dateDiv {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.dateDiv > div{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* start and end date */
+.dateDiv > div > input{
+  width: 100%;
+  cursor: pointer;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.middleDiv > button {
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+  color: gray;
+}
+
+.middleDiv > button:hover {
+  color: black;
+}
+
+.bottomDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.bottomDiv > button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bottomDiv > button:hover {
+  transform: scale(1.3);
+}
+
+.bottomDiv > button > img {
+  width: 30px;
+  height: 30px;
+}
+
 .selected {
   background-color: black;
   color: white;
+}
+
+
+.inputDiv {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputDiv > input {
+  width: 95%;
+  font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.inputDiv > button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.inputDiv > button > img {
+  height: 30px;
+  width: 30px;
 }
