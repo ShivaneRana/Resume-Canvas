@@ -160,6 +160,36 @@ function Work() {
     <div className={style.workExperienceDiv}>
       <h2>Work Experience</h2>
       <hr className={style.line}></hr>
+      <div className={style.workTray}>
+        {resume.work.map((item, itemIndex) => {
+          if (item.company !== "") {
+            return (
+              <div key={item.id}>
+                <div className={style.topDiv}>
+                  <div>
+                    <h4>{itemIndex + 1 + "." + item.company}</h4>
+                    <p>{item.position}</p>
+                  </div>
+                  <div>
+                    <p>{item.startDate+" - "+item.endDate}</p>
+                    <p>{item.address}</p>
+                  </div>
+                </div>
+                <div className={style.bottomDiv}>
+                  <ul>
+                    {item.list.map((element) => {
+                      if (element.content !== "") {
+                        return <li key={element.id}>{element.content}</li>;
+                      }
+                    })}
+                  </ul>
+                </div>
+              </div>
+            );
+          }
+        })}
+      </div>
+
     </div>
   );
 }
