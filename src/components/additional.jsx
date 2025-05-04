@@ -8,10 +8,12 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 import addIcon from "../assets/images/add.svg";
 import closeIcon from "../assets/images/close.svg";
+import deleteIcon from "../assets/images/delete.svg";
 
 //components
 import { useState, useEffect, createContext, useContext } from "react";
 import { resumeContext } from "../App.jsx";
+import { v4 as uuidv4 } from "uuid";
 
 const internalContext = createContext();
 
@@ -19,14 +21,12 @@ function Additional() {
   //this section is not expanded by default
   const [expanded, setExpanded] = useState(false); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
+  const [currentTarget,setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
-    // ensure that the work section is not expanded while switching resume
-    //temp
-    if (expanded === true) {
-      toggleExpanded();
-    }
+    changeCurrentTarget(null)
+    setDialogBoxState(false);
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.additional === false) {
@@ -34,22 +34,16 @@ function Additional() {
     }
   }, [context.activeResumeId]);
 
-  // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
-    if (dialogBoxState === true) {
-      toggleDialogBoxState();
-    }
     setExpanded(!expanded);
   }
 
-  // exapand content when toggleing dialogBox state
-  // without it may open but the content is shrunk,
-  // making it look as if the function is not working.
   function toggleDialogBoxState() {
-    if (expanded === false) {
-      toggleExpanded();
-    }
     setDialogBoxState(!dialogBoxState);
+  }
+
+  function changeCurrentTarget(id){
+    setCurrentTarget(id);
   }
 
   return (
@@ -88,18 +82,18 @@ function Header() {
 }
 
 function Content() {
-  const interanal_context = useContext(internalContext);
+  const internal_context = useContext(internalContext);
 
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
+      {internal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
   );
 }
 
 function DisplayButton() {
-  const dialogBoxContext = useContext(internalContext);
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const [icon, setIcon] = useState(
     context.hiddenComponent.additional ? hideIcon : showIcon,
@@ -116,10 +110,17 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
-          dialogBoxContext.toggleDialogBoxState();
+          if(internal_context.expanded === false){
+            internal_context.toggleExpanded();
+          }
+
+          if(internal_context.dialogBoxState === false){
+            internal_context.toggleDialogBoxState();
+          }
         }}
+        title="Add additional information"
       >
-        <img alt="add icon" src={addIcon} title="Add work group"></img>
+        <img alt="add icon" src={addIcon}></img>
       </button>
       <button
         onClick={() => {
@@ -134,19 +135,31 @@ function DisplayButton() {
 }
 
 function ShowArea() {
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}></div>;
+
+  return <div className={style.showArea}>
+
+  </div>;
 }
 
 function DialogBox() {
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
+
   return <div className={style.dialogBox}></div>;
+}
+
+function InputDiv(){
+  return <div className={style.inputDiv}>
+
+  </div>
 }
 
 export default Additional;
