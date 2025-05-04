@@ -355,6 +355,49 @@ function Content() {
     });
   }
 
+  function deleteAccomplishment(resumeId,uuid,valueUUID){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.work.findIndex(
+          (element) => element.id === uuid,
+        );
+        const targetIndex = resume.work[index].list.findIndex(
+          (acc) => acc.id === valueUUID,
+        );
+        resume.work[index].list.splice(targetIndex,1);
+      }
+    });
+  }
+
+  function deleteWork(resumeId,uuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.work.findIndex(
+          (element) => element.id === uuid,
+        );
+        resume.work.splice(index,1);
+      }
+    });
+  }
+
+  function addWork(resumeId,uuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        resume.work.push({
+          id:uuid,
+          company:"",
+          startDate:"",
+          endDate:"",
+          position:"",
+          list:[]
+        })
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -384,7 +427,10 @@ function Content() {
         changeProjectDetail,
         changeWorkDetail,
         addNewAccomplishment,
+        deleteAccomplishment,
         changeAccomplishment,
+        deleteWork,
+        addWork,
         resumeList,
         activeResumeId,
       }}
