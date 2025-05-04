@@ -145,11 +145,7 @@ function ButtonSlot() {
       </button>
 
       {/* print button */}
-      <button
-        onClick={() => {
-          context.print();
-        }}
-      >
+      <button onClick={() => {}}>
         <img
           alt="print icon"
           src={printIcon}

@@ -159,7 +159,6 @@ function Content() {
     });
   }
 
-
   function changeSkillGroup(id, uuid, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === id);
@@ -470,7 +469,7 @@ function Content() {
     });
   }
 
-  function deleteItem(resumeId,uuid,valueUUID){
+  function deleteItem(resumeId, uuid, valueUUID) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
@@ -480,12 +479,12 @@ function Content() {
         const itemIndex = resume.additional[index].itemList.findIndex(
           (cat) => cat.id === valueUUID,
         );
-        resume.additional[index].itemList.splice(itemIndex,1);
+        resume.additional[index].itemList.splice(itemIndex, 1);
       }
     });
   }
 
-  function addItem(resumeId,uuid,value){
+  function addItem(resumeId, uuid, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
