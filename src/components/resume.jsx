@@ -224,6 +224,21 @@ function Additional() {
     <div className={style.additionalDiv}>
       <h2>Additional</h2>
       <hr className={style.line}></hr>
+      <div className={style.addTray}>
+        {resume.additional.map((item, itemIndex) => {
+          if (item.category !== "") {
+            return (
+              <div key={item.id}>
+                <h4>{itemIndex + 1 + "." + item.category+": "}</h4>
+                {
+                  item.itemList.map(element => {
+                    return <p key={element.id}>{` • ` + element.content}</p>;
+                  })
+                }
+              </div>
+            );
+          }})}
+      </div>
     </div>
   );
 }
