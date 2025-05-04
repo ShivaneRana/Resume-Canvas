@@ -115,3 +115,63 @@
   font-size: 16px;
   padding: 5px;
 }
+
+.bottomDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.bottomDiv > button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bottomDiv > button:hover {
+  transform: scale(1.3);
+}
+
+.bottomDiv > button > img {
+  width: 30px;
+  height: 30px;
+}
+
+.selected{
+  background-color: black;
+  color: white;
+}
+
+.tray {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tray > div {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.tray > button {
+  width: 5%;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border: none;
+  cursor: pointer;
+}
+
+.tray > button > img {
+  height: 30px;
+  width: 30px;
+}
