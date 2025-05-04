@@ -46,12 +46,55 @@
 }
 
 .content {
-  min-width: 90%;
+  width: 90%;
   height: 100%;
 }
 
+.showArea{
+  min-width: 90%;
+  padding: 10px;
+}
+
 .dialogBox {
+  min-width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  outline: 2px dashed black;
+}
+
+.tray {
   width: 100%;
-  height: 300px;
-  background-color: red;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tray > div {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.tray > button {
+  width: 5%;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border: none;
+  cursor: pointer;
+}
+
+.tray > button > img {
+  height: 30px;
+  width: 30px;
+}
+
+.selected{
+  background-color: black;
+  color: white;
 }
