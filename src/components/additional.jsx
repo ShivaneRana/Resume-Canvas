@@ -218,18 +218,29 @@ function DialogBox() {
       </div>
       <div className={style.middleDiv}>
         <h4>Items: </h4>
-        {currentAdditional.itemList.map((item) => {
-          return (
+        {
+          currentAdditional.itemList.map(element => {
+            return (
             <InputDiv
-              key={item.id}
-              value={item.content}
-              id={context.activeResumeId}
-              valueUUID={item.id}
-              uuid={currentAdditional.id}
-            ></InputDiv>
-          );
-        })}
-        <button>+Add item</button>
+            key={element.id}
+            id={context.activeResumeId}
+            uuid={currentAdditional.id}
+            value={element.content}
+            valueUUID={element.id}
+            >
+            </InputDiv>
+          )})
+        }
+        <button
+          onClick={() => {
+            const newItem = {
+              id:uuidv4(),
+              content:"",
+            }
+            context.addItem(context.activeResumeId,currentAdditional.id,newItem)
+          }}
+          title="Add item"
+        >+Add item</button>
       </div>
       <div className={style.bottomDiv}>
         <button
@@ -255,7 +266,7 @@ function InputDiv({ id, uuid, valueUUID, value }) {
       <input
         value={value}
         onChange={(e) => {
-          context.changeItem(id, uuid, valueUUID, e.target.value);
+          context.changeListItem(id, uuid, valueUUID, e.target.value);
         }}
         placeholder="Enter item"
         name="item"
@@ -263,7 +274,7 @@ function InputDiv({ id, uuid, valueUUID, value }) {
       <button
         title="Delete item"
         onClick={() => {
-          context.deleteItem(id, uuid, valueUUID);
+          context.deleteItem(id,uuid,valueUUID)
         }}
       >
         <img alt="delete feature" src={deleteIcon}></img>

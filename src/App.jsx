@@ -167,15 +167,6 @@ function Content() {
     });
   }
 
-  function changeSkillGroup(id, uuid, value) {
-    updateResumeList((draft) => {
-      const resume = draft.find((item) => item.id === id);
-      const index = resume.skill.findIndex((element) => element.id === uuid);
-      if (index !== -1) {
-        resume.skill[index].skillGroup = value;
-      }
-    });
-  }
 
   function changeSkillGroup(id, uuid, value) {
     updateResumeList((draft) => {
@@ -471,7 +462,23 @@ function Content() {
     });
   }
 
-  function changeItem(resumeId, uuid, valueUUID, value) {
+  function changeListItem(resumeId, skillUuid, valueUuid, value) {
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      const index = resume.additional.findIndex(
+        (element) => element.id === skillUuid,
+      );
+      if (index !== -1) {
+        const targetSkill = resume.additional[index].itemList.find(
+          (element) => element.id === valueUuid,
+        );
+
+        targetSkill.content = value;
+      }
+    });
+  }
+
+  function deleteItem(resumeId,uuid,valueUUID){
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
@@ -481,7 +488,19 @@ function Content() {
         const itemIndex = resume.additional[index].itemList.findIndex(
           (cat) => cat.id === valueUUID,
         );
-        resume.additional[index].itemList[itemIndex] = value;
+        resume.additional[index].itemList.splice(itemIndex,1);
+      }
+    });
+  }
+
+  function addItem(resumeId,uuid,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.additional.findIndex(
+          (element) => element.id === uuid,
+        );
+        resume.additional[index].itemList.push(value);
       }
     });
   }
@@ -525,7 +544,9 @@ function Content() {
         deleteCategory,
         addCategory,
         changeCategoryName,
-        changeItem,
+        changeListItem,
+        deleteItem,
+        addItem,
         resumeList,
         activeResumeId,
       }}
