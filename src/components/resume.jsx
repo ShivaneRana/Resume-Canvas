@@ -229,15 +229,14 @@ function Additional() {
           if (item.category !== "") {
             return (
               <div key={item.id}>
-                <h4>{itemIndex + 1 + "." + item.category+": "}</h4>
-                {
-                  item.itemList.map(element => {
-                    return <p key={element.id}>{` • ` + element.content}</p>;
-                  })
-                }
+                <h4>{itemIndex + 1 + "." + item.category + ": "}</h4>
+                {item.itemList.map((element) => {
+                  return <p key={element.id}>{` • ` + element.content}</p>;
+                })}
               </div>
             );
-          }})}
+          }
+        })}
       </div>
     </div>
   );

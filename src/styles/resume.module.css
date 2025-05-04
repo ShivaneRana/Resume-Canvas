@@ -248,7 +248,7 @@
   margin-top: 5px;
 }
 
-.addTray > div{
+.addTray > div {
   width: 100%;
   display: flex;
   justify-items: flex-start;
@@ -257,10 +257,21 @@
   flex-wrap: wrap;
 }
 
-.addTray > div > p{
+.addTray > div > p {
   display: flex;
   margin-left: 10px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   font-size: 12px;
   font-weight: bolder;
 }
