@@ -107,28 +107,26 @@ function Education() {
       <h2>Education</h2>
       <hr className={style.line}></hr>
       <div className={style.educationTray}>
-        {
-          resume.education.map((item,itemIndex) => {
-            if(item.name !== ""){
-              return(
-                <div
-                key={item.id}
-                >
-                  <div className={style.topDiv}>
-                    <h4>{(itemIndex+1)+"."+item.name}</h4>
-                    <p>{`${item.startDate} - ${item.endDate}`}</p>
-                  </div>
-                  <div className={style.bottomDiv}>
-                    {
-                      item.major !== "" ? <p>{item.course+" "+`( ${item.major} )`}</p> : <p>{item.course}</p>
-                    }
-                    <p>{`GPA - ${item.gpa}`}</p>
-                  </div>
+        {resume.education.map((item, itemIndex) => {
+          if (item.name !== "") {
+            return (
+              <div key={item.id}>
+                <div className={style.topDiv}>
+                  <h4>{itemIndex + 1 + "." + item.name}</h4>
+                  <p>{`${item.startDate} - ${item.endDate}`}</p>
                 </div>
-              )
-            }
-          })
-        }
+                <div className={style.bottomDiv}>
+                  {item.major !== "" ? (
+                    <p>{item.course + " " + `( ${item.major} )`}</p>
+                  ) : (
+                    <p>{item.course}</p>
+                  )}
+                  <p>{`GPA - ${item.gpa}`}</p>
+                </div>
+              </div>
+            );
+          }
+        })}
       </div>
     </div>
   );
