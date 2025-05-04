@@ -89,8 +89,7 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
-      <DialogBox></DialogBox>
+      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
     </div>
   );
 }
@@ -162,7 +161,7 @@ function ShowArea() {
                 }
               }}
             >
-              <h4>{item.company}</h4>
+              <h4>{(itemIndex+1)+"."+item.company}</h4>
             </div>
             <button title="Delete experience">
               <img alt="delete icon" src={deleteIcon}></img>
@@ -188,34 +187,59 @@ function DialogBox() {
        <div>
         <h4>Company: </h4>
         <label htmlFor="company name"></label>
-        <input name="company name" placeholder="Enter company name"></input>
+        <input
+         value={currentWork.company}
+         onChange={(e) => {
+          context.changeWorkDetail(context.activeResumeId,currentWork.id,"company",e.target.value) 
+         }}
+         name="company name" placeholder="Enter company name"></input>
        </div> 
         {/* position in company */}
        <div>
         <h4>Position: </h4>
         <label htmlFor="company position"></label>
-        <input name="company postion" placeholder="Enter position"></input>
+        <input 
+         value={currentWork.position}
+         onChange={(e) => {
+          context.changeWorkDetail(context.activeResumeId,currentWork.id,"position",e.target.value) 
+         }}
+        name="company postion" placeholder="Enter position"></input>
        </div> 
       {/* contains start and date for side by side presentation*/}
       <div className={style.dateDiv}>
       {/* Start date */}
        <div>
         <h4>Start date: </h4>
-        <label htmlFor="company position"></label>
-        <input name="company postion" placeholder="Enter start date"></input>
+        <label htmlFor="start date"></label>
+        <input
+         value={currentWork.startDate}
+         onChange={(e) => {
+          context.changeWorkDetail(context.activeResumeId,currentWork.id,"startDate",e.target.value) 
+         }}
+        name="start date" placeholder="Enter start date"></input>
        </div> 
       {/* End date */}
        <div>
         <h4>End date: </h4>
-        <label htmlFor="company position"></label>
-        <input name="company postion" placeholder="Enter end date"></input>
+        <label htmlFor="end date"></label>
+        <input
+         value={currentWork.endDate}
+         onChange={(e) => {
+          context.changeWorkDetail(context.activeResumeId,currentWork.id,"endDate",e.target.value) 
+         }}
+        name="end date" placeholder="Enter end date"></input>
        </div> 
       </div>
       {/* company address */}
       <div>
         <h4>Address: </h4>
         <label htmlFor="company address"></label>
-        <input name="company address" placeholder="Enter address"></input>
+        <input
+         value={currentWork.address}
+         onChange={(e) => {
+          context.changeWorkDetail(context.activeResumeId,currentWork.id,"address",e.target.value) 
+         }}
+        name="company address" placeholder="Enter address"></input>
       </div>
     </div>
     <div className={style.middleDiv}>
