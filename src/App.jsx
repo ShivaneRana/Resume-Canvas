@@ -588,34 +588,34 @@ const exampleTemplate = {
       ],
     },
   ],
-  education:[
-  {
-    id: uuidv4(),
-    name: "Lincoln High School",
-    gpa: "3.75",
-    startDate: "September 2010",
-    endDate: "June 2014",
-    course: "High School Diploma",
-    major: "Science"
-  },
-  {
-    id: uuidv4(),
-    name: "University of Washington",
-    gpa: "3.68",
-    startDate: "August 2014",
-    endDate: "May 2018",
-    course: "B.Sc. in Information Technology",
-    major: "Software Systems"
-  },
-  {
-    id: uuidv4(),
-    name: "Massachusetts Institute of Technology",
-    gpa: "3.94",
-    startDate: "September 2019",
-    endDate: "June 2021",
-    course: "M.Sc. in Artificial Intelligence",
-    major: "Machine Learning"
-  },
+  education: [
+    {
+      id: uuidv4(),
+      name: "Lincoln High School",
+      gpa: "3.75",
+      startDate: "September 2010",
+      endDate: "June 2014",
+      course: "High School Diploma",
+      major: "Science",
+    },
+    {
+      id: uuidv4(),
+      name: "University of Washington",
+      gpa: "3.68",
+      startDate: "August 2014",
+      endDate: "May 2018",
+      course: "B.Sc. in Information Technology",
+      major: "Software Systems",
+    },
+    {
+      id: uuidv4(),
+      name: "Massachusetts Institute of Technology",
+      gpa: "3.94",
+      startDate: "September 2019",
+      endDate: "June 2021",
+      course: "M.Sc. in Artificial Intelligence",
+      major: "Machine Learning",
+    },
   ],
 };
 
