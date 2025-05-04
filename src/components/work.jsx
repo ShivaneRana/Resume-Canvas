@@ -8,6 +8,7 @@ import showIcon from "../assets/images/show.svg";
 import hideIcon from "../assets/images/hide.svg";
 import addIcon from "../assets/images/add.svg";
 import closeIcon from "../assets/images/close.svg";
+import deleteIcon from "../assets/images/delete.svg";
 
 //components
 import { useState, useEffect, createContext, useContext } from "react";
@@ -88,7 +89,8 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
+      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
+      <DialogBox></DialogBox>
     </div>
   );
 }
@@ -144,7 +146,7 @@ function ShowArea() {
     <div className={style.showArea}>
       {resume.work.map((item, itemIndex) => {
         return (
-          <div className={style.tray}>
+          <div key={item.id} className={style.tray}>
             <div
               className={
                 internal_context.currentTarget === item.id ? style.selected : ""
@@ -163,7 +165,7 @@ function ShowArea() {
               <h4>{item.company}</h4>
             </div>
             <button title="Delete experience">
-              <img src={closeIcon}></img>
+              <img alt="delete icon" src={deleteIcon}></img>
             </button>
           </div>
         );
@@ -173,11 +175,75 @@ function ShowArea() {
 }
 
 function DialogBox() {
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.dialogBox}></div>;
+  const currentWork = resume.work.filter(item => item.id === internal_context.currentTarget)[0];
+
+  return <div className={style.dialogBox}>
+    <div className={style.topDiv}>
+       {/* company name */}
+       <div>
+        <h4>Company: </h4>
+        <label htmlFor="company name"></label>
+        <input name="company name" placeholder="Enter company name"></input>
+       </div> 
+        {/* position in company */}
+       <div>
+        <h4>Position: </h4>
+        <label htmlFor="company position"></label>
+        <input name="company postion" placeholder="Enter position"></input>
+       </div> 
+      {/* contains start and date for side by side presentation*/}
+      <div className={style.dateDiv}>
+      {/* Start date */}
+       <div>
+        <h4>Start date: </h4>
+        <label htmlFor="company position"></label>
+        <input name="company postion" placeholder="Enter start date"></input>
+       </div> 
+      {/* End date */}
+       <div>
+        <h4>End date: </h4>
+        <label htmlFor="company position"></label>
+        <input name="company postion" placeholder="Enter end date"></input>
+       </div> 
+      </div>
+      {/* company address */}
+      <div>
+        <h4>Address: </h4>
+        <label htmlFor="company address"></label>
+        <input name="company address" placeholder="Enter address"></input>
+      </div>
+    </div>
+    <div className={style.middleDiv}>
+        <h4>Accomplishments: </h4>
+        <InputDiv></InputDiv>
+      <button>+Add accomplishment</button>
+
+    </div>
+    <div className={style.bottomDiv}>
+      <button title="Close">
+        <img alt="close icon" src={closeIcon}></img>
+      </button>
+    </div>
+  </div>;
+}
+
+function InputDiv({id,uuid,valueUUID,value}){
+  const context = useContext(resumeContext);
+
+  return (
+    <div className={style.inputDiv}>
+      <label htmlFor="accomplishment"></label>
+      <input name="accomplishment" placeholder="Enter accomplishment" ></input>
+      <button title="Delete accomplishement">
+        <img alt="delete icon" src={deleteIcon}></img>
+      </button>
+    </div>
+  )
 }
 
 export default Work;
