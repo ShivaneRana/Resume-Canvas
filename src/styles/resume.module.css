@@ -113,6 +113,63 @@
   margin-top: 5px;
 }
 
+/* contains everything inside projectTray*/
+.educationTray > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+/*  contains project Title and div that contains link and doc */
+.educationTray > div > .topDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.educationTray > div > .topDiv > p{
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  align-self: flex-end;
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+.educationTray > div > .bottomDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.educationTray > div > .bottomDiv > p{
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  align-self: flex-end;
+  font-size: 13px;
+  margin-left: 20px;
+  font-weight: bolder;
+}
+
 .projectDiv {
   margin-top: 5px;
 }
