@@ -113,7 +113,7 @@ function DisplayButton() {
       <button
         onClick={() => {
           const UUID = uuidv4();
-          context.addEducation(context.activeResumeId,UUID);
+          context.addEducation(context.activeResumeId, UUID);
           internal_context.changeCurrentTarget(UUID);
           if (internal_context.expanded === false) {
             internal_context.toggleExpanded();
@@ -144,16 +144,16 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}>
-    {
-      resume.education.map((item,itemIndex) => {
-        return <div
-        key={item.id}
-        className={style.tray}
-        >
-          <div
-          className={internal_context.currentTarget === item.id ? style.selected : ""}
-          onClick={() => {
+  return (
+    <div className={style.showArea}>
+      {resume.education.map((item, itemIndex) => {
+        return (
+          <div key={item.id} className={style.tray}>
+            <div
+              className={
+                internal_context.currentTarget === item.id ? style.selected : ""
+              }
+              onClick={() => {
                 internal_context.changeCurrentTarget(item.id);
                 if (internal_context.expanded === false) {
                   internal_context.toggleExpanded();
@@ -163,20 +163,22 @@ function ShowArea() {
                   internal_context.toggleDialogBoxState();
                 }
               }}
-          >
-            <h4>{(itemIndex+1)+"."+item.name}</h4>
+            >
+              <h4>{itemIndex + 1 + "." + item.name}</h4>
+            </div>
+            <button
+              title="Delete Record"
+              onClick={() => {
+                context.deleteEducation(context.activeResumeId, item.id);
+              }}
+            >
+              <img src={deleteIcon} alt="delete icon"></img>
+            </button>
           </div>
-          <button title="Delete Record"
-          onClick={() => {
-            context.deleteEducation(context.activeResumeId,item.id);
-          }}
-          >
-            <img src={deleteIcon} alt="delete icon"></img>
-          </button>
-        </div>
-      })
-    }
-  </div>;
+        );
+      })}
+    </div>
+  );
 }
 
 function DialogBox() {
@@ -197,33 +199,52 @@ function DialogBox() {
           <h4>Institution: </h4>
           <label htmlFor="institution"></label>
           <input
-          value={currentEducation.name}
-          onChange={(e) => {
-            context.changeEducation(context.activeResumeId,currentEducation.id,"name",e.target.value);
-          }}
-          name="institution" placeholder="Enter institution"></input>
+            value={currentEducation.name}
+            onChange={(e) => {
+              context.changeEducation(
+                context.activeResumeId,
+                currentEducation.id,
+                "name",
+                e.target.value,
+              );
+            }}
+            name="institution"
+            placeholder="Enter institution"
+          ></input>
         </div>
         <div>
           <h4>Course: </h4>
           <label htmlFor="course"></label>
           <input
-          value={currentEducation.course}
-
-          onChange={(e) => {
-            context.changeEducation(context.activeResumeId,currentEducation.id,"course",e.target.value);
-          }}
-          name="course" placeholder="Enter course"></input>
+            value={currentEducation.course}
+            onChange={(e) => {
+              context.changeEducation(
+                context.activeResumeId,
+                currentEducation.id,
+                "course",
+                e.target.value,
+              );
+            }}
+            name="course"
+            placeholder="Enter course"
+          ></input>
         </div>
         <div>
           <h4>Major: </h4>
           <label htmlFor="major"></label>
           <input
-          value={currentEducation.major}
-
-          onChange={(e) => {
-            context.changeEducation(context.activeResumeId,currentEducation.id,"major",e.target.value);
-          }}
-          name="major" placeholder="Enter major"></input>
+            value={currentEducation.major}
+            onChange={(e) => {
+              context.changeEducation(
+                context.activeResumeId,
+                currentEducation.id,
+                "major",
+                e.target.value,
+              );
+            }}
+            name="major"
+            placeholder="Enter major"
+          ></input>
         </div>
         {/* holds entire start and end date */}
         <div className={style.dateDiv}>
@@ -231,42 +252,61 @@ function DialogBox() {
             <h4>Start date: </h4>
             <label htmlFor="startDate"></label>
             <input
-            value={currentEducation.startDate}
-
-          onChange={(e) => {
-            context.changeEducation(context.activeResumeId,currentEducation.id,"startDate",e.target.value);
-          }}
-            name="startDate" placeholder="Enter start date"></input>
+              value={currentEducation.startDate}
+              onChange={(e) => {
+                context.changeEducation(
+                  context.activeResumeId,
+                  currentEducation.id,
+                  "startDate",
+                  e.target.value,
+                );
+              }}
+              name="startDate"
+              placeholder="Enter start date"
+            ></input>
           </div>
           <div>
             <h4>End date: </h4>
             <label htmlFor="endDate"></label>
             <input
-            value={currentEducation.endDate}
-
-          onChange={(e) => {
-            context.changeEducation(context.activeResumeId,currentEducation.id,"endDate",e.target.value);
-          }}
-            name="endDate" placeholder="Enter end date"></input>
+              value={currentEducation.endDate}
+              onChange={(e) => {
+                context.changeEducation(
+                  context.activeResumeId,
+                  currentEducation.id,
+                  "endDate",
+                  e.target.value,
+                );
+              }}
+              name="endDate"
+              placeholder="Enter end date"
+            ></input>
           </div>
         </div>
         <div>
           <h4>GPA: </h4>
           <label htmlFor="gpa"></label>
           <input
-          value={currentEducation.gpa}
-
-          onChange={(e) => {
-            context.changeEducation(context.activeResumeId,currentEducation.id,"gpa",e.target.value);
-          }}
-          name="gpa" placeholder="Enter gpa"></input>
+            value={currentEducation.gpa}
+            onChange={(e) => {
+              context.changeEducation(
+                context.activeResumeId,
+                currentEducation.id,
+                "gpa",
+                e.target.value,
+              );
+            }}
+            name="gpa"
+            placeholder="Enter gpa"
+          ></input>
         </div>
       </div>
       <div className={style.bottomDiv}>
-        <button title="close"
-        onClick={() => {
-          internal_context.toggleDialogBoxState();
-        }}
+        <button
+          title="close"
+          onClick={() => {
+            internal_context.toggleDialogBoxState();
+          }}
         >
           <img src={closeIcon} alt="close icon"></img>
         </button>
