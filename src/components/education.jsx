@@ -17,16 +17,15 @@ const internalContext = createContext();
 
 function Education() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false); // false is default value true is temp
+  const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
+  const [currentTarget,setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
 
   useEffect(() => {
-    // ensure that the work section is not expanded while switching resume
-    //temp
-    if (expanded === true) {
-      toggleExpanded();
-    }
+
+    setCurrentTarget(null);
+    setDialogBoxState(false);
 
     // ensure that section is not hidden when new resume is displayed
     if (context.hiddenComponent.education === false) {
@@ -34,22 +33,16 @@ function Education() {
     }
   }, [context.activeResumeId]);
 
-  // this ensure that if the dialogBox is opened it closes when expanding and shrinking content
   function toggleExpanded() {
-    if (dialogBoxState === true) {
-      toggleDialogBoxState();
-    }
     setExpanded(!expanded);
   }
 
-  // exapand content when toggleing dialogBox state
-  // without it may open but the content is shrunk,
-  // making it look as if the function is not working.
   function toggleDialogBoxState() {
-    if (expanded === false) {
-      toggleExpanded();
-    }
     setDialogBoxState(!dialogBoxState);
+  }
+
+  function changeCurrentTarget(id){
+    setCurrentTarget(id);
   }
 
   return (
@@ -57,6 +50,8 @@ function Education() {
       value={{
         expanded,
         dialogBoxState,
+        currentTarget,
+        changeCurrentTarget,
         toggleExpanded,
         toggleDialogBoxState,
       }}
@@ -93,13 +88,14 @@ function Content() {
   return (
     <div className={style.content}>
       <ShowArea></ShowArea>
-      {interanal_context.dialogBoxState && <DialogBox></DialogBox>}
+      {/* {interanal_context.dialogBoxState && <DialogBox></DialogBox>} */}
+      <DialogBox></DialogBox>
     </div>
   );
 }
 
 function DisplayButton() {
-  const dialogBoxContext = useContext(internalContext);
+  const internal_context = useContext(internalContext);
   const context = useContext(resumeContext);
   const [icon, setIcon] = useState(
     context.hiddenComponent.education ? hideIcon : showIcon,
@@ -116,7 +112,13 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
-          dialogBoxContext.toggleDialogBoxState();
+          if(internal_context.expanded === false){
+            internal_context.toggleExpanded();
+          }
+
+          if(internal_context.dialogBoxState === false){
+            internal_context.toggleDialogBoxState();
+          }
         }}
       >
         <img alt="add icon" src={addIcon} title="Add Education"></img>
@@ -138,7 +140,9 @@ function ShowArea() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.showArea}></div>;
+  return <div className={style.showArea}>
+
+  </div>;
 }
 
 function DialogBox() {
@@ -146,7 +150,9 @@ function DialogBox() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
-  return <div className={style.dialogBox}></div>;
+  return <div className={style.dialogBox}>
+
+  </div>;
 }
 
 export default Education;
