@@ -19,7 +19,7 @@ const internalContext = createContext();
 
 function Additional() {
   //this section is not expanded by default
-  const [expanded, setExpanded] = useState(false); // false is default value true is temp
+  const [expanded, setExpanded] = useState(true); // false is default value true is temp
   const [dialogBoxState, setDialogBoxState] = useState(false);
   const [currentTarget,setCurrentTarget] = useState(null);
   const context = useContext(resumeContext);
@@ -51,6 +51,8 @@ function Additional() {
       value={{
         expanded,
         dialogBoxState,
+        currentTarget,
+        changeCurrentTarget,
         toggleExpanded,
         toggleDialogBoxState,
       }}
@@ -110,6 +112,10 @@ function DisplayButton() {
     <div className={style.displayButtonDiv}>
       <button
         onClick={() => {
+          const UUID = uuidv4();
+          context.addCategory(context.activeResumeId,UUID);
+          internal_context.changeCurrentTarget(UUID);
+
           if(internal_context.expanded === false){
             internal_context.toggleExpanded();
           }
@@ -142,7 +148,38 @@ function ShowArea() {
 
 
   return <div className={style.showArea}>
+    {
+      resume.additional.map((element,elementIndex) => {
+        return <div key={element.id} className={style.tray}>
+          <div
+              className={
+                internal_context.currentTarget === element.id ? style.selected : ""
+              }
 
+              onClick={() => {
+                internal_context.changeCurrentTarget(element.id);
+                if(internal_context.expanded === false){
+                  internal_context.toggleExpanded();
+                }
+
+                if(internal_context.dialogBoxState === false){
+                  internal_context.toggleDialogBoxState();
+                }
+              }}
+          >
+            <h4>{(elementIndex + 1)+"."+element.category}</h4>
+          </div>
+          <button
+            onClick={() => {
+              context.deleteCategory(context.activeResumeId,element.id)
+            }}
+            title="Delete category"
+            >
+              <img src={deleteIcon} alt="delete icon"></img>
+          </button>
+        </div>
+      })
+    }
   </div>;
 }
 
@@ -152,13 +189,77 @@ function DialogBox() {
   const index = context.findIndex(context.activeResumeId);
   const resume = context.resumeList[index];
 
+  const currentAdditional = resume.additional.filter(
+    (item) => item.id === internal_context.currentTarget,
+  )[0];
+  if (!currentAdditional) return null;
 
-  return <div className={style.dialogBox}></div>;
+  return <div className={style.dialogBox}>
+    <div className={style.topDiv}>
+   <div>
+          <h4>Cateogory: </h4>
+          <label htmlFor="category"></label>
+          <input
+            value={currentAdditional.category}
+            onChange={(e) => {
+              context.changeCategoryName(context.activeResumeId,currentAdditional.id,e.target.value);
+            }}
+            name="category"
+            placeholder="Enter category"
+          ></input>
+        </div>   
+    </div>
+  <div className={style.middleDiv}>
+    <h4>Items: </h4>
+     {
+        currentAdditional.itemList.map((item) => {
+          return <InputDiv
+          key={item.id}
+          value={item.content}
+          id={context.activeResumeId}
+          valueUUID={item.id}
+          uuid={currentAdditional.id}
+          ></InputDiv>
+        })
+     }
+    <button>
+      +Add item
+    </button>
+  </div>
+  <div className={style.bottomDiv}>
+    <button
+    onClick={() => {
+      internal_context.changeCurrentTarget(null)
+      internal_context.toggleDialogBoxState();
+    }}
+    title="Close">
+        <img src={closeIcon} alt="close icon"></img>
+    </button>
+  </div>
+  </div>;
 }
 
-function InputDiv(){
-  return <div className={style.inputDiv}>
+function InputDiv({id,uuid,valueUUID,value}){
+  const context = useContext(resumeContext);
 
+  return <div className={style.inputDiv}>
+     <label htmlFor="item"></label>
+      <input
+        value={value}
+        onChange={(e) => {
+          context.changeItem(id, uuid, valueUUID, e.target.value);
+        }}
+        placeholder="Enter item"
+        name="item"
+      ></input>
+      <button
+        title="Delete item"
+        onClick={() => {
+          context.deleteItem(id, uuid, valueUUID);
+        }}
+      >
+        <img alt="delete feature" src={deleteIcon}></img>
+      </button>   
   </div>
 }
 

@@ -434,6 +434,56 @@ function Content() {
     });
   }
 
+  function deleteCategory(resumeId,uuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.additional.findIndex(
+          (element) => element.id === uuid,
+        );
+        resume.additional.splice(index, 1);
+      }
+    });
+  }
+
+  function addCategory(resumeId,uuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        resume.additional.push({
+          id:uuid,
+          category:"",
+          itemList:[],
+        })
+      }
+    });
+  }
+
+  function changeCategoryName(resumeId,uuid,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.additional.findIndex(
+          (element) => element.id === uuid,
+        );
+        resume.additional[index].category = value;
+      }
+    });
+  }
+
+  function changeItem(resumeId,uuid,valueUUID,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.additional.findIndex(
+          (element) => element.id === uuid,
+        );
+        const itemIndex = resume.additional[index].itemList.findIndex(cat => cat.id === valueUUID);
+        resume.additional[index].itemList[itemIndex] = value;
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -470,6 +520,10 @@ function Content() {
         addEducation,
         deleteEducation,
         changeEducation,
+        deleteCategory,
+        addCategory,
+        changeCategoryName,
+        changeItem,
         resumeList,
         activeResumeId,
       }}
