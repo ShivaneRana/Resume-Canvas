@@ -316,13 +316,11 @@ function Content() {
     });
   }
 
-  function changeWorkDetail(resumeId,uuid,targetKey,value){
+  function changeWorkDetail(resumeId, uuid, targetKey, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
-        const index = resume.work.findIndex(
-          (element) => element.id === uuid,
-        );
+        const index = resume.work.findIndex((element) => element.id === uuid);
         const targetWork = resume.work[index];
         targetWork[targetKey] = value;
       }

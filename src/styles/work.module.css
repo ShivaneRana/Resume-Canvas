@@ -128,7 +128,7 @@
   grid-template-rows: 1fr;
 }
 
-.dateDiv > div{
+.dateDiv > div {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -138,7 +138,7 @@
 }
 
 /* start and end date */
-.dateDiv > div > input{
+.dateDiv > div > input {
   width: 100%;
   cursor: pointer;
   font-family: "cutive_monoregular", Verdana, Geneva, Tahoma, sans-serif;
@@ -191,7 +191,6 @@
   background-color: black;
   color: white;
 }
-
 
 .inputDiv {
   min-width: 100%;
