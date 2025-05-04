@@ -392,6 +392,44 @@ function Content() {
     });
   }
 
+  function addEducation(resumeId,uuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        resume.education.push({
+          id: uuid,
+          name: "",
+          startDate: "",
+          endDate: "",
+          gpa: "",
+          major:"",
+          course:"",
+        });
+      }
+    });
+  }
+
+  function changeEducation(resumeId,uuid,targetKey,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.education.findIndex((element) => element.id === uuid);
+        const targetEducation = resume.education[index];
+        targetEducation[targetKey] = value;
+      }
+    });
+  }
+
+  function deleteEducation(resumeId,uuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.education.findIndex((element) => element.id === uuid);
+        resume.education.splice(index, 1);
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -425,6 +463,9 @@ function Content() {
         changeAccomplishment,
         deleteWork,
         addWork,
+        addEducation,
+        deleteEducation,
+        changeEducation,
         resumeList,
         activeResumeId,
       }}
