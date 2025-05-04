@@ -327,6 +327,34 @@ function Content() {
     });
   }
 
+  function addNewAccomplishment(resumeId,uuid){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.work.findIndex((element) => element.id === uuid);
+        resume.work[index].list.push({
+          id:uuidv4(),
+          content:"",
+        })
+      }
+    });
+  }
+
+  function changeAccomplishment(resumeId,uuid,valueUUID,value){
+    updateResumeList((draft) => {
+      const resume = draft.find((item) => item.id === resumeId);
+      if (resume) {
+        const index = resume.work.findIndex(
+          (element) => element.id === uuid,
+        );
+        const targetIndex = resume.work[index].list.findIndex(
+          (acc) => acc.id === valueUUID,
+        );
+        resume.work[index].list[targetIndex].content = value;
+      }
+    });
+  }
+
   return (
     <resumeContext.Provider
       value={{
@@ -355,6 +383,8 @@ function Content() {
         addNewFeature,
         changeProjectDetail,
         changeWorkDetail,
+        addNewAccomplishment,
+        changeAccomplishment,
         resumeList,
         activeResumeId,
       }}
@@ -465,7 +495,7 @@ const exampleTemplate = {
       startDate: "March 2021",
       endDate: "Present",
       address: "San Francisco, CA, USA",
-      highlightList: [
+      list: [
         {
           id: uuidv4(),
           content:
