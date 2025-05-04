@@ -50,7 +50,7 @@
   height: 100%;
 }
 
-.showArea{
+.showArea {
   min-width: 90%;
   padding: 10px;
 }
@@ -94,7 +94,7 @@
   width: 30px;
 }
 
-.selected{
+.selected {
   background-color: black;
   color: white;
 }
