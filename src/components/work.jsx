@@ -111,7 +111,7 @@ function DisplayButton() {
       <button
         onClick={() => {
           const UUID = uuidv4();
-          context.addWork(context.activeResumeId,UUID);
+          context.addWork(context.activeResumeId, UUID);
           internal_context.changeCurrentTarget(UUID);
           if (internal_context.expanded === false) {
             internal_context.toggleExpanded();
@@ -165,10 +165,11 @@ function ShowArea() {
               <h4>{itemIndex + 1 + "." + item.company}</h4>
             </div>
             <button
-            onClick={() => {
-              context.deleteWork(context.activeResumeId,item.id);
-            }}
-            title="Delete experience">
+              onClick={() => {
+                context.deleteWork(context.activeResumeId, item.id);
+              }}
+              title="Delete experience"
+            >
               <img alt="delete icon" src={deleteIcon}></img>
             </button>
           </div>
@@ -288,26 +289,32 @@ function DialogBox() {
       </div>
       <div className={style.middleDiv}>
         <h4>Accomplishments: </h4>
-        {
-          currentWork.list.map((element,elementIndex) => {
-            return <InputDiv 
+        {currentWork.list.map((element, elementIndex) => {
+          return (
+            <InputDiv
               key={element.id}
               id={context.activeResumeId}
               uuid={currentWork.id}
               value={element.content}
               valueUUID={element.id}
             ></InputDiv>
-          })
-        }
+          );
+        })}
         <button
           title="Add new accomplishment"
           onClick={() => {
-            context.addNewAccomplishment(context.activeResumeId,currentWork.id);
+            context.addNewAccomplishment(
+              context.activeResumeId,
+              currentWork.id,
+            );
           }}
-        >+Add accomplishment</button>
+        >
+          +Add accomplishment
+        </button>
       </div>
       <div className={style.bottomDiv}>
-        <button title="Close"
+        <button
+          title="Close"
           onClick={() => {
             internal_context.changeCurrentTarget(null);
             internal_context.toggleDialogBoxState();
@@ -322,21 +329,24 @@ function DialogBox() {
 
 function InputDiv({ id, uuid, valueUUID, value }) {
   const context = useContext(resumeContext);
- 
+
   return (
     <div className={style.inputDiv}>
       <label htmlFor="accomplishment"></label>
-      <textarea 
-      value={value}
-      onChange={(e) => {
-        context.changeAccomplishment(id,uuid,valueUUID,e.target.value) 
-      }}
-      name="accomplishment" placeholder="Enter accomplishment"></textarea>
+      <textarea
+        value={value}
+        onChange={(e) => {
+          context.changeAccomplishment(id, uuid, valueUUID, e.target.value);
+        }}
+        name="accomplishment"
+        placeholder="Enter accomplishment"
+      ></textarea>
       <button
-      onClick={() => {
-        context.deleteAccomplishment(id,uuid,valueUUID);
-      }}
-      title="Delete accomplishement">
+        onClick={() => {
+          context.deleteAccomplishment(id, uuid, valueUUID);
+        }}
+        title="Delete accomplishement"
+      >
         <img alt="delete icon" src={deleteIcon}></img>
       </button>
     </div>

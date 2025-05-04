@@ -171,7 +171,7 @@ function Work() {
                     <p>{item.position}</p>
                   </div>
                   <div>
-                    <p>{item.startDate+" - "+item.endDate}</p>
+                    <p>{item.startDate + " - " + item.endDate}</p>
                     <p>{item.address}</p>
                   </div>
                 </div>
@@ -189,7 +189,6 @@ function Work() {
           }
         })}
       </div>
-
     </div>
   );
 }

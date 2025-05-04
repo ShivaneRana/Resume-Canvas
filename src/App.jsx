@@ -327,26 +327,24 @@ function Content() {
     });
   }
 
-  function addNewAccomplishment(resumeId,uuid){
+  function addNewAccomplishment(resumeId, uuid) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
         const index = resume.work.findIndex((element) => element.id === uuid);
         resume.work[index].list.push({
-          id:uuidv4(),
-          content:"",
-        })
+          id: uuidv4(),
+          content: "",
+        });
       }
     });
   }
 
-  function changeAccomplishment(resumeId,uuid,valueUUID,value){
+  function changeAccomplishment(resumeId, uuid, valueUUID, value) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
-        const index = resume.work.findIndex(
-          (element) => element.id === uuid,
-        );
+        const index = resume.work.findIndex((element) => element.id === uuid);
         const targetIndex = resume.work[index].list.findIndex(
           (acc) => acc.id === valueUUID,
         );
@@ -355,45 +353,41 @@ function Content() {
     });
   }
 
-  function deleteAccomplishment(resumeId,uuid,valueUUID){
+  function deleteAccomplishment(resumeId, uuid, valueUUID) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
-        const index = resume.work.findIndex(
-          (element) => element.id === uuid,
-        );
+        const index = resume.work.findIndex((element) => element.id === uuid);
         const targetIndex = resume.work[index].list.findIndex(
           (acc) => acc.id === valueUUID,
         );
-        resume.work[index].list.splice(targetIndex,1);
+        resume.work[index].list.splice(targetIndex, 1);
       }
     });
   }
 
-  function deleteWork(resumeId,uuid){
+  function deleteWork(resumeId, uuid) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
-        const index = resume.work.findIndex(
-          (element) => element.id === uuid,
-        );
-        resume.work.splice(index,1);
+        const index = resume.work.findIndex((element) => element.id === uuid);
+        resume.work.splice(index, 1);
       }
     });
   }
 
-  function addWork(resumeId,uuid){
+  function addWork(resumeId, uuid) {
     updateResumeList((draft) => {
       const resume = draft.find((item) => item.id === resumeId);
       if (resume) {
         resume.work.push({
-          id:uuid,
-          company:"",
-          startDate:"",
-          endDate:"",
-          position:"",
-          list:[]
-        })
+          id: uuid,
+          company: "",
+          startDate: "",
+          endDate: "",
+          position: "",
+          list: [],
+        });
       }
     });
   }
