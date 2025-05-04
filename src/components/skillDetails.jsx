@@ -132,7 +132,7 @@ function DisplayButton() {
           }
         }}
       >
-        <img alt="add icon" src={addIcon} title="Add work group"></img>
+        <img alt="add icon" src={addIcon} title="Add skill"></img>
       </button>
       <button
         onClick={() => {

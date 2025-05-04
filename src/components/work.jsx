@@ -122,7 +122,7 @@ function DisplayButton() {
           }
         }}
       >
-        <img alt="add icon" src={addIcon} title="Add work experience"></img>
+        <img alt="add icon" src={addIcon} title="Add work"></img>
       </button>
       <button
         onClick={() => {
