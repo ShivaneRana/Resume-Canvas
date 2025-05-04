@@ -306,6 +306,7 @@ function DialogBox() {
           title="close"
           onClick={() => {
             internal_context.toggleDialogBoxState();
+            internal_context.changeCurrentTarget(null);
           }}
         >
           <img src={closeIcon} alt="close icon"></img>
