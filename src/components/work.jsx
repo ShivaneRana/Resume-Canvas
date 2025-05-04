@@ -187,6 +187,7 @@ function DialogBox() {
   const currentWork = resume.work.filter(
     (item) => item.id === internal_context.currentTarget,
   )[0];
+  if (!currentWork) return null;
 
   return (
     <div className={style.dialogBox}>
