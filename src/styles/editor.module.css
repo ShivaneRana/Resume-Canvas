@@ -73,3 +73,9 @@
 .activeRes:hover {
   transform: scale(1.2);
 }
+
+@media only screen and (max-width: 1600px) {
+  .mainContainer {
+    align-self: center;
+  }
+}

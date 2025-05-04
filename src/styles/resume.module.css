@@ -3,8 +3,9 @@
 }
 
 .mainContainer {
-  height: 1122px;
-  width: 793px;
+  min-height: 1122px;
+  min-width: 793px;
+  max-width: 793px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-bottom: 5vh;
   display: flex;
