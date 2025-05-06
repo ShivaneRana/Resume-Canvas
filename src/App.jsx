@@ -8,6 +8,7 @@ import Editor from "./components/editor.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { createContext } from "react";
 import { useImmer } from "use-immer";
+import { useEffect } from "react";
 
 function App() {
   return (
@@ -23,8 +24,14 @@ export let resumeContext = createContext();
 function Content() {
   const tempId = uuidv4(); // temporary and only for initial creation
   const tempResume = { ...exampleTemplate, id: tempId }; // temporary and only for initail creation
-  const [resumeList, updateResumeList] = useImmer([{ ...tempResume }]);
-  const [activeResumeId, updateActiveResumeId] = useImmer(resumeList[0].id);
+
+  const browserStorage = {
+    list:localStorage.getItem("list"),
+    activeId:localStorage.getItem("activeId"),
+  }
+
+  const [resumeList, updateResumeList] = useImmer(browserStorage.list ? JSON.parse(browserStorage.list) : [{ ...tempResume }]);
+  const [activeResumeId, updateActiveResumeId] = useImmer(browserStorage.activeId ? JSON.parse(browserStorage.activeId) : resumeList[0].id);
   const [hiddenComponent, updateHiddenComponent] = useImmer({
     personalDetail: true,
     aboutMe: true,
@@ -34,6 +41,11 @@ function Content() {
     project: true,
     education: true,
   });
+
+  useEffect(() => {
+    localStorage.setItem("list",JSON.stringify(resumeList));
+    localStorage.setItem("activeId",JSON.stringify(activeResumeId));
+  },[resumeList,hiddenComponent,activeResumeId])
 
   //toggle hidden component on/off based on previous value
   function changeHiddenComponent(field) {
