@@ -62,7 +62,7 @@ npm install
 npm run dev 
 ```
 
-This will launch the app in your browser at [http://localhost:3000](http://localhost:3000).
+This will launch the app in your browser at [http://localhost:5173](http://localhost:5173).
 
 ### 4. Build for Production
 
