@@ -10,8 +10,9 @@
   margin-bottom: 5vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   align-self: flex-start;
+  padding-top: 5vh;
 }
 
 .mainContainer > div {
