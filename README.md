@@ -2,7 +2,7 @@
 
 **Resume Canvas** is a dynamic and intuitive resume builder made with **React**, designed to help developers and professionals create, edit, and manage multiple resumes with ease. It provides a real-time preview of your resume as you edit various sections, ensuring a seamless experience from input to output.
 
-![Resume Canvas Preview](./src/asset/image/2.png)
+![Resume Canvas Preview](/src/assets/images/2.png);
 
 ## 🚀 Features
 
