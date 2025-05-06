@@ -36,3 +36,40 @@
 - **LocalStorage API**
 
 ## 
+
+## Installation
+
+Follow these steps to get **Resume Canvas** running locally on your machine:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ShivaneRana/Resume-Canvas.git
+cd Resume-Canvas
+```
+
+### 2. Install Dependencies
+
+Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+
+```bash
+npm install
+```
+
+### 3. Start the Development Server
+
+```bash
+npm run dev 
+```
+
+This will launch the app in your browser at [http://localhost:3000](http://localhost:3000).
+
+### 4. Build for Production
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
+
+This will generate static files in the `dist/` directory.
