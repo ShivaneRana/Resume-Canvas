@@ -26,12 +26,18 @@ function Content() {
   const tempResume = { ...exampleTemplate, id: tempId }; // temporary and only for initail creation
 
   const browserStorage = {
-    list:localStorage.getItem("list"),
-    activeId:localStorage.getItem("activeId"),
-  }
+    list: localStorage.getItem("list"),
+    activeId: localStorage.getItem("activeId"),
+  };
 
-  const [resumeList, updateResumeList] = useImmer(browserStorage.list ? JSON.parse(browserStorage.list) : [{ ...tempResume }]);
-  const [activeResumeId, updateActiveResumeId] = useImmer(browserStorage.activeId ? JSON.parse(browserStorage.activeId) : resumeList[0].id);
+  const [resumeList, updateResumeList] = useImmer(
+    browserStorage.list ? JSON.parse(browserStorage.list) : [{ ...tempResume }],
+  );
+  const [activeResumeId, updateActiveResumeId] = useImmer(
+    browserStorage.activeId
+      ? JSON.parse(browserStorage.activeId)
+      : resumeList[0].id,
+  );
   const [hiddenComponent, updateHiddenComponent] = useImmer({
     personalDetail: true,
     aboutMe: true,
@@ -43,9 +49,9 @@ function Content() {
   });
 
   useEffect(() => {
-    localStorage.setItem("list",JSON.stringify(resumeList));
-    localStorage.setItem("activeId",JSON.stringify(activeResumeId));
-  },[resumeList,hiddenComponent,activeResumeId])
+    localStorage.setItem("list", JSON.stringify(resumeList));
+    localStorage.setItem("activeId", JSON.stringify(activeResumeId));
+  }, [resumeList, hiddenComponent, activeResumeId]);
 
   //toggle hidden component on/off based on previous value
   function changeHiddenComponent(field) {
