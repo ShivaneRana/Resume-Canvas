@@ -153,11 +153,10 @@ function ButtonSlot({ resumeRef }) {
             const opt = {
               margin: 0,
               filename: "resume.pdf",
-              image: { type: "jpeg", quality: 0.98 },
+              image: { type: "jpeg", quality: 1 },
               html2canvas: { scale: 2 },
               jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
             };
-            
             
             html2pdf().from(resumeRef.current).set(opt).save();
           }
