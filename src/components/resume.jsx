@@ -11,12 +11,13 @@ import linkedinIcon from "../assets/images/linkedin.svg";
 
 import { resumeContext } from "../App.jsx";
 import { useContext } from "react";
+import { forwardRef } from "react";
 
-function Resume() {
+const Resume = forwardRef((prop, ref) => {
   const context = useContext(resumeContext);
 
   return (
-    <div className={style.mainContainer}>
+    <div ref={ref} className={style.mainContainer}>
       <div>
         {context.hiddenComponent["personalDetail"] && (
           <PersonalDetailDiv></PersonalDetailDiv>
@@ -30,7 +31,7 @@ function Resume() {
       </div>
     </div>
   );
-}
+});
 
 function PersonalDetailDiv() {
   const context = useContext(resumeContext);

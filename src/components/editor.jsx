@@ -19,14 +19,16 @@ import Project from "./project.jsx";
 import Education from "./education.jsx";
 import SkillDetails from "./skillDetails.jsx";
 import Additional from "./additional.jsx";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { resumeContext } from "../App.jsx";
+import html2pdf from "html2pdf.js";
+import { forwardRef } from "react";
 
 // represents the entire editor side
-function Editor() {
+const Editor = ({ resumeRef }) => {
   return (
     <div className={style.mainContainer}>
-      <TopLayer></TopLayer>
+      <TopLayer resumeRef={resumeRef}></TopLayer>
       <PersonalDetail></PersonalDetail>
       <AboutMe></AboutMe>
       <SkillDetails></SkillDetails>
@@ -36,16 +38,16 @@ function Editor() {
       <Additional></Additional>
     </div>
   );
-}
+};
 
 // holds the top layer ( resume slots and buttonSlot ( add, copy , example etc) )
-function TopLayer() {
+function TopLayer({ resumeRef }) {
   return (
     <div className={style.topLayer}>
       {/* This div contains all the resumes  */}
       <ResumeSlot></ResumeSlot>
       {/* This resume contains all the buttons */}
-      <ButtonSlot></ButtonSlot>
+      <ButtonSlot resumeRef={resumeRef}></ButtonSlot>
     </div>
   );
 }
@@ -82,7 +84,7 @@ function ResumeSlot() {
   );
 }
 
-function ButtonSlot() {
+function ButtonSlot({ resumeRef }) {
   const context = useContext(resumeContext);
 
   return (
@@ -147,7 +149,18 @@ function ButtonSlot() {
       {/* print button */}
       <button
         onClick={() => {
-          window.print();
+          if (resumeRef.current) {
+            const opt = {
+              margin: 0,
+              filename: "resume.pdf",
+              image: { type: "jpeg", quality: 0.98 },
+              html2canvas: { scale: 2 },
+              jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+            };
+            
+            
+            html2pdf().from(resumeRef.current).set(opt).save();
+          }
         }}
       >
         <img

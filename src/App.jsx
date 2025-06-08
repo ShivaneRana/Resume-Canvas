@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import { createContext } from "react";
 import { useImmer } from "use-immer";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 function App() {
   return (
@@ -514,6 +515,8 @@ function Content() {
     });
   }
 
+  const resumeRef = useRef(null);
+
   return (
     <resumeContext.Provider
       value={{
@@ -560,8 +563,8 @@ function Content() {
       }}
     >
       <div className={style.content}>
-        <Editor></Editor>
-        <Resume></Resume>
+        <Editor resumeRef={resumeRef}></Editor>
+        <Resume ref={resumeRef}></Resume>
       </div>
     </resumeContext.Provider>
   );
