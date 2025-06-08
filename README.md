@@ -35,7 +35,7 @@
 - **HTML**
 - **LocalStorage API**
 
-## 
+##
 
 ## Installation
 
@@ -59,7 +59,7 @@ npm install
 ### 3. Start the Development Server
 
 ```bash
-npm run dev 
+npm run dev
 ```
 
 This will launch the app in your browser at [http://localhost:5173](http://localhost:5173).
