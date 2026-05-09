@@ -1,75 +1,150 @@
 # Resume Canvas
 
-**Resume Canvas** is a dynamic and intuitive resume builder made with **React**, designed to help developers and professionals create, edit, and manage multiple resumes with ease. It provides a real-time preview of your resume as you edit various sections, ensuring a seamless experience from input to output.
+A browser-based resume builder. Fill in your details across structured sections, see a live preview update in real time, and print or export your resume as a PDF — no account or backend required.
 
-![Resume Canvas Preview](/src/assets/images/2.png)
+Live demo: https://shivanerana.github.io/Resume-Canvas/
+
+---
+
+## Screenshots
+
+![screenshot](screenshots/1.png)
+
+---
 
 ## Features
 
-- **Multi-Resume Management**: Switch between multiple resume slots with ease.
-- **Live Editing Interface**:
-  - **Personal Details**: Full name, GitHub, LinkedIn, email, phone number, address, personal website.
-  - **About Me**: A concise personal bio.
-  - **Education**: Academic background.
-  - **Additional**: Unique talents, certifications, or other highlights.
-  - **Skills**: Categorized into technical, frontend, and backend.
-  - **Work Experience**: Job roles, accomplishments, and timelines.
-  - **Projects**: Showcase major projects with descriptions and links.
-- **Real-Time Preview**: View your resume update instantly as you edit.
-- **LocalStorage Support**: Your changes persist between sessions and page reloads.
-- **Templates & Management Options**:
-  - Add a **clean template**.
-  - Load an **example template**.
-  - **Duplicate** an existing resume.
-  - **Clear** current content.
-  - **Delete** active resume slot.
-- **Flexible Editor**:
-  - Hide or reveal individual sections.
-  - Collapse or expand sections for convenience.
+- Split-pane layout: editor on the left, live resume preview on the right
+- Sections: Personal Details, About Me, Skills, Work Experience, Projects, Education, and Additional
+- Each section can be individually shown or hidden on the preview
+- Multiple resumes — create, copy, switch between, and delete resumes in the same session
+- Clear active resume or load a pre-filled example template to get started quickly
+- All resume data persists in `localStorage` and survives page refreshes
+- Print support via `react-to-print`
+- Deployed to GitHub Pages
+
+---
 
 ## Tech Stack
 
-- **React**
-- **ModularCSS**
-- **Javascript**
-- **HTML**
-- **LocalStorage API**
+| Category | Technology |
+|---|---|
+| Framework | React 19 |
+| State Management | useImmer (Immer-backed useState) |
+| Build Tool | Vite |
+| Styling | CSS Modules |
+| Print | react-to-print |
+| PDF Export | html2pdf.js |
+| Smooth Scroll | Lenis |
+| IDs | uuid v4 |
+| Deployment | GitHub Pages (`gh-pages`) |
 
-##
+---
 
-## Installation
+## Project Structure
 
-Follow these steps to get **Resume Canvas** running locally on your machine:
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/ShivaneRana/Resume-Canvas.git
-cd Resume-Canvas
+```
+src/
+├── App.jsx                  # Root component, all state and context
+├── main.jsx
+├── index.css
+├── components/
+│   ├── navbar.jsx           # Top bar with resume management controls
+│   ├── editor.jsx           # Left pane — all input sections
+│   ├── resume.jsx           # Right pane — live resume preview
+│   ├── personalDetail.jsx   # Name, email, phone, links, address
+│   ├── aboutMe.jsx          # Summary / about section
+│   ├── skillDetails.jsx     # Skill groups with individual skill items
+│   ├── work.jsx             # Work experience entries
+│   ├── project.jsx          # Project entries with feature lists
+│   ├── education.jsx        # Education entries
+│   └── additional.jsx       # Custom categories (certifications, languages, etc.)
+├── styles/                  # CSS Modules per component
+└── assets/
+    ├── images/              # SVG icons
+    └── fonts/               # Self-hosted Cutive Mono
 ```
 
-### 2. Install Dependencies
+---
 
-Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+## Resume Data Shape
 
-```bash
-npm install
+Each resume in the list follows this structure:
+
+```js
+{
+  id: string,                  // uuid
+  personalDetail: {
+    fullName, email, phoneNumber,
+    github, linkedIn, address, personalWebsite
+  },
+  aboutMe: string,
+  skill: [
+    { id, skillGroup, skillList: [{ id, content }] }
+  ],
+  work: [
+    { id, company, position, startDate, endDate, address,
+      list: [{ id, content }] }
+  ],
+  project: [
+    { id, projectTitle, doc, link, summary,
+      featureList: [{ id, content }] }
+  ],
+  education: [
+    { id, name, course, major, gpa, startDate, endDate }
+  ],
+  additional: [
+    { id, category, itemList: [{ id, content }] }
+  ]
+}
 ```
 
-### 3. Start the Development Server
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/shivanerana/Resume-Canvas.git
+   cd Resume-Canvas
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+   The app runs on `http://localhost:5173`.
+
+### Other Commands
 
 ```bash
-npm run dev
+npm run build      # Production build
+npm run preview    # Preview the production build locally
+npm run lint       # Run ESLint
+npm run pwrite     # Format all files with Prettier
+npm run deploy     # Build and deploy to GitHub Pages
 ```
 
-This will launch the app in your browser at [http://localhost:5173](http://localhost:5173).
+---
 
-### 4. Build for Production
+## Notes
 
-To create an optimized production build:
-
-```bash
-npm run build
-```
-
-This will generate static files in the `dist/` directory.
+- Resume data is stored in `localStorage` under the keys `list` and `activeId`
+- Deleting the last resume automatically creates a blank one in its place so the app is never left in an empty state
+- Section visibility (show/hide toggles) is session-only and is not persisted across refreshes
+- The example template pre-populates all sections with fictional data and can be loaded at any time from the navbar
