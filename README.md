@@ -2,8 +2,6 @@
 
 A browser-based resume builder. Fill in your details across structured sections, see a live preview update in real time, and print or export your resume as a PDF — no account or backend required.
 
-Live demo: https://shivanerana.github.io/Resume-Canvas/
-
 ---
 
 ## Screenshots
